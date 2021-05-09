@@ -1,7 +1,7 @@
 {
   "name": "spotify-activity-bot",
   "version": "1.0.0",
-  "description": "A project that allows arching of Spotify playback through Twitter.",
+  "description": "A project that allows archiving of Spotify playback through Twitter.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
