@@ -2,7 +2,7 @@
   "name": "spotify-activity-bot",
   "version": "1.0.0",
   "description": "A project that allows arching of Spotify playback through Twitter.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,8 +12,7 @@
   },
   "keywords": [
     "Twitter",
-    "NodeJS",
-    "Dev"
+    "NodeJS"
   ],
   "author": "Joshua-Noakes1",
   "license": "GPL-3.0",
@@ -22,7 +21,11 @@
   },
   "homepage": "https://github.com/Joshua-Noakes1/Spotify-Activity-Bot#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^9.0.1",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "twitter": "^1.7.1"
   }
 }
