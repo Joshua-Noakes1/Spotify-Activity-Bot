@@ -12,8 +12,17 @@ var client = new Twitter({
     access_token_secret: process.env.Access_Token_Secret
 });
 
+
 // /hook post
 router.post('/', (req, res, next) => {
+
+    const data = {
+        "TrackName": req.body.TrackName,
+        "ArtistName": req.body.ArtistName,
+        "PlayedAt": req.body.PlayedAt,
+        "TrackUrl": req.body.TrackUrl
+    }
+
     // Using password to protect this
     if (req.body.key != process.env.webhook_token) {
         res.status(401).json({
@@ -24,7 +33,7 @@ router.post('/', (req, res, next) => {
 
     // Post to twitter
     client.post('statuses/update', {
-        status: `Joshua played "${req.body.TrackName}" by ${req.body.ArtistName} on ${req.body.PlayedAt} ${req.body.TrackUrl}`
+        status: `Joshua played "${data.TrackName}" by ${data.ArtistName} on ${data.PlayedAt} ${data.TrackUrl}`
     }, function (error, tweet, response) {
         // error message
         if (error) {
