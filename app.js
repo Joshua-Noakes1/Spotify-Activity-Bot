@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 
 // components
 const spotify = require('./endpoint/spotify/spotify');
+const plex = require('./endpoint/plex/plex');
+
 
 // dev
 app.use(morgan('dev'));
@@ -32,6 +34,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/hooks/spotify', spotify);
+app.use('/hooks/plex', plex);
 
 app.get('/status', (req, res) => {
     res.status(200).json({
