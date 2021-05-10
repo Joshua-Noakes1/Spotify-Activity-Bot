@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 // components
-const ifttt = require('./endpoint/ifttt/ifttt');
+const spotify = require('./endpoint/spotify/spotify');
 
 // dev
 app.use(morgan('dev'));
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 
 
 // routes
-app.use('/ifttt', ifttt);
+app.use('/hooks/spotify', spotify);
 
 app.get('/status', (req, res) => {
     res.status(200).json({
