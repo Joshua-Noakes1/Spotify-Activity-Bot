@@ -3,11 +3,9 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const Twitter = require('twitter');
-const fs = require('fs');
+const time = require('./get-date');
 const fetch = require('node-fetch');
-const {
-    resolveSoa
-} = require('dns');
+
 
 // twitter config
 var client = new Twitter({
@@ -20,6 +18,9 @@ var client = new Twitter({
 
 // /hook post
 router.post('/', async function (req, res, next) {
+    // getting date and time 
+    var cdate = time.getTime();
+
     // Using password to protect this
     if (req.body.key != process.env.webhook_token) {
         res.status(401).json({
@@ -35,16 +36,9 @@ router.post('/', async function (req, res, next) {
         return;
     }
 
-    console.log(req.body);
-
-    // getting images from TMDB because tautulli isnt good for images
-    let poster_url
-
-
-
-    // downloading image
-    var data = await fetch(req.body.media.playback.poster_url);
-    var poster = await data.buffer();
+    // downloading image from tautulli
+    var tautulli_poster_data = await fetch(req.body.media.playback.poster_url);
+    var thumb = await tautulli_poster_data.buffer();
 
     switch (req.body.media.type) {
         case ('episode'):
@@ -52,13 +46,15 @@ router.post('/', async function (req, res, next) {
             var tmdb_thumb_api_data = await fetch(`https://api.themoviedb.org/3/tv/${req.body.media.ID}/season/${req.body.media.playback.season_number}/episode/${req.body.media.playback.episode_number}/images?api_key=${process.env.TMDB_API_Key}`);
             var tmdb_thumb_api_json = await tmdb_thumb_api_data.json();
 
-            // download thumb
-            var tmdb_thumb_origin_data = await fetch(`https://www.themoviedb.org/t/p/original/${tmdb_thumb_api_json.stills[0    ].file_path}`);
-            var tmdb_thumb_origin = await tmdb_thumb_origin_data.buffer();
+            // download thumb if not we use the tautulli one
+            if (tmdb_thumb_api_json.success != false && tmdb_thumb_api_json.stills.length > 0) {
+                var tmdb_thumb_origin_data = await fetch(`https://www.themoviedb.org/t/p/original/${tmdb_thumb_api_json.stills[0].file_path}`);
+                var thumb = await tmdb_thumb_origin_data.buffer();
+            }
 
             // upload image to twitter
             client.post('media/upload', {
-                media: tmdb_thumb_origin
+                media: thumb
             }, function (error, media, response) {
                 if (error) {
                     console.log(error);
@@ -69,7 +65,7 @@ router.post('/', async function (req, res, next) {
                 }
                 // get media url and craft tweet
                 var status = {
-                    status: `Joshua started watching ${req.body.media.playback.name} episode ${req.body.media.playback.episode_number} - ${req.body.media.playback.episode} on ${req.body.media.time}`,
+                    status: `Joshua started watching ${req.body.media.playback.name} - Season ${req.body.media.playback.season_number} Episode ${req.body.media.playback.episode_number} - "${req.body.media.playback.episode}" on ${cdate.Month} ${cdate.Date}, ${cdate.Year} at ${cdate.Time}`,
                     media_ids: media.media_id_string // Pass the media id string
                 }
 
