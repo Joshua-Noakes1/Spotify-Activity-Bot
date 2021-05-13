@@ -1,4 +1,4 @@
-const moment = require('moment');
+const moment = require('moment-timezone');
 const date = new Date();
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -10,7 +10,7 @@ function getTime() {
         "Date": `${date.getDate()}`,
         "Month": monthNames[date.getMonth()],
         "Year": `${date.getFullYear()}`,
-        "Time": moment().format('hh:mmA')
+        "Time": moment().tz("Europe/London").format('hh:mmA')
     }
 }
 
