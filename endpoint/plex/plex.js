@@ -2,19 +2,9 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const Twitter = require('twitter');
+const twitter = require('../tweet/send-image');
 const time = require('./get-date');
 const fetch = require('node-fetch');
-
-
-// twitter config
-var client = new Twitter({
-    consumer_key: process.env.API_Key,
-    consumer_secret: process.env.API_Secret_Key,
-    access_token_key: process.env.Access_Token,
-    access_token_secret: process.env.Access_Token_Secret
-});
-
 
 // /hook post
 router.post('/', async function (req, res, next) {
@@ -52,45 +42,22 @@ router.post('/', async function (req, res, next) {
                 var thumb = await tmdb_thumb_origin_data.buffer();
             }
 
-            // upload image to twitter
-            client.post('media/upload', {
-                media: thumb
-            }, function (error, media, response) {
-                if (error) {
-                    console.log(error);
-                    res.status(500).json({
-                        "message": error.message
-                    });
-                    return
+            var data = {
+                "media": {
+                    "type": "watching",
+                    "show": req.body.media.playback.name,
+                    "seaepi": `Season ${req.body.media.playback.season_number} Episode ${req.body.media.playback.episode_number}`,
+                    "name": req.body.media.playback.episode
                 }
-                // get media url and craft tweet
-                var status = {
-                    status: `Joshua started watching ${req.body.media.playback.name} - Season ${req.body.media.playback.season_number} Episode ${req.body.media.playback.episode_number} - "${req.body.media.playback.episode}" on ${cdate.Month} ${cdate.Date}, ${cdate.Year} at ${cdate.Time}`,
-                    media_ids: media.media_id_string // Pass the media id string
-                }
+            }
 
-                // post tweet
-                client.post('statuses/update', status, function (error, tweet, response) {
-                    if (error) {
-                        console.log(error);
-                        res.status(500).json({
-                            "message": error.message
-                        });
-                        return
-                    }
+            // send tweet 
+            twitter.sendImage(data, thumb, res);
 
-                    // success message
-                    res.status(200).json({
-                        "message": "Successfuly Posted Tweet"
-                    });
-                    return;
-                });
-
-
-            });
-            break
+            break;
+        default:
+            res.status(200).end();
     }
-    // res.status(200).end();
 });
 
 module.exports = router;
