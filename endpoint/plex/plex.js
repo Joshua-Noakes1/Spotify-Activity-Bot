@@ -3,14 +3,10 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const twitter = require('../tweet/send-image');
-const time = require('./get-date');
 const fetch = require('node-fetch');
 
 // /hook post
 router.post('/', async function (req, res, next) {
-    // getting date and time 
-    var cdate = time.getTime();
-
     // Using password to protect this
     if (req.body.key != process.env.webhook_token) {
         res.status(401).json({
@@ -19,29 +15,38 @@ router.post('/', async function (req, res, next) {
         return;
     }
 
+    // we dont want to post when someone else plays something
     if (req.body.user != process.env.user) {
-        res.status(418).json({
+        res.status(418).json({ // so we reply with funny tea pot error
             "message": "Unknown User"
         });
         return;
     }
 
-    // construct tautulli data
+    // construct media data
     var data = {
-
+        "show_name": req.body.media.playback.name,
+        "episode_name": req.body.media.playback.episode,
+        "season": req.body.media.playback.season_number,
+        "episode": req.body.media.playback.episode_number,
+        "image": {
+            "tautulli_url": req.body.media.playback.poster_url,
+            "tmdb_url": '',
+            "thumb": ''
+        },
+        "tmdb_id": req.body.media.ID,
+        "tmdb": {}
     }
 
-    console.log(req.body);
-
-    var tautulli_poster_data = await fetch(req.body.media.playback.poster_url);
-    var thumb = await tautulli_poster_data.buffer();
-    var episode_name = req.body.media.playback.episode;
+    // download tautulli thumbnail
+    data.image.thumb = await fetch(data.image.tautulli_url);
+    data.image.thumb = await data.image.thumb.buffer();
 
     switch (req.body.media.type) {
         case ('episode'):
-            // get episode data from tmdb
-            var tmdb_episode = await fetch(`https://api.themoviedb.org/3/tv/${req.body.media.ID}/season/${req.body.media.playback.season_number}/episode/${req.body.media.playback.episode_number}?api_key=${process.env.TMDB_API_Key}`);
-            tmdb_episode = await tmdb_episode.json();
+            // get episode data from tmdb using their v3 api
+            data.tmdb = await fetch(`https://api.themoviedb.org/3/tv/${data.tmdb_id}/season/${data.season}/episode/${data.episode}?api_key=${process.env.TMDB_API_Key}`);
+            data.tmdb = await data.tmdb.json();
 
             // if tmdb has the episode 
             if (tmdb_episode.success != false) {
@@ -58,21 +63,21 @@ router.post('/', async function (req, res, next) {
             }
 
             // tweet data
-            var data = {
-                "media": {
-                    "type": "watching",
-                    "show": req.body.media.playback.name,
-                    "seaepi": `Season ${req.body.media.playback.season_number} Episode ${req.body.media.playback.episode_number}`,
-                    "name": episode_name
-                }
-            }
+            /* var data = {
+                 "media": {
+                     "type": "watching",
+                     "show": req.body.media.playback.name,
+                     "seaepi": `Season ${req.body.media.playback.season_number} Episode ${req.body.media.playback.episode_number}`,
+                     "name": episode_name
+                 }
+             } */
 
             // send tweet 
             // twitter.sendImage(data, thumb, res);
 
             break;
         default:
-            res.status(200).end();
+            res.status(404).end();
     }
 });
 
