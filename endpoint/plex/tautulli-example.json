@@ -13,8 +13,8 @@
             "season": "{season_name}",
             "episode": "{episode_name}",
             "summary": "{summary}",
-            "season_number": "{season_num00}",
-            "episode_number": "{episode_num00}",
+            "season_number": "{season_num}",
+            "episode_number": "{episode_num}",
             "poster_url": "{poster_url}"
         },
         "ID": "{themoviedb_id}"

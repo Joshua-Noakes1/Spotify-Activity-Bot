@@ -47,33 +47,30 @@ router.post('/', async function (req, res, next) {
             // get episode data from tmdb using their v3 api
             data.tmdb = await fetch(`https://api.themoviedb.org/3/tv/${data.tmdb_id}/season/${data.season}/episode/${data.episode}?api_key=${process.env.TMDB_API_Key}`);
             data.tmdb = await data.tmdb.json();
-
-            // if tmdb has the episode 
-            if (tmdb_episode.success != false) {
-                // check episode name
-                if (tmdb_episode.name != req.body.media.playback.episode) {
-                    // use tmdb name for ep when is missing from plex
-                    episode_name = tmdb_episode.name
+            // put everything in a try catch block so that it doesnt error
+            try {
+                // check if tmdb has the episode
+                if (!data.tmdb.success) {
+                    // see if the episode name is different because plex is slow at updating its metadata
+                    if (data.tmdb.name != data.episode_name) {
+                        data.episode_name = data.tmdb.name;
+                    }
+                    if (data.tmdb.still_path != null) {
+                        // download full res thumb from tmdb
+                        data.image.tmdb_url = `https://www.themoviedb.org/t/p/original/${data.tmdb.still_path}`;
+                        data.image.thumb = await fetch(data.image.tmdb_url);
+                        data.image.thumb = await data.image.thumb.buffer();
+                    }
                 }
-                if (tmdb_episode.still_path != null) {
-                    // download thumb
-                    var tmdb_thumb_origin_data = await fetch(`https://www.themoviedb.org/t/p/original/${tmdb_episode.still_path}`);
-                    var thumb = await tmdb_thumb_origin_data.buffer();
-                }
+            } catch (error) {
+                console.log(error);
+                res.send(500).json({
+                    "message": "TMDB API Error"
+                });
+                return;
             }
-
-            // tweet data
-            /* var data = {
-                 "media": {
-                     "type": "watching",
-                     "show": req.body.media.playback.name,
-                     "seaepi": `Season ${req.body.media.playback.season_number} Episode ${req.body.media.playback.episode_number}`,
-                     "name": episode_name
-                 }
-             } */
-
-            // send tweet 
-            // twitter.sendImage(data, thumb, res);
+            // send tweet
+            twitter.sendImage(data, res);
 
             break;
         default:

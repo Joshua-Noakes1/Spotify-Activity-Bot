@@ -10,14 +10,14 @@ var client = new Twitter({
     access_token_secret: process.env.Access_Token_Secret
 });
 
-async function sendImage(data, image, res) {
+async function sendImage(data, res) {
     // get time
     var cdate = time.getTime();
 
     try {
         // upload image to twitter
         client.post('media/upload', {
-            media: image // upload buffer
+            media: data.image.thumb // upload buffer
         }, function (error, media, response) {
             // catch error
             if (error) {
@@ -29,7 +29,7 @@ async function sendImage(data, image, res) {
             }
             // get media url and craft tweet
             var status = {
-                status: `Joshua started ${data.media.type} ${data.media.show} - ${data.media.seaepi} - "${data.media.name}" on ${cdate.Month} ${cdate.Date}, ${cdate.Year} at ${cdate.Time}`,
+                status: `Joshua started watching ${data.show_name} - Season ${data.season} Episode ${data.episode} - "${data.episode_name}" on ${cdate.Month} ${cdate.Date}, ${cdate.Year} at ${cdate.Time}`,
                 media_ids: media.media_id_string // Pass the media id string
             }
 
