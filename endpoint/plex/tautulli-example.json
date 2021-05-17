@@ -1,6 +1,7 @@
 {
     "key": "PLACEHOLDER",
     "playback_status": "PLACEHOLDER",
+    "user": "PLACEHOLDER",
     "media": {
         "type": "{media_type}",
         "playback": {

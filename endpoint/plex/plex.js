@@ -26,7 +26,13 @@ router.post('/', async function (req, res, next) {
         return;
     }
 
-    // tautulli stuff
+    // construct tautulli data
+    var data = {
+
+    }
+
+    console.log(req.body);
+
     var tautulli_poster_data = await fetch(req.body.media.playback.poster_url);
     var thumb = await tautulli_poster_data.buffer();
     var episode_name = req.body.media.playback.episode;
@@ -62,7 +68,7 @@ router.post('/', async function (req, res, next) {
             }
 
             // send tweet 
-            twitter.sendImage(data, thumb, res);
+            // twitter.sendImage(data, thumb, res);
 
             break;
         default:
