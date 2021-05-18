@@ -2,7 +2,7 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const twitter = require('../tweet/send-image');
+const twitter = require('../tweet/send');
 const fetch = require('node-fetch');
 
 // /hook post
