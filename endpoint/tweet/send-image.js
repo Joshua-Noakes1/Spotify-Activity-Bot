@@ -1,6 +1,7 @@
 // date and time
 const time = require('../plex/get-date');
 const Twitter = require('twitter');
+const fetch = require('node-fetch');
 let upload_logic = {
     image: {
         failed: false,
@@ -20,20 +21,25 @@ var client = new Twitter({
     access_token_secret: process.env.Access_Token_Secret
 });
 
-async function uploadImage(image, res) {
+async function uploadImage(data, res) {
     // logic to retry upload if it fails.
     do {
         try {
             var twitter_image = await client.post('media/upload', {
-                media: image
+                media: data.image.thumb
             });
             return twitter_image;
         } catch (error) {
             // more than 3 time and we stop
-            if (upload_logic.image.attempt < 2) {
+            if (upload_logic.image.attempt < 3) {
                 console.error(`Failed to upload image to twitter, trying again`);
                 console.error(error);
                 upload_logic.image.failed = true;
+                if (upload_logic.image.attempt == 2) {
+                    // replace tmdb image with tautulli incase their image is broken
+                    data.image.thumb = await fetch(data.image.tautulli_url);
+                    data.image.thumb = await data.image.thumb.buffer();
+                }
                 upload_logic.image.attempt++;
             } else {
                 console.error(`Failed to upload`);
@@ -80,7 +86,7 @@ async function sendImage(data, res) {
     var cdate = time.getTime();
 
     // uploading tweet media
-    var tweet_media = await uploadImage(data.image.thumb, res);
+    var tweet_media = await uploadImage(data, res);
 
     // posting tweet
     await uploadTweet(tweet_media, res, data, cdate);

@@ -2,7 +2,7 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const twitter = require('../tweet/send');
+const twitter = require('../tweet/send-image');
 const fetch = require('node-fetch');
 
 // /hook post
@@ -64,7 +64,7 @@ router.post('/', async function (req, res, next) {
                 }
             } catch (error) {
                 console.log(error);
-                res.send(500).json({
+                res.status(500).json({
                     "message": "TMDB API Error"
                 });
                 return;

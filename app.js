@@ -31,7 +31,6 @@ app.use((req, res, next) => {
 });
 
 
-
 // routes
 app.use('/hooks/spotify', spotify);
 app.use('/hooks/plex', plex);
@@ -41,7 +40,6 @@ app.get('/status', (req, res) => {
         message: '🚀 The rocket has launched 🚀'
     });
 });
-
 
 
 // Errors
