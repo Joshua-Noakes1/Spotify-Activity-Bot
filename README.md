@@ -1,5 +1,5 @@
-# Spotify-Activity-Bot
-A project that allows archiving of Spotify playback through Twitter.
+# Media-Activity-Bot
+A project that allows archiving of Spotify / Plex playback through Twitter.
 
 ## Tweet Example   
 ![data2](https://raw.githubusercontent.com/Joshua-Noakes1/Spotify-Activity-Bot/master/github/media/ExampleTweet.png)
