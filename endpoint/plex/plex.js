@@ -57,7 +57,7 @@ router.post('/', async function (req, res, next) {
                     }
                     if (data.tmdb.still_path != null) {
                         // download full res thumb from tmdb
-                        data.image.tmdb_url = `https://www.themoviedb.org/t/p/original/${data.tmdb.still_path}`;
+                        data.image.tmdb_url = `https://www.themoviedb.org/t/p/original${data.tmdb.still_path}`;
                         data.image.thumb = await fetch(data.image.tmdb_url);
                         data.image.thumb = await data.image.thumb.buffer();
                     }
@@ -69,6 +69,9 @@ router.post('/', async function (req, res, next) {
                 });
                 return;
             }
+
+            // append 
+
             // send tweet
             twitter.sendImage(data, res);
 

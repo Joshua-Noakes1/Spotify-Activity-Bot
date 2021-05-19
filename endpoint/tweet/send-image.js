@@ -37,6 +37,7 @@ async function uploadImage(data, res) {
                 upload_logic.image.failed = true;
                 if (upload_logic.image.attempt == 2) {
                     // replace tmdb image with tautulli incase their image is broken
+                    console.error(`Failed to upload TMDB image to twitter Using plex image as fallback`);
                     data.image.thumb = await fetch(data.image.tautulli_url);
                     data.image.thumb = await data.image.thumb.buffer();
                 }
