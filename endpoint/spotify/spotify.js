@@ -1,3 +1,4 @@
+// TODO Move this code over to use the function send feature
 // config
 require('dotenv').config()
 const express = require('express');
