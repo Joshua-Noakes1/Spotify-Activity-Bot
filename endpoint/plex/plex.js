@@ -2,11 +2,16 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const twitter = require('../tweet/send-image');
+const time = require('./get-date');
+const twitter_image = require('../tweet/upload-image');
+const twitter_tweet = require('../tweet/tweet');
 const fetch = require('node-fetch');
 
 // /hook post
 router.post('/', async function (req, res, next) {
+    // getting current time
+    const time_date = time.getTime();
+
     // Using password to protect this
     if (req.body.key != process.env.webhook_token) {
         res.status(401).json({
@@ -25,6 +30,7 @@ router.post('/', async function (req, res, next) {
 
     // construct media data
     var data = {
+        "media_type": req.body.media.type,
         "show_name": req.body.media.playback.name,
         "episode_name": req.body.media.playback.episode,
         "season": req.body.media.playback.season_number,
@@ -63,17 +69,24 @@ router.post('/', async function (req, res, next) {
                     }
                 }
             } catch (error) {
+                console.log('[Error] TMDB API Error');
                 console.log(error);
-                res.status(500).json({
+                res.status(415).json({
                     "message": "TMDB API Error"
                 });
                 return;
             }
 
-            // append 
+            // twitter status
+            var status = `Joshua started watching ${data.show_name} - Season ${data.season} Episode ${data.episode} - "${data.episode_name}" on ${time_date.Month} ${time_date.Date}, ${time_date.Year} at ${time_date.Time}`
+
+            // upload image
+            var image = await twitter_image.uploadImage(data, res);
 
             // send tweet
-            twitter.sendImage(data, res);
+            twitter_tweet.uploadTweet(status, image, res);
+
+            res.status(200).end();
 
             break;
         default:
