@@ -1,6 +1,6 @@
 {
   "name": "spotify-activity-bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A project that allows archiving of Spotify playback through Twitter.",
   "main": "server.js",
   "scripts": {
@@ -24,13 +24,10 @@
   "homepage": "https://github.com/Joshua-Noakes1/Spotify-Activity-Bot#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "dotenv": "^9.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
     "morgan": "^1.10.0",
-    "multer": "^1.4.2",
-    "node-fetch": "^2.6.1",
+    "nocache": "^3.0.0",
     "twitter": "^1.7.1"
   }
 }

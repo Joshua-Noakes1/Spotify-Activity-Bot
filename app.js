@@ -3,11 +3,9 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const nocache = require('nocache');
 
-// components
-const spotify = require('./endpoint/spotify/spotify');
-const plex = require('./endpoint/plex/plex');
-
+// routes
 
 // dev
 app.use(morgan('dev'));
@@ -30,11 +28,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(nocache());
 
-// routes
-app.use('/hooks/spotify', spotify);
-app.use('/hooks/plex', plex);
-
+// status
 app.get('/status', (req, res) => {
     res.status(200).json({
         message: '🚀 The rocket has launched 🚀'
