@@ -3,9 +3,11 @@ const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
 const episode = require('./types/episode');
+
+// endpoint
 router.post('/', async function (req, res, next) {
     // Using password to protect this
-    if (req.body.key != process.env.webhook_token) {
+    if (req.body.key != process.env.WebhookToken) {
         res.status(401).json({
             "message": "Unauthorized"
         });
@@ -13,7 +15,7 @@ router.post('/', async function (req, res, next) {
     }
 
     // sending 200 okay if its not the user
-    if (process.env.user != req.body.user) return res.status(200).end();
+    if (req.body.user != process.env.Tautulli_username) return res.status(200).end();
 
     // construct media data
     var data = {
@@ -53,3 +55,5 @@ router.post('/', async function (req, res, next) {
     }
 
 });
+
+module.exports = router

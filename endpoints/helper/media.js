@@ -21,7 +21,7 @@ async function uploadMedia(media, res) {
         try {
             console.log(`[Info] Attempting upload media (attempt ${attempt + 1})`);
             var tweet = await client.post('media/upload', {
-                "media": media.image.thumb
+                "media": mediaString
             });
             return tweet;
         } catch (error) {
@@ -32,7 +32,8 @@ async function uploadMedia(media, res) {
                 attempt++;
             } else {
                 console.log(`[Error] Failed to upload media!`)
-                errorMsg(error, 415, res);
+                console.log(error);
+                errorMsg.errorMessage(error, 415, res);
                 return;
             }
         }

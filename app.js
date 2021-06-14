@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const nocache = require('nocache');
 
 // routes
+const plex = require('./endpoints/plex/plex');
 
 // dev
 app.use(morgan('dev'));
@@ -29,6 +30,9 @@ app.use((req, res, next) => {
 });
 
 app.use(nocache());
+
+// endpoints
+app.use('/hooks/plex', plex);
 
 // status
 app.get('/status', (req, res) => {

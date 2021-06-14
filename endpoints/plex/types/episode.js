@@ -39,7 +39,7 @@ async function plexEpisode(req, res, data) {
 
     // tweeting
     tweet.sendTweet({
-        "status":  `Joshua started watching ${data.show_name} - Season ${data.season} Episode ${data.episode} - "${data.episode_name}" on ${currentTime.Month} ${currentTime.Date}, ${currentTime.Year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
+        "status": `Joshua started watching ${data.show_name} - Season ${data.season} Episode ${data.episode} - "${data.episode_name}" on ${currentTime.month} ${currentTime.date.toString()}, ${currentTime.year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
         "media": twitter_media.media_id_string
     }, res);
 

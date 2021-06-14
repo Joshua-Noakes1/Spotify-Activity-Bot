@@ -17,10 +17,10 @@ async function sendTweet(status, res) {
 
     // twitter status
     var tweetContent = {
-        "status": status,
+        "status": status.status,
     }
     // appending media if it exists
-    if (media) {
+    if (status.media != '') {
         tweetContent.media_ids = status.media
     }
 
