@@ -15,6 +15,8 @@ async function uploadMedia(media, res) {
     // resetting attempts to 0
     attempt = 0;
 
+    var mediaString = media.main || media.backup;
+
     do {
         try {
             console.log(`[Info] Attempting upload media (attempt ${attempt + 1})`);
@@ -25,6 +27,7 @@ async function uploadMedia(media, res) {
         } catch (error) {
             if (attempt < 2) {
                 console.log(`[Info] Failed to upload media to Twitter, trying again... (attempt ${attempt + 1})`);
+                if (attempt == 1) mediaString = media.backup;
                 tweetStatus = true;
                 attempt++;
             } else {

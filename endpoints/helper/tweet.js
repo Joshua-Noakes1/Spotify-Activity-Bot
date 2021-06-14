@@ -11,7 +11,7 @@ var client = new Twitter({
     access_token_secret: process.env.TwitterAccessSecret
 });
 
-async function sendTweet(status, media, res) {
+async function sendTweet(status, res) {
     // resetting attempts to 0
     attempt = 0;
 
@@ -21,7 +21,7 @@ async function sendTweet(status, media, res) {
     }
     // appending media if it exists
     if (media) {
-        tweetContent.media_ids = media.media_id_string
+        tweetContent.media_ids = status.media
     }
 
     do {
