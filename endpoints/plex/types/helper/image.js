@@ -76,7 +76,7 @@ async function createImage(data) {
     console.log(`[Info] Applying text`);
 
     // set font to 65pt and NotoBold
-    ctx.font = '65pt NotoBold';
+    ctx.font = '55pt NotoBold';
     ctx.fillStyle = '#fff';
 
     // making font size smaller if title is larger than 20 chars
