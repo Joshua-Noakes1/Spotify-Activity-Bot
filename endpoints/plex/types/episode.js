@@ -9,7 +9,7 @@ async function plexEpisode(req, res, data) {
     var currentTime = await date.getDate();
 
     // get data from tmdb
-    var tmdb = await fetch(`https://api.themoviedb.org/3/tv/${data.tmdb_id}/season/${data.season}/episode/${data.episode}?api_key=${process.env.TMDBAPIKey}`)
+    var tmdb = await fetch(`https://api.tmdb.org/3/tv/${data.tmdb_id}/season/${data.season}/episode/${data.episode}?api_key=${process.env.TMDBAPIKey}`)
 
     try {
         // get the json from tmdb
@@ -22,7 +22,7 @@ async function plexEpisode(req, res, data) {
 
             // download image from tmdb if it exists
             if (tmdb.still_path) {
-                data.image.tmdb.url = `https://www.themoviedb.org/t/p/original${tmdb.still_path}`;
+                data.image.tmdb.url = `https://image.tmdb.org/t/p/original/${tmdb.still_path}`;
                 data.image.tmdb.buffer = await fetch(data.image.tmdb.url);
                 data.image.tmdb.buffer = await data.image.tmdb.buffer.buffer();
             }

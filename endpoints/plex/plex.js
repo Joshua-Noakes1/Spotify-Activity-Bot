@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
 const episode = require('./types/episode');
+const movie = require('./types/movie');
 
 // endpoint
 router.post('/', async function (req, res, next) {
@@ -24,6 +25,8 @@ router.post('/', async function (req, res, next) {
         "episode_name": req.body.media.playback.episode,
         "season": req.body.media.playback.season_number,
         "episode": req.body.media.playback.episode_number,
+        "year": req.body.media.playback.year,
+        "raiting": req.body.media.playback.content_raiting,
         "image": {
             "tautulli": {
                 "url": req.body.media.playback.poster_url,
@@ -49,6 +52,8 @@ router.post('/', async function (req, res, next) {
             episode.plexEpisode(req, res, data);
             break;
         case 'movie':
+            // send for plex movie
+            movie.plexMovie(req, res, data);
             break;
         default:
             res.status(200).end();

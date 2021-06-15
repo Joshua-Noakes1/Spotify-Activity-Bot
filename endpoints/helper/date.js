@@ -11,7 +11,8 @@ function getDate() {
         "time": {
             "type": `${(date.getHours() >= 13) ? 'PM' : 'AM'}`,
             "hour": `${(date.getHours() >= 13) ? date.getHours() : `0${date.getHours()}`}`,
-            "minutes": `${(date.getMinutes() >= 10) ? date.getMinutes() : `0${date.getMinutes()}`}`
+            "minutes": `${(date.getMinutes() >= 10) ? date.getMinutes() : `0${date.getMinutes()}`}`,
+            "seconds": `${(date.getSeconds() >= 10) ? date.getSeconds() : `0${date.getSeconds()}`}`,
         }
     }
 
