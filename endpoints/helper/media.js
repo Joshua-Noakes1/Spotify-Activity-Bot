@@ -19,7 +19,7 @@ async function uploadMedia(media, res) {
 
     do {
         try {
-            console.log(`[Info] Attempting upload media (attempt ${attempt + 1})`);
+            console.log(`[Info] Attempting to upload media (attempt ${attempt + 1})`);
             var tweet = await client.post('media/upload', {
                 "media": mediaString
             });

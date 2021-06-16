@@ -6,6 +6,7 @@ const {
 const {
     roundCorners
 } = require('jimp-roundcorners');
+const canvasTxt = require("canvas-txt").default;
 const Jimp = require('jimp');
 
 async function createImage(data) {
@@ -30,6 +31,9 @@ async function createImage(data) {
     console.log(`[Info] Registering font family NotoSans`);
     registerFont('./endpoints/plex/types/helper/fonts/Noto/NotoSans-Bold.ttf', {
         family: 'NotoBold'
+    });
+    registerFont('./endpoints/plex/types/helper/fonts/Noto/NotoSans-Regular.ttf', {
+        family: 'NotoReg'
     });
 
     // create canvas, get context and make placeholder image;
@@ -75,27 +79,19 @@ async function createImage(data) {
     /* Text */
     console.log(`[Info] Applying text`);
 
-    // set font to 65pt and NotoBold
-    ctx.font = '55pt NotoBold';
+    // set text size, size 50 and color white
+    canvasTxt.font = 'NotoBold';
+    canvasTxt.align = 'left'
+    canvasTxt.fontSize = 50;
+    // if (process.env.dev == 'true') canvasTxt.debug = true;
     ctx.fillStyle = '#fff';
 
-    // making font size smaller if title is larger than 20 chars
-    if (textSize == 2) {
-        ctx.font = '40pt NotoBold';
-    } else if (textSize == 3) {
-        ctx.font = '35pt NotoBold'
-    }
-
-    // Title and tag from the left X
-    var spaceX = 75;
-    if (textSize == 3) spaceX = 25;
-
     // adding title
-    ctx.fillText(data.name, spaceX, 300);
+    canvasTxt.drawText(ctx, data.name, 55, 190, 1160, 100);
 
-    // add tagline at 20pt and NotoBold Font
-    ctx.font = '20pt NotoBold';
-    ctx.fillText(data.tagline, spaceX + 3, 345);
+    // adding tagline 
+    canvasTxt.fontSize = 35;
+    canvasTxt.drawText(ctx, data.tagline, 58, 290, 1160, 100);
 
     console.log(`[Info] Image successfuly generated`);
     // return buffer of canvas

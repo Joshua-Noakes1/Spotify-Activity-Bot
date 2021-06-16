@@ -4,7 +4,6 @@ const errorMsg = require('../../helper/error');
 const media = require('../../helper/media');
 const tweet = require('../../helper/tweet');
 const date = require('../../helper/date');
-const fs = require('fs');
 
 async function plexMovie(req, res, data) {
     // get date and time
@@ -30,27 +29,27 @@ async function plexMovie(req, res, data) {
         }
     }
 
-    var new_image = await image.createImage(imgData);
+    var bufferImg = await image.createImage(imgData);
 
-    fs.writeFileSync(`./image.png`, new_image);
+    // uploading image to twitter 
+    var twitter_media = await media.uploadMedia({
+        "main": bufferImg,
+        "backup": data.image.tautulli.buffer,
+    }, res);
 
-    // // uploading image to twitter 
-    // var twitter_media = await media.uploadMedia({
-    //     "main": new_image,
-    //     "backup": data.image.tautulli.buffer,
-    // }, res);
-
-    // // tweeting
-    // tweet.sendTweet({
-    //     "status": `Joshua started watching "${imgData.name}" on ${currentTime.month} ${currentTime.date.toString()}, ${currentTime.year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
-    //     "media": twitter_media.media_id_string
-    // }, res);
+    // tweeting
+    tweet.sendTweet({
+        "status": `Joshua started watching "${imgData.name}" on ${currentTime.month} ${currentTime.date.toString()}, ${currentTime.year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
+        "media": twitter_media.media_id_string
+    }, res);
 
 
     res.status(200).end();
 
     return;
 }
+
+
 
 module.exports = {
     plexMovie

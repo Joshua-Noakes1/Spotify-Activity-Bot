@@ -20,7 +20,7 @@ async function sendTweet(status, res) {
         "status": status.status,
     }
     // appending media if it exists
-    if (status.media != '') {
+    if (status.media != undefined || status.media != '') {
         tweetContent.media_ids = status.media
     }
 

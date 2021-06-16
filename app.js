@@ -7,6 +7,7 @@ const nocache = require('nocache');
 
 // routes
 const plex = require('./endpoints/plex/plex');
+const spotify = require('./endpoints/spotify/spotify');
 
 // dev
 app.use(morgan('dev'));
@@ -33,6 +34,7 @@ app.use(nocache());
 
 // endpoints
 app.use('/hooks/plex', plex);
+app.use('/hooks/spotify', spotify)
 
 // status
 app.get('/status', (req, res) => {

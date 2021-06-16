@@ -1,8 +1,10 @@
 const fetch = require('node-fetch');
 const errorMsg = require('../../helper/error');
+const image = require('./helper/image');
 const media = require('../../helper/media');
 const tweet = require('../../helper/tweet');
 const date = require('../../helper/date');
+const fs = require('fs');
 
 async function plexEpisode(req, res, data) {
     // get date and time
@@ -10,6 +12,9 @@ async function plexEpisode(req, res, data) {
 
     // get data from tmdb
     var tmdb = await fetch(`https://api.tmdb.org/3/tv/${data.tmdb_id}/season/${data.season}/episode/${data.episode}?api_key=${process.env.TMDBAPIKey}`)
+
+    var tmdb_main = await fetch(`https://api.tmdb.org/3/tv/${data.tmdb_id}?api_key=${process.env.TMDBAPIKey}`)
+    tmdb_main = await tmdb_main.json();
 
     try {
         // get the json from tmdb
@@ -25,15 +30,31 @@ async function plexEpisode(req, res, data) {
                 data.image.tmdb.url = `https://image.tmdb.org/t/p/original/${tmdb.still_path}`;
                 data.image.tmdb.buffer = await fetch(data.image.tmdb.url);
                 data.image.tmdb.buffer = await data.image.tmdb.buffer.buffer();
+
+                data.image.tmdb2.url = `https://image.tmdb.org/t/p/original/${tmdb_main.poster_path}`;
+                data.image.tmdb2.buffer = await fetch(data.image.tmdb2.url);
+                data.image.tmdb2.buffer = await data.image.tmdb2.buffer.buffer();
             }
         }
     } catch (error) {
         errorMsg.errorMessage(error, res, 415);
     }
 
+    var imgData = {
+        "tmdb_id": data.tmdb_id,
+        "name": tmdb_main.name,
+        "tagline": `Season ${data.season} Episode ${data.episode} - ${tmdb.name}`,
+        "image": {
+            "background": data.image.tmdb.buffer,
+            "poster": data.image.tmdb2.buffer
+        }
+    }
+
+    var bufferImg = await image.createImage(imgData);
+
     // uploading image to twitter 
     var twitter_media = await media.uploadMedia({
-        "main": data.image.tmdb.buffer,
+        "main": bufferImg,
         "backup": data.image.tautulli.buffer,
     }, res);
 
