@@ -6,7 +6,7 @@ const tweet = require('../helper/tweet');
 // /hook post
 router.post('/', (req, res, next) => {
     // Using password to protect this
-    if (req.body.key != process.env.webhook_token) {
+    if (req.body.key != process.env.WebhookToken) {
         res.status(401).json({
             "message": "Unauthorized"
         });
