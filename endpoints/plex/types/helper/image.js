@@ -1,5 +1,4 @@
-const Canvas = require('canvas');
-const {
+const Canvas, {
     registerFont,
     createCanvas
 } = require('canvas');
@@ -12,18 +11,7 @@ const Jimp = require('jimp');
 async function createImage(data) {
     console.log(`[Info] Creating image for ID ${data.tmdb_id} - ${data.name}`);
 
-    // checking the size of the text so i can move the poster around it
-    if (data.name.length >= 40) {
-        var textSize = 3;
-        //ctx.font = '40pt NotoBold';
-    } else if (data.name.length >= 20) {
-        var textSize = 2;
-        //ctx.font = '15pt NotoBold'
-    } else {
-        var textSize = 1;
-    }
-
-    // define width n' height
+    // define width and height
     var width = 1920;
     var height = 1080;
 
@@ -51,7 +39,7 @@ async function createImage(data) {
     // add background to canvas
     canvasImg.src = await background.getBufferAsync(Jimp.MIME_PNG);
     ctx.drawImage(canvasImg, 0, 0);
-
+    l
     // add drop shadow to all further elements
     ctx.shadowColor = "black";
     ctx.shadowBlur = 5;
@@ -93,8 +81,8 @@ async function createImage(data) {
     canvasTxt.fontSize = 35;
     canvasTxt.drawText(ctx, data.tagline, 58, 290, 1160, 100);
 
-    console.log(`[Info] Image successfuly generated`);
     // return buffer of canvas
+    console.log(`[Info] Image successfuly generated`);
     return canvas.toBuffer('image/png');
 }
 

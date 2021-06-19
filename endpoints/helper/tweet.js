@@ -46,7 +46,7 @@ async function sendTweet(status, res) {
             }
         } while (tweetStatus === true)
 
-        // write tweet to local fs
+        // save tweet content
         rw.saveJSON('./tweets/prevTweet.json', tweetContent);
     }
 }
