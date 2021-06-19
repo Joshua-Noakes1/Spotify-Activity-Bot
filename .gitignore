@@ -105,3 +105,4 @@ dist
 
 # extra
 *.old/
+prevTweet.json
