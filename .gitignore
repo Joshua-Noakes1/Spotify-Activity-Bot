@@ -106,3 +106,4 @@ dist
 # extra
 *.old/
 prevTweet.json
+.DS_Store
