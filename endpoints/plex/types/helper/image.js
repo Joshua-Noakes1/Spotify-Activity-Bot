@@ -1,4 +1,5 @@
-const Canvas, {
+const Canvas = require('canvas');
+const {
     registerFont,
     createCanvas
 } = require('canvas');
@@ -39,7 +40,7 @@ async function createImage(data) {
     // add background to canvas
     canvasImg.src = await background.getBufferAsync(Jimp.MIME_PNG);
     ctx.drawImage(canvasImg, 0, 0);
-    l
+
     // add drop shadow to all further elements
     ctx.shadowColor = "black";
     ctx.shadowBlur = 5;
@@ -58,7 +59,6 @@ async function createImage(data) {
 
     // poster size based on text size
     var posterX = width - 650;
-    if (textSize == 3) var posterX = width - 560
 
     // add poster to canvas
     canvasImg.src = await poster.getBufferAsync(Jimp.MIME_PNG);

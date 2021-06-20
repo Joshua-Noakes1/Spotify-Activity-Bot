@@ -27,7 +27,7 @@ async function plexEpisode(req, res, data) {
 
             // download image from tmdb if it exists
             if (tmdb.still_path) {
-                data.image.tmdb.url = `https://image.tmdb.org/t/p/original/${tmdb.still_path}`;
+                data.image.tmdb.url = 'https://i.imgur.com/mIovtAb.png'//`https://image.tmdb.org/t/p/original/${tmdb.still_path}`;
                 data.image.tmdb.buffer = await fetch(data.image.tmdb.url);
                 data.image.tmdb.buffer = await data.image.tmdb.buffer.buffer();
 
