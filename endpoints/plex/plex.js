@@ -27,27 +27,13 @@ router.post('/', async function (req, res, next) {
         "episode": req.body.media.playback.episode_number,
         "year": req.body.media.playback.year,
         "raiting": req.body.media.playback.content_raiting,
-        "image": {
-            "tautulli": {
-                "url": req.body.media.playback.poster_url,
-                "buffer": ''
-            },
-            "tmdb": {
-                "url": '',
-                "buffer": ''
-            },
-            "tmdb2": {
-                "url": '',
-                "buffer": ''
-            }
-        },
-        "tmdb_id": req.body.media.ID,
-        "tmdb": {}
+        "tautulli_poster_url": req.body.media.playback.poster_url,
+        "tmdb_id": req.body.media.ID
     }
 
     // saving tautulli image
-    data.image.tautulli.buffer = await fetch(data.image.tautulli.url);
-    data.image.tautulli.buffer = await data.image.tautulli.buffer.buffer();
+    // data.image.tautulli.buffer = await fetch(data.image.tautulli.url);
+    // data.image.tautulli.buffer = await data.image.tautulli.buffer.buffer();
 
     // check to see what media type were dealing with episode / film
     switch (req.body.media.type) {
