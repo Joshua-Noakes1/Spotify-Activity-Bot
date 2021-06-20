@@ -4,7 +4,7 @@ const image = require('./helper/image');
 const media = require('../../helper/media');
 const tweet = require('../../helper/tweet');
 const date = require('../../helper/date');
-const fs = require('fs');
+// const fs = require('fs');
 
 async function plexEpisode(req, res, data) {
     // get date and time
@@ -27,11 +27,11 @@ async function plexEpisode(req, res, data) {
 
             // download image from tmdb if it exists
             if (tmdb.still_path) {
-                data.image.tmdb.url = 'https://i.imgur.com/mIovtAb.png'//`https://image.tmdb.org/t/p/original/${tmdb.still_path}`;
+                data.image.tmdb.url = `https://image.tmdb.org/t/p/original/${tmdb.still_path}`; // 'https://i.imgur.com/mIovtAb.png' // placehold mayumi background
                 data.image.tmdb.buffer = await fetch(data.image.tmdb.url);
                 data.image.tmdb.buffer = await data.image.tmdb.buffer.buffer();
 
-                data.image.tmdb2.url = `https://image.tmdb.org/t/p/original/${tmdb_main.poster_path}`;
+                data.image.tmdb2.url = `https://image.tmdb.org/t/p/original/${tmdb_main.poster_path}`; // 'https://www.themoviedb.org/t/p/original/yriQ3nib4eJyHBviaw7nm5hzIpO.jpg' // placeholder pbdc poster
                 data.image.tmdb2.buffer = await fetch(data.image.tmdb2.url);
                 data.image.tmdb2.buffer = await data.image.tmdb2.buffer.buffer();
             }
@@ -63,6 +63,9 @@ async function plexEpisode(req, res, data) {
         "status": `Joshua started watching ${data.show_name} - Season ${data.season} Episode ${data.episode} - "${data.episode_name}" on ${currentTime.month} ${currentTime.date.toString()}, ${currentTime.year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
         "media": twitter_media.media_id_string
     }, res);
+
+    // save image
+    // fs.writeFileSync('./image-out.png', bufferImg);
 
     // success
     res.status(200).end();

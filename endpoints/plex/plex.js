@@ -36,7 +36,10 @@ router.post('/', async function (req, res, next) {
                 "url": '',
                 "buffer": ''
             },
-            "tmdb2": {}
+            "tmdb2": {
+                "url": '',
+                "buffer": ''
+            }
         },
         "tmdb_id": req.body.media.ID,
         "tmdb": {}
