@@ -31,10 +31,6 @@ router.post('/', async function (req, res, next) {
         "tmdb_id": req.body.media.ID
     }
 
-    // saving tautulli image
-    // data.image.tautulli.buffer = await fetch(data.image.tautulli.url);
-    // data.image.tautulli.buffer = await data.image.tautulli.buffer.buffer();
-
     // check to see what media type were dealing with episode / film
     switch (req.body.media.type) {
         case 'episode':

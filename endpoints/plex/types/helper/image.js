@@ -10,9 +10,9 @@ const canvasTxt = require("canvas-txt").default;
 const Jimp = require('jimp');
 
 async function createImage(data) {
-    console.log(`[Info] Creating image for ID ${data.tmdb_id} - ${data.name}`);
+    console.log(`[Info] Creating image for ID ${data.id} - ${data.name}`);
 
-    // define width and height
+   // define width and height
     var width = 1920;
     var height = 1080;
 
@@ -38,7 +38,8 @@ async function createImage(data) {
     background = await background.blur(11);
 
     // add background to canvas
-    canvasImg.src = await background.getBufferAsync(Jimp.MIME_PNG);
+    canvasImg.src = './endpoints/plex/types/helper/default.jpeg'; // default background
+    if (data.image.background != '') canvasImg.src = await background.getBufferAsync(Jimp.MIME_PNG);
     ctx.drawImage(canvasImg, 0, 0);
 
     // add drop shadow to all further elements
