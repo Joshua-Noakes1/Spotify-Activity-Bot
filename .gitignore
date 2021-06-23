@@ -105,6 +105,6 @@ dist
 
 # extra
 *.old/
-testing/
+.testing/
 prevTweet.json
 .DS_Store
