@@ -8,11 +8,16 @@ const {
 } = require('jimp-roundcorners');
 const canvasTxt = require("canvas-txt").default;
 const Jimp = require('jimp');
+const {
+    getAverageColor
+} = require('fast-average-color-node');
+const fs = require('fs');
 
 async function createImage(data) {
-    console.log(`[Info] Creating image for ID ${data.id} - ${data.name}`);
+    if (process.env.cache == 'false' || !fs.existsSync(`./endpoints/plex/types/helper/cache/image-${data.id}.png`)) {
+    console.log(`[Info] Creating image for ID ${data.id} - "${data.name}"`);
 
-   // define width and height
+    // define width and height
     var width = 1920;
     var height = 1080;
 
@@ -38,9 +43,15 @@ async function createImage(data) {
     background = await background.blur(11);
 
     // add background to canvas
-    canvasImg.src = './endpoints/plex/types/helper/default.jpeg'; // default background
+    canvasImg.src = './endpoints/plex/types/helper/default.png'; // default background
     if (data.image.background != '') canvasImg.src = await background.getBufferAsync(Jimp.MIME_PNG);
     ctx.drawImage(canvasImg, 0, 0);
+
+    // checking if the background is light or dark
+    var avgColor = await getAverageColor(data.image.background, {
+        width: 1920,
+        height: 1080
+    });
 
     // add drop shadow to all further elements
     ctx.shadowColor = "black";
@@ -58,12 +69,16 @@ async function createImage(data) {
         }
     });
 
-    // poster size based on text size
-    var posterX = width - 650;
-
     // add poster to canvas
     canvasImg.src = await poster.getBufferAsync(Jimp.MIME_PNG);
-    ctx.drawImage(canvasImg, posterX, height - 975, 500, 750);
+    ctx.drawImage(canvasImg, width - 650, height - 975, 500, 750);
+
+    // add transparent dark background behind text if image is bright
+    if (avgColor.isLight) {
+        console.log(`[Info] Applying Lightmode Background`)
+        canvasImg.src = './endpoints/plex/types/helper/lightModeBG.png';
+        ctx.drawImage(canvasImg, 40, 180);
+    }
 
     /* Text */
     console.log(`[Info] Applying text`);
@@ -82,9 +97,16 @@ async function createImage(data) {
     canvasTxt.fontSize = 35;
     canvasTxt.drawText(ctx, data.tagline, 58, 290, 1160, 100);
 
-    // return buffer of canvas
+    // return buffer of canvas and save it 
     console.log(`[Info] Image successfuly generated`);
-    return canvas.toBuffer('image/png');
+    var madeImg = await canvas.toBuffer('image/png');
+    fs.writeFileSync(`./endpoints/plex/types/helper/cache/image-${data.id}.png`, madeImg); // image-${TMDBID}${SeasonNumber}${EpisodeNumber}.png
+    return madeImg;
+} else {
+    console.log(`[Info] Image ID ${data.id} - "${data.name}" already exists. Using cached version`);
+    var cacheImage = fs.readFileSync(`./endpoints/plex/types/helper/cache/image-${data.id}.png`); // this breaks if we get manual shows or shows that arnt in TMDB added into plex
+    return cacheImage;
+}
 }
 
 module.exports = {

@@ -49,12 +49,11 @@ async function plexEpisode(req, res, plexData) {
         // check if tmdb failed 
         if (!tmdbEpisode.success && !tmdbShow.success) {
             // plex metadata isnt the fastest so if it doesnt equal whats in plex or is shorter then it then we replace with the tmdb one
-            if (data.name != tmdbEpisode.name && data.name.length < tmdbEpisode.name.length) {
-                data.name = tmdbEpisode.name;
-            }
+            data.name = tmdbEpisode.name;
 
             // if the still path for an ep exists then we download it
             if (tmdbEpisode.still_path) {
+                data.image.background = '';
                 data.image.background = await fetch(`https://image.tmdb.org/t/p/original/${tmdbEpisode.still_path}`);
                 data.image.background = await data.image.background.buffer();
             }
@@ -62,9 +61,8 @@ async function plexEpisode(req, res, plexData) {
             // if poster for show exists then we download it 
             if (tmdbShow.poster_path) {
                 data.image.poster = '';
-                data.image.poster = await fetch(`https://image.tmdb.org/t/p/original/${tmdbShow.still_path}`);
-                //data.image.poster = await data.image.poster.buffer();
-                data.image.poster = data.image.background
+                data.image.poster = await fetch(`https://image.tmdb.org/t/p/original/${tmdbShow.poster_path}`);
+                data.image.poster = await data.image.poster.buffer();
             }
         }
     } catch (error) {
@@ -74,18 +72,17 @@ async function plexEpisode(req, res, plexData) {
 
     // make image json
     var mkImg = {
-        "id": data.id,
+        "id": `${data.id}${data.sn_num}${data.ep_num}`,
         "name": data.sh_name,
         "tagline": `Season ${data.sn_num} Episode ${data.ep_num} - ${data.name}`,
         "image": data.image
     }
 
-
     // make image from plex data
     var genImg = await image.createImage(mkImg);
 
 
-    fs.writeFileSync('./testing/image-out.png', genImg);
+    fs.writeFileSync('./ImgTesting/image-out.png', genImg);
 
     res.status(200).end();
     // try {

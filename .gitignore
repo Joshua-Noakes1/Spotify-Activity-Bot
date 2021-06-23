@@ -105,6 +105,7 @@ dist
 
 # extra
 *.old/
-.testing/
+ImgTesting/
 prevTweet.json
 .DS_Store
+endpoints/plex/types/helper/cache/*.png

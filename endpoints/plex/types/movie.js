@@ -21,7 +21,7 @@ async function plexMovie(req, res, data) {
     tmdbImage2 = await tmdbImage2.buffer();
 
     var imgData = {
-        "tmdb_id": data.tmdb_id,
+        "id": data.tmdb_id,
         "name": tmdb.title,
         "tagline": tmdb.tagline,
         "image": {
@@ -45,7 +45,7 @@ async function plexMovie(req, res, data) {
     // }, res);
 
     // save image
-    fs.writeFileSync('./image-out.png', bufferImg);
+    fs.writeFileSync('./ImgTesting/image-out.png', bufferImg);
 
     res.status(200).end();
 
