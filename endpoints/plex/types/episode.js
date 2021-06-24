@@ -77,8 +77,15 @@ async function plexEpisode(req, res, plexData) {
     // make image json
     var mkImg = {
         "id": `${data.id}${data.sn_num}${data.ep_num}`,
+        "tmdb": `${data.id}`,
         "name": data.sh_name,
         "tagline": `Season ${data.sn_num} Episode ${data.ep_num} - ${data.name}`,
+        "episode": {
+            "ep_num": data.ep_num,
+            "sn_num": data.sn_num
+        },
+        "isTmdb": data.isTmdb,
+        "type": "episode",
         "image": data.image
     }
 

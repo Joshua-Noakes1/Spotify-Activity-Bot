@@ -75,6 +75,8 @@ async function plexMovie(req, res, plexData) {
         "id": data.id,
         "name": data.name,
         "tagline": data.tagline,
+        "isTmdb": data.isTmdb,
+        "type": "movie",
         "image": data.image
     }
 
