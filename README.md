@@ -6,7 +6,7 @@ This project allow you to archive your playback of [Spotify](https://spotify.com
 
 ## Examples
 ### TV
-Pretty Boy Detective Club (using the new light mode background)
+Pretty Boy Detective Club
 ![](https://github.com/Joshua-Noakes1/Media-Activity-Bot/raw/master/github/images/tv/image-pbdc.png)
 The Quintessential Quintuplets
 ![](https://github.com/Joshua-Noakes1/Media-Activity-Bot/raw/master/github/images/tv/image-qq.png)
