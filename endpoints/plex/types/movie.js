@@ -44,7 +44,12 @@ async function plexMovie(req, res, plexData) {
 
             if (!tmdb.success) {
                 // plex metadata isnt the fastest so if it doesnt equal whats in plex or is shorter then it then we replace with the tmdb one
-                data.name = tmdbEpisode.name;
+                data.name = tmdb.title;
+
+                // if tmdb tagline exists we're going to replace the plex one
+                if (tmdb.tagline != '') {
+                    data.tagline = tmdb.tagline;
+                }
 
                 // if the backdrop path for an movie exists then we download it
                 if (tmdb.backdrop_path) {

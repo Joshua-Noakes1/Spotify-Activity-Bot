@@ -17,5 +17,5 @@ Coco
 ![](https://github.com/Joshua-Noakes1/Media-Activity-Bot/raw/master/github/images/movies/image-coco.png)
 Neon Genesis Evangelion: The End of Evangelion
 ![](https://github.com/Joshua-Noakes1/Media-Activity-Bot/raw/master/github/images/movies/image-eoe.png)
-Evangelion: 3.0 You Can (Not) Redo
-![](https://github.com/Joshua-Noakes1/Media-Activity-Bot/raw/master/github/images/movies/image-eva3.png)
+Evangelion: 1.0 You Are (Not) Alone
+![](https://github.com/Joshua-Noakes1/Media-Activity-Bot/raw/master/github/images/movies/image-eva1.png)
