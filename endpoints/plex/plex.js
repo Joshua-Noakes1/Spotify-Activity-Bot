@@ -27,6 +27,7 @@ router.post('/', async function (req, res, next) {
         "episode": req.body.media.playback.episode_number,
         "year": req.body.media.playback.year,
         "raiting": req.body.media.playback.content_raiting,
+        "tagline": req.body.media.playback.tagline,
         "tautulli_poster_url": req.body.media.playback.poster_url,
         "tmdb_id": req.body.media.ID
     }
