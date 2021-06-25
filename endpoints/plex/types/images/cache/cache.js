@@ -59,7 +59,7 @@ async function saveCache(imageData, imageBuffer) {
             "id": `${imageData.id}`,
             "name": `${imageData.name}`,
             "imageName": `image-${imageData.id}.png`,
-            "absoluteFSURL": `endpoints/plex/types/images/cache/image-${imageData.id}.png`,
+            "FileSystemURL": `cache/image-${imageData.id}.png`,
             "mediaType": `${imageData.type}`,
             "tmdbURL": `UNKNOWN`
         }
