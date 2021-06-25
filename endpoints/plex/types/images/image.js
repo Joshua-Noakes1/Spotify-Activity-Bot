@@ -11,30 +11,25 @@ const Jimp = require('jimp');
 const {
     getAverageColor
 } = require('fast-average-color-node');
-const rw = require('../../../helper/readWrite');
-const rng = require('../../../helper/randomNum');
+const cache = require('./cache/cache');
 const fs = require('fs');
 
 async function createImage(data) {
-    // load cacheTable 
-    var cacheTable = rw.readJSON('./endpoints/plex/types/helper/cache/cacheTable.json');
-
-    // check if its a non tmdb image and if so do the RNG
-    if (data.id == '000000') {
-        data.id = rng.randomNum(data.name);
-    }
+    // get UUID from cache
+    data.id = await cache.returnID({
+        "name": data.name,
+        "type": data.type,
+        "episode": {
+            "sn_num": data.episode.sn_num,
+            "ep_num": data.episode.ep_num
+        }
+    });
 
     // check if id exists in cache
-    let imgExist = 'false';
-    for (var i = 0; i < cacheTable.images.length; i++) {
-        //console.log(cacheTable.images);
-        if (cacheTable.images[i].id == `${data.id}`) {
-            imgExist = 'true';
-        }
-    }
+    var imgExist = await fs.existsSync(`./endpoints/plex/types/images/cache/image-${data.id}.png`) ? 'true' : 'false'
 
     if (process.env.cache == 'false' || imgExist == 'false') {
-        console.log(`[Info] Creating image for ID ${data.id} - "${data.name}"`);
+        console.log(`[Info] Creating image for ID "${data.id}" - "${data.name}"`);
 
         // define width and height
         var width = 1920;
@@ -42,10 +37,10 @@ async function createImage(data) {
 
         // register noto family
         console.log(`[Info] Registering font family "NotoSans"`);
-        registerFont('./endpoints/plex/types/helper/fonts/Noto/NotoSans-Bold.ttf', {
+        registerFont('./endpoints/plex/types/images/fonts/Noto/NotoSans-Bold.ttf', {
             family: 'NotoBold'
         });
-        registerFont('./endpoints/plex/types/helper/fonts/Noto/NotoSans-Regular.ttf', {
+        registerFont('./endpoints/plex/types/images/fonts/Noto/NotoSans-Regular.ttf', {
             family: 'NotoReg'
         });
 
@@ -105,7 +100,6 @@ async function createImage(data) {
         canvasTxt.font = 'NotoBold';
         canvasTxt.align = 'left'
         canvasTxt.fontSize = 50;
-        // if (process.env.dev == 'true') canvasTxt.debug = true;
         ctx.fillStyle = '#fff';
 
         // adding title
@@ -119,52 +113,40 @@ async function createImage(data) {
         console.log(`[Info] Image successfuly generated`);
         var madeImg = await canvas.toBuffer('image/png');
 
-        // save into cache
-        console.log(`[Info] Saving image to cache`);
-
-        // if image is already in the cache dont save it again
-        if (imgExist == 'false') {
-            // data for the cache
-            var cacheData = {
-                "id": `${data.id}`,
-                "name": `${data.name}`,
-                "imageName": `image-${data.id}.png`,
-                "absoluteFSURL": `endpoints/plex/types/helper/cache/image-${data.id}.png`,
-                "mediaType": data.type,
-                "tmdbURL": `UNKNOWN`
+        // save to cache
+        var imageData = {
+            "id": data.id,
+            "name": data.name,
+            "type": data.type,
+            "tmdb": data.tmdb,
+            "isTmdb": data.isTmdb,
+            "imgExist": imgExist,
+            "episode": {
+                "ep_num": '',
+                "sn_num": ''
             }
-
-            // if this is in the tmdb then we add its url
-            if (data.isTmdb == 'true') {
-                switch (data.type) {
-                    case 'movie':
-                        cacheData.tmdbURL = `https://www.themoviedb.org/movie/${data.id}`;
-                        break;
-                    case 'episode':
-                        cacheData.tmdbURL = `https://www.themoviedb.org/tv/${data.tmdb}/season/${data.episode.sn_num}/episode/${data.episode.ep_num}`;
-                        cacheData.episode = {
-                            "episode": data.episode.ep_num,
-                            "season": data.episode.sn_num
-                        }
-                        break;
-                }
-            }
-
-            // append cache data
-            cacheTable.images.push(cacheData);
-
-            // write file
-            rw.saveJSON('./endpoints/plex/types/helper/cache/cacheTable.json', cacheTable);
         }
 
-        // save image to cache
-        fs.writeFileSync(`./endpoints/plex/types/helper/cache/image-${data.id}.png`, madeImg); // image-${TMDBID}${SeasonNumber}${EpisodeNumber}.png
+        switch (data.type) {
+            case 'movie':
+                if (data.isTmdb == 'true') imageData.tmdbURL = `https://www.themoviedb.org/movie/${data.tmdb}`;
+                break;
+            case 'episode':
+                if (data.isTmdb == 'true') imageData.tmdbURL = `https://www.themoviedb.org/tv/${data.tmdb}/season/${imageData.episode.sn_num}/episode/${imageData.episode.ep_num}`;
+                imageData.episode.ep_num = data.episode.ep_num;
+                imageData.episode.sn_num = data.episode.sn_num;
+                break;
+        }
 
+        // save to cache
+        await cache.saveCache(imageData, madeImg);
+
+        // return buffer
         console.log(`[Success] Generated Image`);
         return madeImg;
     } else {
-        console.log(`[Info] Image ID ${data.id} - "${data.name}" already exists. Using cached version`);
-        var cacheImage = fs.readFileSync(`./endpoints/plex/types/helper/cache/image-${data.id}.png`); // this breaks if we get manual shows or shows that arnt in TMDB added into plex
+        console.log(`[Info] Image ID "${data.id}" - "${data.name}" already exists. Using cached version`);
+        var cacheImage = fs.readFileSync(`./endpoints/plex/types/images/cache/image-${data.id}.png`); // this breaks if we get manual shows or shows that arnt in TMDB added into plex
         return cacheImage;
     }
 }

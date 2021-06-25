@@ -72,9 +72,10 @@ async function plexMovie(req, res, plexData) {
 
     // make image json
     var mkImg = {
-        "id": data.id,
-        "name": data.name,
-        "tagline": data.tagline,
+        "id": `${data.id}`,
+        "tmdb": `${data.id}`,
+        "name": `${data.name}`,
+        "tagline": `${data.tagline}`,
         "isTmdb": data.isTmdb,
         "type": "movie",
         "image": data.image
