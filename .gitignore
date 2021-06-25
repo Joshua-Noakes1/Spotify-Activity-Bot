@@ -104,8 +104,8 @@ dist
 .tern-port
 
 # extra
-*.old/
+.old/
 ImgTesting/
 prevTweet.json
-/*.DS_Store
+*.DS_Store
 endpoints/plex/types/images/cache/*.png
