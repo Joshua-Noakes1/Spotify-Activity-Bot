@@ -57,7 +57,7 @@ async function createImage(data) {
 
         // load, resize and blur background to 11
         console.log(`[Info] Bluring Background`);
-        var background = await Jimp.read(data.image.background || './endpoints/plex/types/helper/default.png');
+        var background = await Jimp.read(data.image.background || './endpoints/plex/types/images/defaults/default.png');
         background = await background.resize(width, height);
         background = await background.blur(11);
 
@@ -94,7 +94,7 @@ async function createImage(data) {
         // add transparent dark background behind text if image is bright
         if (avgColor.isLight && data.image.background != '') {
             console.log(`[Info] Applying Lightmode Background`)
-            canvasImg.src = './endpoints/plex/types/helper/lightModeBG.png';
+            canvasImg.src = './endpoints/plex/types/images/defaults/lightModeBG.png';
             ctx.drawImage(canvasImg, 40, 180);
         }
 

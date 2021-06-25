@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1.a] 2021-06-24
+### Added 
+- Cache feature and its 'cacheTable.json'
+- Randon number generator - thanks SO - https://stackoverflow.com/a/21816636
+### Changed
+- How image.js saves and caches images
+
 ## [0.0.1] - 2021-06-23
 ### Added
 - Caching to Images to save the computer and TMDB API

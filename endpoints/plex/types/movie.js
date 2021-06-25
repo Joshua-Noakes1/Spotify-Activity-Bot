@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const errorMsg = require('../../helper/error');
-const image = require('./helper/image.js');
+const image = require('./images/image.js');
 const media = require('../../helper/media');
 const tweet = require('../../helper/tweet');
 const date = require('../../helper/date');
