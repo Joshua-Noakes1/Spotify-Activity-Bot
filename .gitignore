@@ -107,5 +107,5 @@ dist
 *.old/
 ImgTesting/
 prevTweet.json
-.DS_Store
-endpoints/plex/types/helper/cache/*.png
+/*.DS_Store
+endpoints/plex/types/images/cache/*.png
