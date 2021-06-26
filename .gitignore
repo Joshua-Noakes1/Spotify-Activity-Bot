@@ -108,4 +108,4 @@ dist
 ImgTesting/
 prevTweet.json
 *.DS_Store
-images/cache/*.png
+image/cache/*.png
