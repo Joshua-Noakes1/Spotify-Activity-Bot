@@ -108,4 +108,4 @@ dist
 ImgTesting/
 prevTweet.json
 *.DS_Store
-endpoints/plex/types/images/cache/*.png
+images/cache/*.png
