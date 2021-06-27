@@ -1,11 +1,14 @@
 const fetch = require("node-fetch");
+const {
+    MovieDb
+} = require('moviedb-promise');
+const moviedb = new MovieDb(process.env.TMDBAPIKey);
 const dateTime = require("../helper/date");
 const error = require("../helper/error");
 const image = require("../../image/image");
+const cache = require('../../image/cache/cache');
 const twtMedia = require("../helper/media");
 const twtTweet = require("../helper/tweet");
-
-const fs = require("fs");
 
 async function plexEpisode(req, res, plexData) {
     // we get the current date and time from dateTime
@@ -13,6 +16,14 @@ async function plexEpisode(req, res, plexData) {
 
     // formatting plex data so its easier to use
     var episodeData = {
+        "id": await cache.returnID({
+            "name": req.body.media.playback.name,
+            "type": req.body.media.type,
+            "episode": {
+                "episodeNumber": req.body.media.playback.episodeNumber,
+                "seasonNumber": req.body.media.playback.seasonNumber
+            }
+        }),
         "name": `${req.body.media.playback.name}`,
         "type": `${req.body.media.type}`,
         "episode": {
@@ -79,6 +90,13 @@ async function plexEpisode(req, res, plexData) {
                         error.errorMessage(e, res);
                         return;
                     });
+                } else if (tmdbShow.backdrop_path) {
+                    await fetch(`https://image.tmdb.org/t/p/original/${tmdbShow.backdrop_path}`).then(async (background) => {
+                        episodeData.images.background = await background.buffer();
+                    }).catch((e) => {
+                        error.errorMessage(e, res);
+                        return;
+                    });
                 }
 
                 // we are going to download the poster for a show if it exisits 
@@ -97,26 +115,46 @@ async function plexEpisode(req, res, plexData) {
         }
     }
 
+    // cache JSON
+    // cache JSON
+    var cacheJSON = {
+        "id": `${episodeData.id}`,
+        "name": `${episodeData.name}`,
+        "imageName": `image-${episodeData.id}.png`,
+        "FileSystemURL": `cache/image-${episodeData.id}.png`,
+        "mediaType": `${episodeData.type}`
+    }
+    if (episodeData.tmdb.isTmdb = true) {
+        cacheJSON.tmdbURL = `https://www.themoviedb.org/tv/${episodeData.tmdb.tmdbID}/season/${episodeData.episode.seasonNumber}/episode/${episodeData.episode.episodeNumber}`;
+        cacheJSON.episode = {
+            "showName": episodeData.name.showName,
+            "episode": episodeData.episode.episodeNumber,
+            "season": episodeData.episode.seasonNumber
+        }
+    }
+
     var episodeImage = await image.createImage({
-        "id": '000000',
-        "type": episodeData.type,
+        "id": episodeData.id,
+        "type": {
+            "media": episodeData.type,
+            "from": 'plex'
+        },
         "name": {
             "name": episodeData.episode.episodeName,
             "showName": episodeData.name
         },
         "tagline": `Season ${episodeData.episode.seasonNumber} Episode ${episodeData.episode.episodeNumber} - '${episodeData.episode.episodeName}'`,
         "tmdb": {
-            "tmdb": episodeData.tmdb.tmdbID,
+            "tmdbID": episodeData.tmdb.tmdbID,
             "isTmdb": episodeData.tmdb.isTmdb
         },
         "episode": {
             "episodeNumber": episodeData.episode.episodeNumber,
             "seasonNumber": episodeData.episode.seasonNumber
         },
+        "cache": cacheJSON,
         "image": episodeData.images
     });
-
-    fs.writeFileSync('./image-out.png', episodeImage);
 
     // upload image to twitter 
     // var twitterMedia = await twtMedia.uploadMedia({

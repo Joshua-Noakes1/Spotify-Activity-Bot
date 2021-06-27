@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const episode = require('./plexEpisode');
-// const movie = require('./plexMovie');
+const movie = require('./plexMovie');
 const fs = require('fs');
 
 // endpoint
@@ -25,6 +25,7 @@ router.post('/', async function (req, res, next) {
             episode.plexEpisode(req, res, req.body);
             break;
         case 'movie':
+            movie.plexMovie(req, res, req.body);
             break;
         default: // similar to the name in env we return 200 so they dont keep sending data
             res.status(200).end();

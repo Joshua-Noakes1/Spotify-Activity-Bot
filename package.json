@@ -32,6 +32,7 @@
     "jimp": "^0.16.1",
     "jimp-roundcorners": "^1.1.0",
     "morgan": "^1.10.0",
+    "moviedb-promise": "^3.1.9",
     "nocache": "^3.0.0",
     "node-fetch": "^2.6.1",
     "save": "^2.4.0",

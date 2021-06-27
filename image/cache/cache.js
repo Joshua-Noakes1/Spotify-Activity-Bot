@@ -16,7 +16,7 @@ async function returnID(imageData) {
     // for loop to look for a name that matches (yes the more and more shows/movies that are added this will get worse and worse)
     for (let i = 0; i < cache.images.length; i++) {
         if (cache.images[i].name == imageData.name) {
-            switch (imageData.type) {
+            switch (imageData.type.media) {
                 case 'episode':
                     // check to see if the season and episode numbers match
                     if (cache.images[i].episode.season == imageData.episode.seasonNumber) {
@@ -45,54 +45,22 @@ async function returnID(imageData) {
     return UUID;
 }
 
-async function saveCache(imageData, imageBuffer) {
+async function saveCache(cacheData, imageBuffer) {
     // load in cache
     var cache = await rw.readJSON('./image/cache/cache.json');
 
     // save into cache
     console.log(`[Info] Saving image to cache`);
 
-    // if image is already in the cache dont save it again
-    if (imageData.imgExist == 'false') {
-        // data for the cache
-        var cacheData = {
-            "id": `${imageData.id}`,
-            "name": `${imageData.name}`,
-            "imageName": `image-${imageData.id}.png`,
-            "FileSystemURL": `cache/image-${imageData.id}.png`,
-            "mediaType": `${imageData.type}`,
-            "tmdbURL": `UNKNOWN`
-        }
+    // append cache data
+    cache.images.push(cacheData);
+    cache.recentImage = cacheData.id;
 
-        // if this is in the tmdb then we add its url, ID and episode data
-        if (imageData.isTmdb == true) {
-            cacheData.tmdb = `${imageData.tmdb}`;
-            switch (imageData.type) {
-                case 'movie':
-                    cacheData.tmdbURL = `https://www.themoviedb.org/movie/${imageData.tmdb}`;
-                    break;
-                case 'episode':
-                    cacheData.tmdbURL = `https://www.themoviedb.org/tv/${imageData.tmdb}/season/${imageData.episode.sn_num}/episode/${imageData.episode.ep_num}`;
-                    cacheData.episode = {
-                        "episode": imageData.episode.ep_num,
-                        "season": imageData.episode.sn_num
-                    }
-                    break;
-            }
-        }
+    // write file
+    rw.saveJSON('./image/cache/cache.json', cache);
 
-        // append cache data
-        cache.images.push(cacheData);
-        cache.recentImage = imageData.id;
-
-        // write file
-        rw.saveJSON('./image/cache/cache.json', cache);
-
-        // save image to cache
-        fs.writeFileSync(`./image/cache/image-${imageData.id}.png`, imageBuffer); // image-${UUIDV4}.png
-    }
-
-    return;
+    // save image to cache
+    return fs.writeFileSync(`./image/cache/image-${cacheData.id}.png`, imageBuffer); // image-${UUIDV4}.png
 }
 
 module.exports = {

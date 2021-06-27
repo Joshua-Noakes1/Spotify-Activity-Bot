@@ -1,102 +1,137 @@
-const fetch = require('node-fetch');
-const errorMsg = require('../helper/error');
-const image = require('../../image/image');
-const media = require('../helper/media');
-const tweet = require('../helper/tweet');
-const date = require('../helper/date');
-const fs = require('fs');
+const fetch = require("node-fetch");
+const {
+    MovieDb
+} = require('moviedb-promise');
+const moviedb = new MovieDb(process.env.TMDBAPIKey);
+const dateTime = require("../helper/date");
+const error = require("../helper/error");
+const image = require("../../image/image");
+const cache = require('../../image/cache/cache');
+const twtMedia = require("../helper/media");
+const twtTweet = require("../helper/tweet");
 
 async function plexMovie(req, res, plexData) {
-    // get date and time
-    var currentTime = await date.getDate();
+    // we get the current date and time from dateTime
+    var time = await dateTime.getDate();
 
-    // local movie formated data
-    var data = {
-        "name": plexData.episode_name || 'Example',
-        "tagline": plexData.tagline,
-        "id": plexData.tmdb_id || '000000',
-        "isTmdb": plexData.tmdb_id != '' ? 'true' : 'false',
-        "image": {
-            "poster": '',
-            "background": ''
-        }
-    }
+    // formatting plex data so its easier to use
+    var movieData = {
+        "id": await cache.returnID({
+            "name": req.body.media.playback.name,
+            "type": req.body.media.type,
+        }),
+        "name": `${req.body.media.playback.name}`,
+        "type": `${req.body.media.type}`,
+        "tagline": `${plexData.media.playback.tagline}`,
+        "tmdb": {
+            "tmdbID": `${req.body.media.tmdbID}` || '000000',
+            "isTmdb": req.body.media.tmdbID != "" ? true : false,
+        },
+        "images": {
+            "poster": "",
+            "background": "",
+        },
+    };
 
-    // download plex poster and store its buffer
-    await fetch(plexData.tautulli_poster_url).then(async (tautulliPoster) => {
-        data.image.poster = await tautulliPoster.buffer();
-    }).catch((error) => {
-        errorMsg.errorMessage(error, res);
-        return;
-    });
-
-    // only request tmdb if we have an id
-    if (data.isTmdb == 'true') {
-        // download tmdb data
-        var tmdb = await fetch(`https://api.tmdb.org/3/movie/${data.id}?api_key=${process.env.TMDBAPIKey}`).catch((error) => {
-            errorMsg.errorMessage(error, res);
+    // // download plex poster and store its buffer (This needs images to be enabled with a third party)
+    await fetch(plexData.media.playback.posterURL)
+        .then(async (tautulliPoster) => {
+            movieData.images.poster = await tautulliPoster.buffer();
+        })
+        .catch((e) => {
+            error.errorMessage(e, res);
             return;
         });
 
-        try {
-            // get json from tmdb
-            tmdb = await tmdb.json();
-
-            if (!tmdb.success) {
-                // plex metadata isnt the fastest so if it doesnt equal whats in plex or is shorter then it then we replace with the tmdb one
-                data.name = tmdb.title;
-
-                // if tmdb tagline exists we're going to replace the plex one
-                if (tmdb.tagline != '') {
-                    data.tagline = tmdb.tagline;
-                }
-
-                // if the backdrop path for an movie exists then we download it
-                if (tmdb.backdrop_path) {
-                    data.image.background = await fetch(`https://image.tmdb.org/t/p/original/${tmdb.backdrop_path}`);
-                    data.image.background = await data.image.background.buffer();
-                }
-
-                // if poster for movie exists then we download it 
-                if (tmdb.poster_path) {
-                    data.image.poster = await fetch(`https://image.tmdb.org/t/p/original/${tmdb.poster_path}`);
-                    data.image.poster = await data.image.poster.buffer();
-                }
-            }
-
-        } catch (error) {
-            errorMsg.errorMessage(error, res);
-            return;
-        }
+    // only request tmdb if we have an id
+    if (movieData.tmdb.isTmdb == true) {
+        // download tmdb data
+        var tmdbMovie = await moviedb.movieInfo(movieData.tmdb.tmdbID)
+            .catch((e) => {
+                error.errorMessage(e, res);
+            });
     }
+
+    //    // get movie data
+    try {
+        if (tmdbMovie.title) {
+            // plex metadata isnt the fastest so if it doesnt equal whats in plex or is shorter then it then we replace with the tmdb one
+            movieData.name = tmdbMovie.title;
+        }
+
+        // if tmdb tagline exists we're going to replace the plex one
+        if (tmdbMovie.tagline != '') {
+            movieData.tagline = tmdbMovie.tagline;
+        }
+
+        // if the backdrop path for an movie exists then we download it
+        if (tmdbMovie.backdrop_path) {
+            await fetch(`https://image.tmdb.org/t/p/original/${tmdbMovie.backdrop_path}`).then(async (background) => {
+                movieData.images.background = await background.buffer();
+            }).catch((e) => {
+                error.errorMessage(e, res);
+                return;
+            });
+        }
+
+        // if poster for movie exists then we download it 
+        if (tmdbMovie.poster_path) {
+            await fetch(`https://image.tmdb.org/t/p/original/${tmdbMovie.poster_path}`).then(async (poster) => {
+                movieData.images.poster = await poster.buffer();
+            }).catch((e) => {
+                error.errorMessage(e, res);
+                return;
+            });
+        }
+    } catch (e) {
+        error.errorMessage(e, res);
+        return;
+    }
+
+    // cache JSON
+    var cacheJSON = {
+        "id": `${movieData.id}`,
+        "name": `${movieData.name}`,
+        "imageName": `image-${movieData.id}.png`,
+        "FileSystemURL": `cache/image-${movieData.id}.png`,
+        "mediaType": `${movieData.type}`
+
+    }
+    if (movieData.tmdb.isTmdb == true) cacheJSON.tmdbURL = `https://www.themoviedb.org/movie/${movieData.tmdb.tmdbID}`
 
     // make image json
-    var mkImg = {
-        "id": `${data.id}`,
-        "tmdb": `${data.id}`,
-        "name": `${data.name}`,
-        "tagline": `${data.tagline}`,
-        "isTmdb": data.isTmdb,
-        "type": "movie",
-        "image": data.image
-    }
+    var movieImage = await image.createImage({
+        "id": `${movieData.id}`,
+        "type": {
+            "media": movieData.type,
+            "from": 'plex'
+        },
+        "name": {
+            "showName": movieData.name
+        },
+        "tagline": `${movieData.tagline}`,
+        "tmdb": {
+            "tmdbID": movieData.tmdb.tmdbID,
+            "isTmdb": movieData.tmdb.isTmdb
+        },
+        "image": movieData.images,
+        "cache": cacheJSON
+    });
 
-    var genImg = await image.createImage(mkImg);
+    // // // uploading image to twitter 
+    // // var twitter_media = await media.uploadMedia({
+    // //     "main": bufferImg,
+    // //     "backup": data.image.tautulli.buffer,
+    // // }, res);
 
-    // // uploading image to twitter 
-    // var twitter_media = await media.uploadMedia({
-    //     "main": bufferImg,
-    //     "backup": data.image.tautulli.buffer,
-    // }, res);
+    // // // tweeting
+    // // tweet.sendTweet({
+    // //     "status": `Joshua started watching "${imgData.name}" on ${currentTime.month} ${currentTime.date.toString()}, ${currentTime.year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
+    // //     "media": twitter_media.media_id_string
+    // // }, res);
 
-    // // tweeting
-    // tweet.sendTweet({
-    //     "status": `Joshua started watching "${imgData.name}" on ${currentTime.month} ${currentTime.date.toString()}, ${currentTime.year} at ${currentTime.time.hour}:${currentTime.time.minutes}${currentTime.time.type}`,
-    //     "media": twitter_media.media_id_string
-    // }, res);
-
-    // save image
-    fs.writeFileSync('./ImgTesting/image-out.png', genImg);
+    // // save image
+    // fs.writeFileSync('./ImgTesting/image-out.png', genImg);
 
     res.status(200).end();
 

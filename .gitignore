@@ -104,8 +104,4 @@ dist
 .tern-port
 
 # extra
-.old/
-ImgTesting/
-prevTweet.json
 *.DS_Store
-image/cache/*.png

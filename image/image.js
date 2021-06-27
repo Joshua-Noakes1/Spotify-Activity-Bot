@@ -4,31 +4,21 @@ const {
     createCanvas
 } = require('canvas');
 const {
+    getAverageColor
+} = require('fast-average-color-node');
+const Jimp = require('jimp');
+const {
     roundCorners
 } = require('jimp-roundcorners');
 const canvasTxt = require("canvas-txt").default;
-const Jimp = require('jimp');
-const {
-    getAverageColor
-} = require('fast-average-color-node');
-const cache = require('./cache/cache');
 const fs = require('fs');
+const cache = require('./cache/cache');
 
 async function createImage(data) {
-    // get UUID from cache
-    data.id = await cache.returnID({
-        "name": data.name.name,
-        "type": data.type,
-        "episode": {
-            "episodeNumber": data.episode.episodeNumber,
-            "seasonNumber": data.episode.seasonNumber
-        }
-    });
-
     // check if id exists in cache
-    var imgExist = await fs.existsSync(`./image/cache/image-${data.id}.png`) ? 'true' : 'false'
+    var imgExist = await fs.existsSync(`./image/cache/image-${data.id}.png`) ? true : false
 
-    if (process.env.cache == 'false' || imgExist == 'false') {
+    if (process.env.cache == 'false' || imgExist == false) {
         console.log(`[Info] Creating image for ID "${data.id}" - "${data.name.showName}"`);
 
         // define width and height
@@ -37,10 +27,10 @@ async function createImage(data) {
 
         // register noto family
         console.log(`[Info] Registering font family "NotoSans"`);
-        registerFont('./image/fonts/Noto/NotoSans-Bold.ttf', {
+        registerFont('./image/fonts/NotoSans/NotoSans-Bold.ttf', {
             family: 'NotoBold'
         });
-        registerFont('./image/fonts/Noto/NotoSans-Regular.ttf', {
+        registerFont('./image/fonts/NotoSans/NotoSans-Regular.ttf', {
             family: 'NotoReg'
         });
 
@@ -52,7 +42,7 @@ async function createImage(data) {
 
         // load, resize and blur background to 11
         console.log(`[Info] Bluring Background`);
-        var background = await Jimp.read(data.image.background || '.image/defaults/default.png');
+        var background = await Jimp.read(data.image.background || './image/images/default.png');
         background = await background.resize(width, height);
         background = await background.blur(11);
 
@@ -84,12 +74,12 @@ async function createImage(data) {
 
         // add poster to canvas
         canvasImg.src = await poster.getBufferAsync(Jimp.MIME_PNG);
-        ctx.drawImage(canvasImg, width - 550, height - 975, 500, 750);
+        ctx.drawImage(canvasImg, width - 530, height - 975, 500, 750);
 
         // add transparent dark background behind text if image is bright
         if (avgColor.isLight && data.image.background != '') {
             console.log(`[Info] Applying Lightmode Background`)
-            canvasImg.src = './image/defaults/lightModeBG.png';
+            canvasImg.src = './image/images/lightModeBG.png';
             ctx.drawImage(canvasImg, 40, 180);
         }
 
@@ -101,51 +91,27 @@ async function createImage(data) {
         canvasTxt.align = 'left'
         canvasTxt.fontSize = 50;
         ctx.fillStyle = '#fff';
+        if (process.env.dev == 'true') canvasTxt.debug = true;
 
         // adding title
-        canvasTxt.drawText(ctx, data.name.name, 55, 190, 1160, 100);
+        canvasTxt.drawText(ctx, data.name.showName, 55, 190, 1275, 100);
 
         // adding tagline 
         canvasTxt.fontSize = 35;
-        canvasTxt.drawText(ctx, data.tagline, 58, 290, 1160, 100);
+        canvasTxt.drawText(ctx, data.tagline, 58, 290, 1275, 100);
 
         // return buffer of canvas and save it 
         console.log(`[Info] Image successfuly generated`);
         var madeImg = await canvas.toBuffer('image/png');
 
         // save to cache
-        var imageData = {
-            "id": data.id,
-            "name": data.name.name,
-            "type": data.type,
-            "tmdb": data.tmdb.tmdb,
-            "isTmdb": data.tmdb.isTmdb,
-            "imgExist": imgExist,
-            "episode": {
-                "ep_num": '',
-                "sn_num": ''
-            }
-        }
-
-        switch (data.type) {
-            case 'movie':
-                if (data.tmdb.isTmdb == true) imageData.tmdbURL = `https://www.themoviedb.org/movie/${data.tmdb.tmdb}`;
-                break;
-            case 'episode':
-                if (data.tmdb.isTmdb == true) imageData.tmdbURL = `https://www.themoviedb.org/tv/${data.tmdb.tmdb}/season/${data.episode.seasonNumber}/episode/${data.episode.episodeNumber}`;
-                imageData.episode.ep_num = data.episode.episodeNumber;
-                imageData.episode.sn_num = data.episode.seasonNumber;
-                break;
-        }
-
-        // save to cache
-        await cache.saveCache(imageData, madeImg);
+        await cache.saveCache(data.cache, madeImg);
 
         // return buffer
         console.log(`[Success] Generated Image`);
         return madeImg;
     } else {
-        console.log(`[Info] Image ID "${data.id}" - "${data.name.name}" already exists. Using cached version`);
+        console.log(`[Info] Image ID "${data.id}" - "${data.name.showName}" already exists. Using cached version`);
         var cacheImage = fs.readFileSync(`./image/cache/image-${data.id}.png`);
         return cacheImage;
     }
