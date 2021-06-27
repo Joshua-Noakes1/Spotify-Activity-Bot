@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
-const errorMsg = require('../../helper/error');
-const image = require('./images/image.js');
-const media = require('../../helper/media');
-const tweet = require('../../helper/tweet');
-const date = require('../../helper/date');
+const errorMsg = require('../helper/error');
+const image = require('../../image/image');
+const media = require('../helper/media');
+const tweet = require('../helper/tweet');
+const date = require('../helper/date');
 const fs = require('fs');
 
 async function plexMovie(req, res, plexData) {

@@ -2,7 +2,7 @@ const {
     v4: uuidv4,
     validate: uuidValidate
 } = require('uuid');
-const rw = require('../../../../helper/readWrite');
+const rw = require('../../endpoints/helper/readWrite');
 const fs = require('fs');
 
 // function to return the id for a cached image from the json
@@ -11,7 +11,7 @@ async function returnID(imageData) {
     var UUID = '';
 
     // load in cache
-    var cache = await rw.readJSON('./endpoints/plex/types/images/cache/cache.json');
+    var cache = await rw.readJSON('./image/cache/cache.json');
 
     // for loop to look for a name that matches (yes the more and more shows/movies that are added this will get worse and worse)
     for (let i = 0; i < cache.images.length; i++) {
@@ -19,8 +19,8 @@ async function returnID(imageData) {
             switch (imageData.type) {
                 case 'episode':
                     // check to see if the season and episode numbers match
-                    if (cache.images[i].episode.season == imageData.episode.sn_num) {
-                        if (cache.images[i].episode.episode == imageData.episode.ep_num) {
+                    if (cache.images[i].episode.season == imageData.episode.seasonNumber) {
+                        if (cache.images[i].episode.episode == imageData.episode.episodeNumber) {
                             // check for a valid UUID and if not return a NULL
                             if (uuidValidate(cache.images[i].id)) {
                                 UUID = cache.images[i].id;
@@ -47,7 +47,7 @@ async function returnID(imageData) {
 
 async function saveCache(imageData, imageBuffer) {
     // load in cache
-    var cache = await rw.readJSON('./endpoints/plex/types/images/cache/cache.json');
+    var cache = await rw.readJSON('./image/cache/cache.json');
 
     // save into cache
     console.log(`[Info] Saving image to cache`);
@@ -65,7 +65,7 @@ async function saveCache(imageData, imageBuffer) {
         }
 
         // if this is in the tmdb then we add its url, ID and episode data
-        if (imageData.isTmdb == 'true') {
+        if (imageData.isTmdb == true) {
             cacheData.tmdb = `${imageData.tmdb}`;
             switch (imageData.type) {
                 case 'movie':
@@ -86,10 +86,10 @@ async function saveCache(imageData, imageBuffer) {
         cache.recentImage = imageData.id;
 
         // write file
-        rw.saveJSON('./endpoints/plex/types/images/cache/cache.json', cache);
+        rw.saveJSON('./image/cache/cache.json', cache);
 
         // save image to cache
-        fs.writeFileSync(`./endpoints/plex/types/images/cache/image-${imageData.id}.png`, imageBuffer); // image-${UUIDV4}.png
+        fs.writeFileSync(`./image/cache/image-${imageData.id}.png`, imageBuffer); // image-${UUIDV4}.png
     }
 
     return;

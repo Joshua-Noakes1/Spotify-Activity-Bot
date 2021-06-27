@@ -1,13 +1,13 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const fetch = require('node-fetch');
-const episode = require('./types/episode');
-const movie = require('./types/movie');
+const episode = require('./plexEpisode');
+// const movie = require('./plexMovie');
+const fs = require('fs');
 
 // endpoint
 router.post('/', async function (req, res, next) {
-    // Using password to protect this
+    // we are going to use a password to protect this endpoint
     if (req.body.key != process.env.WebhookToken) {
         res.status(401).json({
             "message": "Unauthorized"
@@ -15,37 +15,20 @@ router.post('/', async function (req, res, next) {
         return;
     }
 
-    // sending 200 okay if its not the user
+    // if the user thats playing in plex isnt the user in the env file
+    // then we just want to respond with a 200.end as some apps will keep sending data till they get a 200
     if (req.body.user != process.env.Tautulli_username) return res.status(200).end();
 
-    // construct media data
-    var data = {
-        "media_type": req.body.media.type,
-        "show_name": req.body.media.playback.name,
-        "episode_name": req.body.media.playback.episode,
-        "season": req.body.media.playback.season_number,
-        "episode": req.body.media.playback.episode_number,
-        "year": req.body.media.playback.year,
-        "raiting": req.body.media.playback.content_raiting,
-        "tagline": req.body.media.playback.tagline,
-        "tautulli_poster_url": req.body.media.playback.poster_url,
-        "tmdb_id": req.body.media.ID
-    }
-
-    // check to see what media type were dealing with episode / film
+    // switch to see what type of media we are dealing with episode or movie
     switch (req.body.media.type) {
         case 'episode':
-            // send for plex episode
-            episode.plexEpisode(req, res, data);
+            episode.plexEpisode(req, res, req.body);
             break;
         case 'movie':
-            // send for plex movie
-            movie.plexMovie(req, res, data);
             break;
-        default:
+        default: // similar to the name in env we return 200 so they dont keep sending data
             res.status(200).end();
     }
-
 });
 
 module.exports = router

@@ -17,19 +17,19 @@ const fs = require('fs');
 async function createImage(data) {
     // get UUID from cache
     data.id = await cache.returnID({
-        "name": data.name,
+        "name": data.name.name,
         "type": data.type,
         "episode": {
-            "sn_num": data.episode.sn_num,
-            "ep_num": data.episode.ep_num
+            "episodeNumber": data.episode.episodeNumber,
+            "seasonNumber": data.episode.seasonNumber
         }
     });
 
     // check if id exists in cache
-    var imgExist = await fs.existsSync(`./endpoints/plex/types/images/cache/image-${data.id}.png`) ? 'true' : 'false'
+    var imgExist = await fs.existsSync(`./image/cache/image-${data.id}.png`) ? 'true' : 'false'
 
     if (process.env.cache == 'false' || imgExist == 'false') {
-        console.log(`[Info] Creating image for ID "${data.id}" - "${data.name}"`);
+        console.log(`[Info] Creating image for ID "${data.id}" - "${data.name.showName}"`);
 
         // define width and height
         var width = 1920;
@@ -37,10 +37,10 @@ async function createImage(data) {
 
         // register noto family
         console.log(`[Info] Registering font family "NotoSans"`);
-        registerFont('./endpoints/plex/types/images/fonts/Noto/NotoSans-Bold.ttf', {
+        registerFont('./image/fonts/Noto/NotoSans-Bold.ttf', {
             family: 'NotoBold'
         });
-        registerFont('./endpoints/plex/types/images/fonts/Noto/NotoSans-Regular.ttf', {
+        registerFont('./image/fonts/Noto/NotoSans-Regular.ttf', {
             family: 'NotoReg'
         });
 
@@ -52,7 +52,7 @@ async function createImage(data) {
 
         // load, resize and blur background to 11
         console.log(`[Info] Bluring Background`);
-        var background = await Jimp.read(data.image.background || './endpoints/plex/types/images/defaults/default.png');
+        var background = await Jimp.read(data.image.background || '.image/defaults/default.png');
         background = await background.resize(width, height);
         background = await background.blur(11);
 
@@ -89,7 +89,7 @@ async function createImage(data) {
         // add transparent dark background behind text if image is bright
         if (avgColor.isLight && data.image.background != '') {
             console.log(`[Info] Applying Lightmode Background`)
-            canvasImg.src = './endpoints/plex/types/images/defaults/lightModeBG.png';
+            canvasImg.src = './image/defaults/lightModeBG.png';
             ctx.drawImage(canvasImg, 40, 180);
         }
 
@@ -103,7 +103,7 @@ async function createImage(data) {
         ctx.fillStyle = '#fff';
 
         // adding title
-        canvasTxt.drawText(ctx, data.name, 55, 190, 1160, 100);
+        canvasTxt.drawText(ctx, data.name.name, 55, 190, 1160, 100);
 
         // adding tagline 
         canvasTxt.fontSize = 35;
@@ -116,10 +116,10 @@ async function createImage(data) {
         // save to cache
         var imageData = {
             "id": data.id,
-            "name": data.name,
+            "name": data.name.name,
             "type": data.type,
-            "tmdb": data.tmdb,
-            "isTmdb": data.isTmdb,
+            "tmdb": data.tmdb.tmdb,
+            "isTmdb": data.tmdb.isTmdb,
             "imgExist": imgExist,
             "episode": {
                 "ep_num": '',
@@ -129,12 +129,12 @@ async function createImage(data) {
 
         switch (data.type) {
             case 'movie':
-                if (data.isTmdb == 'true') imageData.tmdbURL = `https://www.themoviedb.org/movie/${data.tmdb}`;
+                if (data.tmdb.isTmdb == true) imageData.tmdbURL = `https://www.themoviedb.org/movie/${data.tmdb.tmdb}`;
                 break;
             case 'episode':
-                if (data.isTmdb == 'true') imageData.tmdbURL = `https://www.themoviedb.org/tv/${data.tmdb}/season/${imageData.episode.sn_num}/episode/${imageData.episode.ep_num}`;
-                imageData.episode.ep_num = data.episode.ep_num;
-                imageData.episode.sn_num = data.episode.sn_num;
+                if (data.tmdb.isTmdb == true) imageData.tmdbURL = `https://www.themoviedb.org/tv/${data.tmdb.tmdb}/season/${data.episode.seasonNumber}/episode/${data.episode.episodeNumber}`;
+                imageData.episode.ep_num = data.episode.episodeNumber;
+                imageData.episode.sn_num = data.episode.seasonNumber;
                 break;
         }
 
@@ -145,8 +145,8 @@ async function createImage(data) {
         console.log(`[Success] Generated Image`);
         return madeImg;
     } else {
-        console.log(`[Info] Image ID "${data.id}" - "${data.name}" already exists. Using cached version`);
-        var cacheImage = fs.readFileSync(`./endpoints/plex/types/images/cache/image-${data.id}.png`); // this breaks if we get manual shows or shows that arnt in TMDB added into plex
+        console.log(`[Info] Image ID "${data.id}" - "${data.name.name}" already exists. Using cached version`);
+        var cacheImage = fs.readFileSync(`./image/cache/image-${data.id}.png`);
         return cacheImage;
     }
 }

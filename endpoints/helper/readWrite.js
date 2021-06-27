@@ -26,7 +26,7 @@ function readJSON(filename) {
             return;
         }
     } else {
-        console.log('[Error]: File Not Found');
+        console.log(`[Error]: "${filename}" File Not Found`);
         return {
             "error": "Data Not Found"
         };
