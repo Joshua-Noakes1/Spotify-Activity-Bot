@@ -16,8 +16,10 @@ app.use(
 app.use(bodyParser.json());
 
 // Modules
+const plexHandle = require('./lib/plex/plexHandle');
 
 // Endpoints
+app.use('/hooks/plex', plexHandle);
 
 // Status endpoint
 app.get("/status", (req, res) => {
