@@ -25,6 +25,7 @@
     "imagemin": "^8.0.0",
     "morgan": "^1.10.0",
     "moviedb-promise": "^3.1.9",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "uuid": "^8.3.2"
   }
 }
