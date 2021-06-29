@@ -8,12 +8,15 @@ const fetch = require('node-fetch');
  */
 async function downloadTMDBImage(imagePath) {
     let buffer;
+    // download image
     await fetch('https://image.tmdb.org/t/p/original' + imagePath).then(async (image) => {
         buffer = await image.buffer();
     }).catch((e) => {
         console.error(`[Error] Failed to grab image ${imagePath} from TMDB`);
         if (process.env.dev == true) console.error(e);
+        buffer = '';
     });
+    // return buffer
     return buffer;
 }
 
