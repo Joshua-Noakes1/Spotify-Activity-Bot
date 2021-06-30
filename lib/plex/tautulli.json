@@ -1,0 +1,16 @@
+{
+    "key": "*****",
+    "user": "{username}",
+    "media": {
+        "type": "{media_type}",
+        "playback": {
+            "name": "{show_name}",
+            "tagline": "{tagline}",
+            "episodeName": "{episode_name}",
+            "seasonNumber": "{season_num}",
+            "episodeNumber": "{episode_num}",
+            "posterURL": "{poster_url}"
+        },
+        "tmdbID": "{themoviedb_id}"
+    }
+}
