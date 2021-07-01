@@ -44,7 +44,6 @@ app.use((error, req, res, next) => {
             "message": error.message,
         }
     });
-    return;
 });
 
 module.exports = app;

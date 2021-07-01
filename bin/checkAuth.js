@@ -1,3 +1,4 @@
+require('dotenv').config();
 /**
  * Check weather the supplied password is the same as the one stored in the .env file
  * ! This could be re-worked to be more secure
