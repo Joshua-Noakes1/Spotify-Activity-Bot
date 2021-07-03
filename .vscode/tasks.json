@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [{
+		"type": "npm",
+		"script": "dev",
+		"path": ".",
+		"problemMatcher": [],
+		"label": "npm: dev",
+		"detail": "nodemon server.js --ignore *.json"
+	}, {
+		"label": "Ngrok",
+		"type": "shell",
+		"command": "ngrok http 3000 -region=eu"
+	}, ]
+}
