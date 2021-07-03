@@ -1,4 +1,21 @@
 {
-    "recentImage": "00000000-0000-0000-0000-000000000000",
-    "images": []
+  "recentImage": "a381f091-ea61-498c-add5-27ce7f2aac49",
+  "images": [
+    {
+      "id": "a381f091-ea61-498c-add5-27ce7f2aac49",
+      "name": "Kill la Kill",
+      "tagline": "Season 1 Episode 21 - 'Incomplete'",
+      "imageName": "image-a381f091-ea61-498c-add5-27ce7f2aac49.png",
+      "mediaType": "episode",
+      "episode": {
+        "name": "Incomplete",
+        "seasonNumber": "1",
+        "episodeNumber": "21"
+      },
+      "tmdb": {
+        "cacheData.tmdb.tmdbID": "60728",
+        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/60728/season/1/episode/21"
+      }
+    }
+  ]
 }
