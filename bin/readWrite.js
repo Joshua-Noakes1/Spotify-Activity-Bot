@@ -14,7 +14,7 @@ function saveJSON(path, data) {
         return fs.writeFileSync(path, JSON.stringify(data, null, 2));
     } catch (e) {
         console.log(`[Error] Failed to save JSON data to "${path}"\n`);
-        console.log(e);
+        if (process.env.dev == 'true') console.log(e);
         return;
     }
 }
@@ -32,7 +32,7 @@ function readJSON(filename) {
             return JSON.parse(fs.readFileSync(filename).toString());
         } catch (e) {
             console.log(`[Error] Failed to read JSON data "${filename}"\n`);
-            console.log(e);
+            if (process.env.dev == 'true') console.log(e);
             return;
         }
     } else {

@@ -14,7 +14,7 @@ async function downloadTMDBImage(imagePath) {
         console.log(`[Info] Grabbed image "${imagePath}" from TMDB`);
     }).catch((e) => {
         console.error(`[Error] Failed to grab image "${imagePath}" from TMDB`);
-        if (process.env.dev == true) console.error(e);
+        if (process.env.dev == 'true') console.error(e);
         buffer = '';
     });
     // return buffer
