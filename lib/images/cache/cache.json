@@ -1,21 +1,20 @@
 {
-  "recentImage": "a381f091-ea61-498c-add5-27ce7f2aac49",
-  "images": [
-    {
-      "id": "a381f091-ea61-498c-add5-27ce7f2aac49",
-      "name": "Kill la Kill",
-      "tagline": "Season 1 Episode 21 - 'Incomplete'",
-      "imageName": "image-a381f091-ea61-498c-add5-27ce7f2aac49.png",
-      "mediaType": "episode",
-      "episode": {
-        "name": "Incomplete",
-        "seasonNumber": "1",
-        "episodeNumber": "21"
-      },
-      "tmdb": {
-        "cacheData.tmdb.tmdbID": "60728",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/60728/season/1/episode/21"
-      }
+  "recentImage": "0fb86551-8c23-4fbb-aaa1-fca5decd9303",
+  "images": [{
+    "id": "0fb86551-8c23-4fbb-aaa1-fca5decd9303",
+    "name": "Girlfriend, Girlfriend",
+    "tagline": "Season 1 Episode 1 - 'Even If That Isn't the Right Way'",
+    "imageName": "image-0fb86551-8c23-4fbb-aaa1-fca5decd9303.png",
+    "mediaType": "episode",
+    "timestamp": "1625405808",
+    "episode": {
+      "name": "Even If That Isn't the Right Way",
+      "seasonNumber": "1",
+      "episodeNumber": "1"
+    },
+    "tmdb": {
+      "cacheData.tmdb.tmdbID": "113137",
+      "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/113137/season/1/episode/1"
     }
-  ]
+  }]
 }
