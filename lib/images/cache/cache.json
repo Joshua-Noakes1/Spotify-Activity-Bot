@@ -1,89 +1,40 @@
 {
-  "recentImage": "5238e204-ed59-4412-a823-4a330b02ec7f",
+  "recentImage": "f5a872a3-07c9-407c-ad65-0a22061077d9",
   "images": [
     {
-      "id": "92b0e70c-f241-4b6b-8b45-f8c3513a5a66",
-      "name": "Kill la Kill",
-      "tagline": "Season 1 Episode 21 - 'Incomplete'",
-      "imageName": "image-92b0e70c-f241-4b6b-8b45-f8c3513a5a66.png",
+      "id": "0f1c41b7-7d88-47a1-a6f2-db9f6e1322bd",
+      "name": "Domestic Girlfriend",
+      "tagline": "Season 1 Episode 1 - 'Will You Do It With Me, Here?'",
+      "imageName": "image-0f1c41b7-7d88-47a1-a6f2-db9f6e1322bd.png",
+      "region": "JP",
       "mediaType": "episode",
-      "timestamp": "1625515965",
+      "timestamp": "1625518886",
       "episode": {
-        "name": "Incomplete",
-        "seasonNumber": "1",
-        "episodeNumber": "21"
-      },
-      "tmdb": {
-        "cacheData.tmdb.tmdbID": "60728",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/60728/season/1/episode/21"
-      }
-    },
-    {
-      "id": "92b0e70c-f241-4b6b-8b45-f8c3513a5a66",
-      "name": "Kill la Kill",
-      "tagline": "Season 1 Episode 21 - 'Incomplete'",
-      "imageName": "image-92b0e70c-f241-4b6b-8b45-f8c3513a5a66.png",
-      "mediaType": "episode",
-      "timestamp": "1625516001",
-      "episode": {
-        "name": "Incomplete",
-        "seasonNumber": "1",
-        "episodeNumber": "21"
-      },
-      "tmdb": {
-        "cacheData.tmdb.tmdbID": "60728",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/60728/season/1/episode/21"
-      }
-    },
-    {
-      "id": "e20df0cb-fa4a-4984-8a2a-4c436ee02d5c",
-      "name": "Neon Genesis Evangelion",
-      "tagline": "Season 1 Episode 20 - 'Weaving A Story (2): Oral Stage'",
-      "imageName": "image-e20df0cb-fa4a-4984-8a2a-4c436ee02d5c.png",
-      "mediaType": "episode",
-      "timestamp": "1625516059",
-      "episode": {
-        "name": "Weaving A Story (2): Oral Stage",
-        "seasonNumber": "1",
-        "episodeNumber": "20"
-      },
-      "tmdb": {
-        "cacheData.tmdb.tmdbID": "890",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/890/season/1/episode/20"
-      }
-    },
-    {
-      "id": "e20df0cb-fa4a-4984-8a2a-4c436ee02d5c",
-      "name": "Neon Genesis Evangelion",
-      "tagline": "Season 1 Episode 20 - 'Weaving A Story (2): Oral Stage'",
-      "imageName": "image-e20df0cb-fa4a-4984-8a2a-4c436ee02d5c.png",
-      "mediaType": "episode",
-      "timestamp": "1625516099",
-      "episode": {
-        "name": "Weaving A Story (2): Oral Stage",
-        "seasonNumber": "1",
-        "episodeNumber": "20"
-      },
-      "tmdb": {
-        "cacheData.tmdb.tmdbID": "890",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/890/season/1/episode/20"
-      }
-    },
-    {
-      "id": "5238e204-ed59-4412-a823-4a330b02ec7f",
-      "name": "Neon Genesis Evangelion",
-      "tagline": "Season 1 Episode 1 - 'Angel Attack'",
-      "imageName": "image-5238e204-ed59-4412-a823-4a330b02ec7f.png",
-      "mediaType": "episode",
-      "timestamp": "1625516134",
-      "episode": {
-        "name": "Angel Attack",
+        "name": "Will You Do It With Me, Here?",
         "seasonNumber": "1",
         "episodeNumber": "1"
       },
       "tmdb": {
-        "cacheData.tmdb.tmdbID": "890",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/890/season/1/episode/1"
+        "cacheData.tmdb.tmdbID": "83103",
+        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/83103/season/1/episode/1"
+      }
+    },
+    {
+      "id": "f5a872a3-07c9-407c-ad65-0a22061077d9",
+      "name": "Domestic Girlfriend",
+      "tagline": "Season 1 Episode 2 - 'By Any Chance, Did We Do It?'",
+      "imageName": "image-f5a872a3-07c9-407c-ad65-0a22061077d9.png",
+      "region": "JP",
+      "mediaType": "episode",
+      "timestamp": "1625518961",
+      "episode": {
+        "name": "By Any Chance, Did We Do It?",
+        "seasonNumber": "1",
+        "episodeNumber": "2"
+      },
+      "tmdb": {
+        "cacheData.tmdb.tmdbID": "83103",
+        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/83103/season/1/episode/2"
       }
     }
   ]
