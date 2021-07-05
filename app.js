@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const path = require('path');
 
 // Express dev
 app.use(morgan("dev"));
@@ -20,6 +21,10 @@ const plexHandle = require('./lib/plex/plexHandle');
 
 // Endpoints
 app.use('/hooks/plex', plexHandle);
+
+// WebUI
+app.use('/cache', express.static(path.join(__dirname, 'lib/images/cache')))
+app.use('/', express.static(path.join(__dirname, 'public')))
 
 // Status endpoint
 app.get("/status", (req, res) => {

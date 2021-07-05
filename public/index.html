@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script src="static/js/viewer.js"></script>
+    <script defer src="static/js/addImages.js"></script>
+    <script defer src="static/js/getCache.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.0/viewer.min.js"
+        integrity="sha512-11Ip09cPitpyapqTnApnxupcQdX1fzWkRZZoEU+I0+IxrVxORGThseKL6O2s+qbBN7aTw7SDbk+rWFZ/LVmB7g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.0/viewer.min.css"
+        integrity="sha512-Fc9/kKwzRba1WYBdNR1vJtOvd7Pl9pWy7CSkhQmyci0PSgUqJfx6I+vZfhy1mXwRGl9iHDN70JAwkPsor9guuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Ressie</title>
 </head>
+
 <body>
-    <h1>Hello World!</h1>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Ressie</span>
+            <button id="reload" class="btn btn-outline-primary">Reload</button>
+        </div>
+    </nav>
+    <div class="container text-center text-wrap text-break">
+        <div class="app-container">
+            <noscript>
+                <h1>JavaScript is needed for this page!</h1>
+            </noscript>
+        </div>
+    </div>
 </body>
+
 </html>

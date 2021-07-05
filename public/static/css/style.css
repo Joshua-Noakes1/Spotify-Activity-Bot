@@ -1,0 +1,10 @@
+.app-container {
+    margin-top: 1rem !important;
+}
+
+.app-container img {
+    height: auto;
+    width: auto;
+    max-width: 853.3px;
+    max-height: 480px;
+}
