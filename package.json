@@ -1,5 +1,5 @@
 {
-  "name": "media-activity-bot",
+  "name": "ressie",
   "version": "0.0.1",
   "description": "This project allows you to archive your playback of Spotify and Plex to a Twitter account.",
   "main": "server.js",
