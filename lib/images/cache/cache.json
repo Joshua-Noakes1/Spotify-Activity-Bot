@@ -1,40 +1,84 @@
 {
-  "recentImage": "f5a872a3-07c9-407c-ad65-0a22061077d9",
+  "recentImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 21",
   "images": [
     {
-      "id": "0f1c41b7-7d88-47a1-a6f2-db9f6e1322bd",
-      "name": "Domestic Girlfriend",
-      "tagline": "Season 1 Episode 1 - 'Will You Do It With Me, Here?'",
-      "imageName": "image-0f1c41b7-7d88-47a1-a6f2-db9f6e1322bd.png",
+      "id": "a1a4d7c0-17f0-41ce-b9bf-6704ccb43e9c",
+      "name": "BNA",
+      "tagline": "Season 1 Episode 1 - 'Runaway Raccoon'",
+      "overview": "Fleeing persecution as a beastman, Michiru journeys to Anima-City, where she meets wolf Shirou amidst the celebrations for the city's 10th anniversary.",
+      "imageName": "image-a1a4d7c0-17f0-41ce-b9bf-6704ccb43e9c.png",
+      "latestImage": "BNA - Season 1 Episode 1",
       "region": "JP",
       "mediaType": "episode",
-      "timestamp": "1625518886",
+      "timestamp": "1625756899",
       "episode": {
-        "name": "Will You Do It With Me, Here?",
+        "name": "Runaway Raccoon",
         "seasonNumber": "1",
         "episodeNumber": "1"
       },
       "tmdb": {
-        "cacheData.tmdb.tmdbID": "83103",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/83103/season/1/episode/1"
+        "tmdbID": "92592",
+        "tmdbURL": "https://www.themoviedb.org/tv/92592/season/1/episode/1"
       }
     },
     {
-      "id": "f5a872a3-07c9-407c-ad65-0a22061077d9",
-      "name": "Domestic Girlfriend",
-      "tagline": "Season 1 Episode 2 - 'By Any Chance, Did We Do It?'",
-      "imageName": "image-f5a872a3-07c9-407c-ad65-0a22061077d9.png",
+      "id": "9a161210-d87a-4c86-8fdc-443575e8040b",
+      "name": "DARLING in the FRANXX",
+      "tagline": "Season 1 Episode 20 - 'A New World'",
+      "overview": "Humanity's operation to wipe out the klaxosaurs once and for all begins, and APE sends Strelizia to take control of Star Entity, the enemy's biggest weapon. However, the klaxosaur princess has other ideas.",
+      "imageName": "image-9a161210-d87a-4c86-8fdc-443575e8040b.png",
+      "latestImage": "DARLING in the FRANXX - Season 1 Episode 20",
       "region": "JP",
       "mediaType": "episode",
-      "timestamp": "1625518961",
+      "timestamp": "1625757038",
       "episode": {
-        "name": "By Any Chance, Did We Do It?",
+        "name": "A New World",
         "seasonNumber": "1",
-        "episodeNumber": "2"
+        "episodeNumber": "20"
       },
       "tmdb": {
-        "cacheData.tmdb.tmdbID": "83103",
-        "cacheData.tmdb.tmdbURL": "https://www.themoviedb.org/tv/83103/season/1/episode/2"
+        "tmdbID": "76121",
+        "tmdbURL": "https://www.themoviedb.org/tv/76121/season/1/episode/20"
+      }
+    },
+    {
+      "id": "1dc47678-a1b9-4a19-886b-db611927c80f",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 1 Episode 20 - 'Wilhelm van Astrea'",
+      "overview": "Subaru has devoted everything he had, and done all he could do. His passion has captured Crusch’s heart, as well as Anastasia’s cooperation, and they all enter into the battle against the White Whale together.",
+      "imageName": "image-1dc47678-a1b9-4a19-886b-db611927c80f.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 20",
+      "region": "JP",
+      "mediaType": "episode",
+      "timestamp": "1625759481",
+      "episode": {
+        "name": "Wilhelm van Astrea",
+        "seasonNumber": "1",
+        "episodeNumber": "20"
+      },
+      "tmdb": {
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/20"
+      }
+    },
+    {
+      "id": "7b0510b1-232d-4fc3-bb51-1aeefab1fd53",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 1 Episode 21 - 'A Wager That Defies Despair'",
+      "overview": "Subaru and Rem are at a loss for words. The battle against the White Whale, which seemed to be going in their favor through attrition, suddenly took on completely different proportions. With their tactical superiority and advantage quickly dwindling, the combined forces all but get tangled up in the threads of despair. That’s when Subaru decides to yell out his next move…",
+      "imageName": "image-7b0510b1-232d-4fc3-bb51-1aeefab1fd53.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 21",
+      "region": "JP",
+      "mediaType": "episode",
+      "timestamp": "1625762810",
+      "episode": {
+        "name": "A Wager That Defies Despair",
+        "seasonNumber": "1",
+        "episodeNumber": "21"
+      },
+      "tmdb": {
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/21"
       }
     }
   ]
