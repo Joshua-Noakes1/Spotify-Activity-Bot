@@ -29,6 +29,10 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         .image-container {
             margin-top: 1rem;
         }
@@ -57,8 +61,10 @@
         <% if (imagesReversed.length > 0) { %>
         <% imagesReversed.forEach((image) => { %>
         <!-- image-<%= image.id %>.png -->
-        <div class="image-container shadow-lg p-3 mb-5 bg-body rounded">
-            <h3 id="image-name" class="card-header rounded"><%= image.name %></h3>
+        <div id="<%= image.id %>" class="image-container shadow-lg p-3 mb-5 bg-body rounded">
+            <a href="#<%= image.id %>" style="text-decoration: none; color: white">
+                <h3 id="image-name" class="card-header rounded"><%= image.name %></h3>
+            </a>
             <div id="image-tagline" class="card-body">
                 <h5 class="card-title"><%= image.tagline%></h5>
             </div>
@@ -70,8 +76,8 @@
                 <% } %>
                 <div class="image-btns">
                     <% if (image.tmdb) { %>
-                        <a href="<%= image.tmdb.tmdbURL %>" target="_blank"><button id="view-on-tmdb"
-                                class="btn btn-primary">View on TMDB</button></a>
+                    <a href="<%= image.tmdb.tmdbURL %>" target="_blank"><button id="view-on-tmdb"
+                            class="btn btn-primary">View on TMDB</button></a>
                     <% } %>
                     <a href="<%= image.plexURL %>" target="_blank"><button class="btn btn-warning">View on
                             Plex</button></a>
@@ -80,6 +86,12 @@
         </div>
         <!-- image finished -->
         <% }); %>
+        <% } else { %>
+        <div id="0" class="image-container shadow-lg p-3 mb-5 bg-body rounded">
+            <a href="#0" style="text-decoration: none; color: white">
+                <h3 id="image-name" class="card-header rounded">No images found!</h3>
+            </a>
+        </div>
         <% } %>
     </div>
 </body>

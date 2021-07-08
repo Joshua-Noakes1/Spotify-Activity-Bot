@@ -1,80 +1,32 @@
 {
-  "recentImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 2",
+  "recentImage": "Girlfriend, Girlfriend - Season 1 Episode 1",
   "images": [
     {
-      "id": "5bbdc9eb-22d8-4280-a553-6766da6d1c73",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 1 Episode 24 - 'The Self-Proclaimed Knight and the Greatest Knight'",
-      "overview": "Subaru devises a new plan to correct the mistake of the blank letter sent to the manor, encourage the evacuation of the villagers and move Emilia away from her current location. With these preparations complete, he enacts the second part of his plan designed to cut off the Fingers before severing the Unseen Hand once and for all.",
-      "imageName": "image-5bbdc9eb-22d8-4280-a553-6766da6d1c73.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 24",
+      "id": "b5f0af24-7949-43f7-acf7-4785a585acef",
+      "name": "Evangelion: 1.0 You Are (Not) Alone",
+      "tagline": "The rebuild of the groundbreaking giant robot anime",
+      "imageName": "image-b5f0af24-7949-43f7-acf7-4785a585acef.png",
+      "latestImage": "Evangelion: 1.0 You Are (Not) Alone",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F3864",
-      "mediaType": "episode",
-      "timestamp": "1625769174",
-      "episode": {
-        "name": "The Self-Proclaimed Knight and the Greatest Knight",
-        "seasonNumber": "1",
-        "episodeNumber": "24"
-      },
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5639",
+      "mediaType": "movie",
+      "timestamp": "1625780102",
       "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/24"
+        "tmdbID": "15137",
+        "tmdbURL": "https://www.themoviedb.org/movie/15137"
       }
     },
     {
-      "id": "c720f7cc-2d57-4b34-b789-147c118d1927",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 1 Episode 25 - 'That’s All This Story Is About'",
-      "overview": "Emilia is hurriedly ushered to the capital along with the villagers under the orders of a mysterious benefactor while escorted by a rag-tag group of individuals from various and opposing factions. She has but one question on her mind: who could this man be and why would he go so far? Meanwhile, Subaru and Julius face off against the Archbishop of Sin Betelgeuse for the ultimate time. Unfortunately, he is very persistent even beyond death, belying his nature of Sloth. Subaru is relentlessly chased while he catches up to Emilia to save her one last time and answer her question.",
-      "imageName": "image-c720f7cc-2d57-4b34-b789-147c118d1927.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 25",
-      "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F3865",
-      "mediaType": "episode",
-      "timestamp": "1625770658",
-      "episode": {
-        "name": "That’s All This Story Is About",
-        "seasonNumber": "1",
-        "episodeNumber": "25"
-      },
-      "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/25"
-      }
-    },
-    {
-      "id": "2596d960-a29f-43d8-8736-ddf07d43367c",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 2 Episode 1 - 'Each One’s Promise'",
-      "overview": "Amid dying countless times, Subaru finally led the troops to victory against the White Whale and struck down the schemes of the Sin Archbishop of Sloth. After overcoming a painful ending to his these ordeals, he was reunited at last with his beloved Emilia… only to learn that Rem’s existence had been erased from the world, wiped out by the White Whale somewhere in the middle of his death loop. And now that the White Whale is defeated, Subaru and the others face a crisis no one could have expected.",
-      "imageName": "image-2596d960-a29f-43d8-8736-ddf07d43367c.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 1",
-      "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6036",
-      "mediaType": "episode",
-      "timestamp": "1625772312",
-      "episode": {
-        "name": "Each One’s Promise",
-        "seasonNumber": "2",
-        "episodeNumber": "1"
-      },
-      "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/1"
-      }
-    },
-    {
-      "id": "121c85ae-3838-439f-9ab2-ceceb3b12fa9",
+      "id": "9a33c758-43fb-44d0-af62-a236c866e7ab",
       "name": "Re:ZERO -Starting Life in Another World-",
       "tagline": "Season 2 Episode 2 - 'The Next Location'",
       "overview": "After concluding their talks with Crusch, Subaru and Emilia return to the village of Arlam, intending to report to Roswaal and discuss what to do next. But they find Arlam deserted and learn that the villagers who had taken refuge in the Sanctuary with Ram have not yet returned. When Subaru and Emilia arrive back at Roswaal’s mansion to find out where the Sanctuary is, they are greeted by Frederica, a young woman who used to work as one of Roswaal’s maids.",
-      "imageName": "image-121c85ae-3838-439f-9ab2-ceceb3b12fa9.png",
+      "imageName": "image-9a33c758-43fb-44d0-af62-a236c866e7ab.png",
       "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 2",
       "region": "JP",
       "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6037",
       "mediaType": "episode",
-      "timestamp": "1625774068",
+      "timestamp": "1625780152",
       "episode": {
         "name": "The Next Location",
         "seasonNumber": "2",
@@ -83,6 +35,90 @@
       "tmdb": {
         "tmdbID": "65942",
         "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/2"
+      }
+    },
+    {
+      "id": "1d502a27-f43e-498f-b3e1-accb91a87ec2",
+      "name": "Pretty Boy Detective Club",
+      "tagline": "Season 1 Episode 5 - 'The Swindler, the Vanishing Man, and the Pretty Boys (Part 2)'",
+      "overview": "Nagahiro loses to Lai, but the Pretty Boy Detective Club figures out the trick that Lai used to win. In order to battle Lai again, they sneak into the Reasonable Doubt Casino. But at the moment of the showdown, the detectives are met with an unexpected situation! What will be the outcome of the battle between the rival middle schools?",
+      "imageName": "image-1d502a27-f43e-498f-b3e1-accb91a87ec2.png",
+      "latestImage": "Pretty Boy Detective Club - Season 1 Episode 5",
+      "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5233",
+      "mediaType": "episode",
+      "timestamp": "1625780679",
+      "episode": {
+        "name": "The Swindler, the Vanishing Man, and the Pretty Boys (Part 2)",
+        "seasonNumber": "1",
+        "episodeNumber": "5"
+      },
+      "tmdb": {
+        "tmdbID": "113042",
+        "tmdbURL": "https://www.themoviedb.org/tv/113042/season/1/episode/5"
+      }
+    },
+    {
+      "id": "6ed93335-48af-410b-9e90-1524178cec74",
+      "name": "Pretty Boy Detective Club",
+      "tagline": "Season 1 Episode 10 - 'The Pretty Boy on D. Hill (Part 1)'",
+      "overview": "The student council elections are coming up at Yubiwa Academy Middle School, and Wana Naganawa, the current student council vice-president and leading presidential candidate, is forced to withdraw her candidacy after becoming the victim of a hit-and-run accident. The Pretty Boy Detective Club sense that there is a conspiracy behind the elections and begin their search for the suspect. They set up Mayumi as a new candidate to run in the elections but...",
+      "imageName": "image-6ed93335-48af-410b-9e90-1524178cec74.png",
+      "latestImage": "Pretty Boy Detective Club - Season 1 Episode 10",
+      "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5661",
+      "mediaType": "episode",
+      "timestamp": "1625780760",
+      "episode": {
+        "name": "The Pretty Boy on D. Hill (Part 1)",
+        "seasonNumber": "1",
+        "episodeNumber": "10"
+      },
+      "tmdb": {
+        "tmdbID": "113042",
+        "tmdbURL": "https://www.themoviedb.org/tv/113042/season/1/episode/10"
+      }
+    },
+    {
+      "id": "6a3ba01f-9986-4110-b332-ea04e4a2fc31",
+      "name": "Kill la Kill",
+      "tagline": "Season 1 Episode 21 - 'Incomplete'",
+      "overview": "Ryuko's rampage continues, and thanks to Ragyo and Nui she has an unexpected new ally. With Satsuki as the target, will the Elite Four and Nudist Beach be able to withstand the onslaught?",
+      "imageName": "image-6a3ba01f-9986-4110-b332-ea04e4a2fc31.png",
+      "latestImage": "Kill la Kill - Season 1 Episode 21",
+      "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F3904",
+      "mediaType": "episode",
+      "timestamp": "1625780808",
+      "episode": {
+        "name": "Incomplete",
+        "seasonNumber": "1",
+        "episodeNumber": "21"
+      },
+      "tmdb": {
+        "tmdbID": "60728",
+        "tmdbURL": "https://www.themoviedb.org/tv/60728/season/1/episode/21"
+      }
+    },
+    {
+      "id": "0cb29af8-c88d-45fa-9f20-a24eb2dc258b",
+      "name": "Girlfriend, Girlfriend",
+      "tagline": "Season 1 Episode 1 - 'Even If That Isn't the Right Way'",
+      "overview": "",
+      "imageName": "image-0cb29af8-c88d-45fa-9f20-a24eb2dc258b.png",
+      "latestImage": "Girlfriend, Girlfriend - Season 1 Episode 1",
+      "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5972",
+      "mediaType": "episode",
+      "timestamp": "1625780844",
+      "episode": {
+        "name": "Even If That Isn't the Right Way",
+        "seasonNumber": "1",
+        "episodeNumber": "1"
+      },
+      "tmdb": {
+        "tmdbID": "113137",
+        "tmdbURL": "https://www.themoviedb.org/tv/113137/season/1/episode/1"
       }
     }
   ]
