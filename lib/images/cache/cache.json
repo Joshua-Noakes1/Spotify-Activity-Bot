@@ -1,84 +1,88 @@
 {
-  "recentImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 21",
+  "recentImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 2",
   "images": [
     {
-      "id": "a1a4d7c0-17f0-41ce-b9bf-6704ccb43e9c",
-      "name": "BNA",
-      "tagline": "Season 1 Episode 1 - 'Runaway Raccoon'",
-      "overview": "Fleeing persecution as a beastman, Michiru journeys to Anima-City, where she meets wolf Shirou amidst the celebrations for the city's 10th anniversary.",
-      "imageName": "image-a1a4d7c0-17f0-41ce-b9bf-6704ccb43e9c.png",
-      "latestImage": "BNA - Season 1 Episode 1",
+      "id": "5bbdc9eb-22d8-4280-a553-6766da6d1c73",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 1 Episode 24 - 'The Self-Proclaimed Knight and the Greatest Knight'",
+      "overview": "Subaru devises a new plan to correct the mistake of the blank letter sent to the manor, encourage the evacuation of the villagers and move Emilia away from her current location. With these preparations complete, he enacts the second part of his plan designed to cut off the Fingers before severing the Unseen Hand once and for all.",
+      "imageName": "image-5bbdc9eb-22d8-4280-a553-6766da6d1c73.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 24",
       "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F3864",
       "mediaType": "episode",
-      "timestamp": "1625756899",
+      "timestamp": "1625769174",
       "episode": {
-        "name": "Runaway Raccoon",
+        "name": "The Self-Proclaimed Knight and the Greatest Knight",
         "seasonNumber": "1",
+        "episodeNumber": "24"
+      },
+      "tmdb": {
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/24"
+      }
+    },
+    {
+      "id": "c720f7cc-2d57-4b34-b789-147c118d1927",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 1 Episode 25 - 'That’s All This Story Is About'",
+      "overview": "Emilia is hurriedly ushered to the capital along with the villagers under the orders of a mysterious benefactor while escorted by a rag-tag group of individuals from various and opposing factions. She has but one question on her mind: who could this man be and why would he go so far? Meanwhile, Subaru and Julius face off against the Archbishop of Sin Betelgeuse for the ultimate time. Unfortunately, he is very persistent even beyond death, belying his nature of Sloth. Subaru is relentlessly chased while he catches up to Emilia to save her one last time and answer her question.",
+      "imageName": "image-c720f7cc-2d57-4b34-b789-147c118d1927.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 25",
+      "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F3865",
+      "mediaType": "episode",
+      "timestamp": "1625770658",
+      "episode": {
+        "name": "That’s All This Story Is About",
+        "seasonNumber": "1",
+        "episodeNumber": "25"
+      },
+      "tmdb": {
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/25"
+      }
+    },
+    {
+      "id": "2596d960-a29f-43d8-8736-ddf07d43367c",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 2 Episode 1 - 'Each One’s Promise'",
+      "overview": "Amid dying countless times, Subaru finally led the troops to victory against the White Whale and struck down the schemes of the Sin Archbishop of Sloth. After overcoming a painful ending to his these ordeals, he was reunited at last with his beloved Emilia… only to learn that Rem’s existence had been erased from the world, wiped out by the White Whale somewhere in the middle of his death loop. And now that the White Whale is defeated, Subaru and the others face a crisis no one could have expected.",
+      "imageName": "image-2596d960-a29f-43d8-8736-ddf07d43367c.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 1",
+      "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6036",
+      "mediaType": "episode",
+      "timestamp": "1625772312",
+      "episode": {
+        "name": "Each One’s Promise",
+        "seasonNumber": "2",
         "episodeNumber": "1"
       },
       "tmdb": {
-        "tmdbID": "92592",
-        "tmdbURL": "https://www.themoviedb.org/tv/92592/season/1/episode/1"
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/1"
       }
     },
     {
-      "id": "9a161210-d87a-4c86-8fdc-443575e8040b",
-      "name": "DARLING in the FRANXX",
-      "tagline": "Season 1 Episode 20 - 'A New World'",
-      "overview": "Humanity's operation to wipe out the klaxosaurs once and for all begins, and APE sends Strelizia to take control of Star Entity, the enemy's biggest weapon. However, the klaxosaur princess has other ideas.",
-      "imageName": "image-9a161210-d87a-4c86-8fdc-443575e8040b.png",
-      "latestImage": "DARLING in the FRANXX - Season 1 Episode 20",
-      "region": "JP",
-      "mediaType": "episode",
-      "timestamp": "1625757038",
-      "episode": {
-        "name": "A New World",
-        "seasonNumber": "1",
-        "episodeNumber": "20"
-      },
-      "tmdb": {
-        "tmdbID": "76121",
-        "tmdbURL": "https://www.themoviedb.org/tv/76121/season/1/episode/20"
-      }
-    },
-    {
-      "id": "1dc47678-a1b9-4a19-886b-db611927c80f",
+      "id": "121c85ae-3838-439f-9ab2-ceceb3b12fa9",
       "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 1 Episode 20 - 'Wilhelm van Astrea'",
-      "overview": "Subaru has devoted everything he had, and done all he could do. His passion has captured Crusch’s heart, as well as Anastasia’s cooperation, and they all enter into the battle against the White Whale together.",
-      "imageName": "image-1dc47678-a1b9-4a19-886b-db611927c80f.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 20",
+      "tagline": "Season 2 Episode 2 - 'The Next Location'",
+      "overview": "After concluding their talks with Crusch, Subaru and Emilia return to the village of Arlam, intending to report to Roswaal and discuss what to do next. But they find Arlam deserted and learn that the villagers who had taken refuge in the Sanctuary with Ram have not yet returned. When Subaru and Emilia arrive back at Roswaal’s mansion to find out where the Sanctuary is, they are greeted by Frederica, a young woman who used to work as one of Roswaal’s maids.",
+      "imageName": "image-121c85ae-3838-439f-9ab2-ceceb3b12fa9.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 2",
       "region": "JP",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6037",
       "mediaType": "episode",
-      "timestamp": "1625759481",
+      "timestamp": "1625774068",
       "episode": {
-        "name": "Wilhelm van Astrea",
-        "seasonNumber": "1",
-        "episodeNumber": "20"
+        "name": "The Next Location",
+        "seasonNumber": "2",
+        "episodeNumber": "2"
       },
       "tmdb": {
         "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/20"
-      }
-    },
-    {
-      "id": "7b0510b1-232d-4fc3-bb51-1aeefab1fd53",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 1 Episode 21 - 'A Wager That Defies Despair'",
-      "overview": "Subaru and Rem are at a loss for words. The battle against the White Whale, which seemed to be going in their favor through attrition, suddenly took on completely different proportions. With their tactical superiority and advantage quickly dwindling, the combined forces all but get tangled up in the threads of despair. That’s when Subaru decides to yell out his next move…",
-      "imageName": "image-7b0510b1-232d-4fc3-bb51-1aeefab1fd53.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 1 Episode 21",
-      "region": "JP",
-      "mediaType": "episode",
-      "timestamp": "1625762810",
-      "episode": {
-        "name": "A Wager That Defies Despair",
-        "seasonNumber": "1",
-        "episodeNumber": "21"
-      },
-      "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/1/episode/21"
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/2"
       }
     }
   ]

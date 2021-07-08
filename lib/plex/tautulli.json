@@ -9,6 +9,7 @@
             "episodeName": "{episode_name}",
             "seasonNumber": "{season_num}",
             "episodeNumber": "{episode_num}",
+            "plexURL": "{plex_url}",
             "posterURL": "{poster_url}"
         },
         "tmdbID": "{themoviedb_id}"

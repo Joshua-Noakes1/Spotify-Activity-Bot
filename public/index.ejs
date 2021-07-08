@@ -1,79 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 
 <head>
+    <!-- Primary Meta Tags -->
+    <title>Ressie</title>
+    <meta name="title" content="Ressie">
+    <meta name="description"
+        content="Archive your playback of Spotify and Plex - https://github.com/joshua-noakes1/ressie">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#303030">
 
-    <link href="/static/css/style.css" rel="stylesheet">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/joshua-noakes1/ressie">
+    <meta property="og:title" content="Ressie">
+    <meta property="og:description"
+        content="Archive your playback of Spotify and Plex - https://github.com/joshua-noakes1/ressie">
 
-    <!-- Bootstrap -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/joshua-noakes1/ressie">
+    <meta property="twitter:title" content="Ressie">
+    <meta property="twitter:description"
+        content="Archive your playback of Spotify and Plex - https://github.com/joshua-noakes1/ressie">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.0/viewer.min.js"
-        integrity="sha512-11Ip09cPitpyapqTnApnxupcQdX1fzWkRZZoEU+I0+IxrVxORGThseKL6O2s+qbBN7aTw7SDbk+rWFZ/LVmB7g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.0/viewer.min.css"
-        integrity="sha512-Fc9/kKwzRba1WYBdNR1vJtOvd7Pl9pWy7CSkhQmyci0PSgUqJfx6I+vZfhy1mXwRGl9iHDN70JAwkPsor9guuA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <style>
+        .image-container {
+            margin-top: 1rem;
+        }
+    </style>
 
-    <title>Ressie</title>
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script defer src="static/js/refresh.js"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light sticky-top">
+    <!-- Navbar content -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Ressie</span>
-            <button id="reload" class="btn btn-outline-primary" onclick="location.reload();">Reload</button>
+            <a id="title" class="navbar-brand">Ressie</a>
+            <a href="https://github.com/joshua-noakes1/ressie" target="_blank">
+                <button id="github-btn" class="btn btn-secondary my-2 my-sm-0">Github</button></a>
         </div>
     </nav>
-    <div class="container">
-        <div class="app-container text-center">
-            <% const imagesReverse = images.reverse(); %>
-            <% if (imagesReverse.length > 0) { %>
-            <% images.forEach((image) => { %>
-            <!-- Begin Cached Images -->
-            <div class="image-container">
-                <div class="shadow-lg p-3 mb-5 bg-body rounded">
-                    <h3 class="card-header rounded"><%= image.name %></h3>
-                    <div class="card-body">
-                        <h5 class="card-title"><%= image.tagline%></h5>
-                    </div>
-                    <img id="<%= image.id %>" src=/static/cache/<%= image.imageName %>
-                        class="d-block user-select-none rounded" width="100%" height="100%" focusable="false"
-                        preserveAspectRatio="xMidYMid slice">
-                    </img>
-                    <div class="card-body">
-                        <% if (image.mediaType == 'episode') { %> <p class="card-text"><%= image.overview %></p> <% } %>
-                        <% if (image.tmdb) { %>
-                        <% if (image.mediaType == 'episode') { %>
-                        <div class="tmdb-btns">
-                            <a href="https://www.themoviedb.org/tv/<%= image.tmdb.tmdbID %>" target="_blank"><button
-                                    id="reload" class="btn btn-outline-primary">View show on TMDB</button></a>
-                            <a href="<%= image.tmdb.tmdbURL %>" target="_blank"><button id="reload"
-                                    class="btn btn-outline-primary">View episode on TMDB</button></a>
-                        </div>
-                        <% } %>
-                        <% } %>
-                    </div>
+
+    <!-- Body content -->
+    <div class="container text-center">
+        <% const imagesReversed = images.reverse(); %>
+        <% if (imagesReversed.length > 0) { %>
+        <% imagesReversed.forEach((image) => { %>
+        <!-- image-<%= image.id %>.png -->
+        <div class="image-container shadow-lg p-3 mb-5 bg-body rounded">
+            <h3 id="image-name" class="card-header rounded"><%= image.name %></h3>
+            <div id="image-tagline" class="card-body">
+                <h5 class="card-title"><%= image.tagline%></h5>
+            </div>
+            <img id="image-image" src="/static/cache/<%= image.imageName %>" class="rounded" width="85%" height="85%"
+                focusable="false" style="display:block;margin:auto;"></img>
+            <div id="image-overview" class="card-body">
+                <% if (image.mediaType == 'episode') { %>
+                <p id="image-overview" class="card-text"><%= image.overview %></p>
+                <% } %>
+                <div class="image-btns">
+                    <% if (image.tmdb) { %>
+                        <a href="<%= image.tmdb.tmdbURL %>" target="_blank"><button id="view-on-tmdb"
+                                class="btn btn-primary">View on TMDB</button></a>
+                    <% } %>
+                    <a href="<%= image.plexURL %>" target="_blank"><button class="btn btn-warning">View on
+                            Plex</button></a>
                 </div>
             </div>
-            <!-- End Cached Images -->
-            <% }); %>
-            <% } else { %>
-            <div class="image-container">
-                <div class="card mb-3 shadow p-3 mb-5 bg-body rounded">
-                    <h3 class="card-header rounded">No Images Found!</h3>
-                </div>
-            </div>
-            <% } %>
         </div>
+        <!-- image finished -->
+        <% }); %>
+        <% } %>
     </div>
 </body>
 
