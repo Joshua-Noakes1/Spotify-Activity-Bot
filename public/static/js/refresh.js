@@ -7,10 +7,13 @@ fetch('/static/cache/cache.json').then(async (serverCache) => {
 
 // every 60 seconds check if the image length isnt equal to the value in localstorage
 setInterval(() => {
+    var intervalCache;
     fetch('/static/cache/cache.json').then(async (serverCache) => {
-        cache = await serverCache.json();
-        if (window.localStorage.getItem('imageLength') != cache.images.length) {
+        intervalCache = await serverCache.json();
+        if (window.localStorage.getItem('imageLength') != intervalCache.images.length) {
+            history.pushState(null, null, location.pathname + location.search);
+            location.hash = '#' + `${intervalCache.recentImage}`;
             location.reload();
         }
     });
-}, 60 * 1000);
+}, (2 * 60) * 1000);

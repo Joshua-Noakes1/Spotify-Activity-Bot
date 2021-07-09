@@ -1,0 +1,30 @@
+/* Register font family notosans */
+@font-face {
+    font-family: NotoSansReg;
+    src: url('/static/fonts/noto/NotoSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: NotoSansBold;
+    src: url('/static/fonts/noto/NotoSans-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: bold;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.image-container {
+    margin-top: 1rem;
+}
+
+.notoReg {
+    font-family: NotoSansReg, sans-serif;
+}
+
+.notoBold {
+    font-family: NotoSansBold, sans-serif;
+}  

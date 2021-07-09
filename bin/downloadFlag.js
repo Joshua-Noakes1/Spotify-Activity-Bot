@@ -12,7 +12,7 @@ async function downloadFlag(countrySC) {
     await fetch(`https://www.countryflags.io/${countrySC}/flat/48.png`)
         .then(async (image) => {
             buffer = await image.buffer();
-            console.log(`[Info] Grabbed image "https://www.countryflags.io/${countrySC}/flat/48.png" from countryflags.io`);
+            console.log(`[Info] Grabbed image "https://www.countryflags.io/${countrySC}/shiny/48.png" from countryflags.io`);
         }).catch((e) => {
             console.error(`[Error] Failed to grab image "${countrySC}" from countryflags.io`);
             if (process.env.dev == 'true') console.log(e);

@@ -1,124 +1,100 @@
 {
-  "recentImage": "Girlfriend, Girlfriend - Season 1 Episode 1",
+  "recentImage": "d59d1a15-bf0c-4040-a209-7f6bbffab34e",
   "images": [
     {
-      "id": "b5f0af24-7949-43f7-acf7-4785a585acef",
-      "name": "Evangelion: 1.0 You Are (Not) Alone",
-      "tagline": "The rebuild of the groundbreaking giant robot anime",
-      "imageName": "image-b5f0af24-7949-43f7-acf7-4785a585acef.png",
-      "latestImage": "Evangelion: 1.0 You Are (Not) Alone",
-      "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5639",
-      "mediaType": "movie",
-      "timestamp": "1625780102",
-      "tmdb": {
-        "tmdbID": "15137",
-        "tmdbURL": "https://www.themoviedb.org/movie/15137"
-      }
-    },
-    {
-      "id": "9a33c758-43fb-44d0-af62-a236c866e7ab",
+      "id": "6c9f5c1d-886c-44ae-af6e-f19bb644e60b",
       "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 2 Episode 2 - 'The Next Location'",
-      "overview": "After concluding their talks with Crusch, Subaru and Emilia return to the village of Arlam, intending to report to Roswaal and discuss what to do next. But they find Arlam deserted and learn that the villagers who had taken refuge in the Sanctuary with Ram have not yet returned. When Subaru and Emilia arrive back at Roswaal’s mansion to find out where the Sanctuary is, they are greeted by Frederica, a young woman who used to work as one of Roswaal’s maids.",
-      "imageName": "image-9a33c758-43fb-44d0-af62-a236c866e7ab.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 2",
+      "tagline": "Season 2 Episode 6 - 'The Maiden’s Gospel'",
+      "overview": "After dying to Elsa’s blade in Roswaal’s mansion, Subaru awakens back in the graveyard, in the moment immediately after he passed the trial that required him to face his past. Just like the first time he returned there, he wakes Emilia and holds her to comfort her, then returns to Ryuzu and the others. He tells them that he passed the trial himself and suggests that he could complete the remaining stages of the trial in Emilia’s place, but Garfiel is opposed.",
+      "imageName": "image-6c9f5c1d-886c-44ae-af6e-f19bb644e60b.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 6",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6037",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6041",
       "mediaType": "episode",
-      "timestamp": "1625780152",
+      "timestamp": "1625834411",
+      "origin": {
+        "name": "Re:ZERO -Starting Life in Another World-"
+      },
       "episode": {
-        "name": "The Next Location",
+        "name": "The Maiden’s Gospel",
         "seasonNumber": "2",
-        "episodeNumber": "2"
+        "episodeNumber": "6"
       },
       "tmdb": {
         "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/2"
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/6"
       }
     },
     {
-      "id": "1d502a27-f43e-498f-b3e1-accb91a87ec2",
-      "name": "Pretty Boy Detective Club",
-      "tagline": "Season 1 Episode 5 - 'The Swindler, the Vanishing Man, and the Pretty Boys (Part 2)'",
-      "overview": "Nagahiro loses to Lai, but the Pretty Boy Detective Club figures out the trick that Lai used to win. In order to battle Lai again, they sneak into the Reasonable Doubt Casino. But at the moment of the showdown, the detectives are met with an unexpected situation! What will be the outcome of the battle between the rival middle schools?",
-      "imageName": "image-1d502a27-f43e-498f-b3e1-accb91a87ec2.png",
-      "latestImage": "Pretty Boy Detective Club - Season 1 Episode 5",
+      "id": "8baded65-4a8f-45fb-a89c-2cd47bcbb068",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 2 Episode 7 - 'Friend'",
+      "overview": "Subaru had reached for the door, determined to save Rem from harm even if his current world would soon end. But instead of Rem, he found himself staring at Beatrice’s library. Beatrice had remained silent throughout Elsa’s attack and saved Subaru’s life just moments before Elsa could claim it. Subaru shouts at Beatrice, demanding to know why she didn’t help before everyone else was killed, and an intense argument ensues. Then Subaru catches sight of a familiar-looking book…",
+      "imageName": "image-8baded65-4a8f-45fb-a89c-2cd47bcbb068.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 7",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5233",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6042",
       "mediaType": "episode",
-      "timestamp": "1625780679",
+      "timestamp": "1625835750",
+      "origin": {
+        "name": "Re:ZERO -Starting Life in Another World-"
+      },
       "episode": {
-        "name": "The Swindler, the Vanishing Man, and the Pretty Boys (Part 2)",
-        "seasonNumber": "1",
-        "episodeNumber": "5"
+        "name": "Friend",
+        "seasonNumber": "2",
+        "episodeNumber": "7"
       },
       "tmdb": {
-        "tmdbID": "113042",
-        "tmdbURL": "https://www.themoviedb.org/tv/113042/season/1/episode/5"
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/7"
       }
     },
     {
-      "id": "6ed93335-48af-410b-9e90-1524178cec74",
-      "name": "Pretty Boy Detective Club",
-      "tagline": "Season 1 Episode 10 - 'The Pretty Boy on D. Hill (Part 1)'",
-      "overview": "The student council elections are coming up at Yubiwa Academy Middle School, and Wana Naganawa, the current student council vice-president and leading presidential candidate, is forced to withdraw her candidacy after becoming the victim of a hit-and-run accident. The Pretty Boy Detective Club sense that there is a conspiracy behind the elections and begin their search for the suspect. They set up Mayumi as a new candidate to run in the elections but...",
-      "imageName": "image-6ed93335-48af-410b-9e90-1524178cec74.png",
-      "latestImage": "Pretty Boy Detective Club - Season 1 Episode 10",
+      "id": "139358f6-3397-4cfe-954a-aa35a0386fad",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 2 Episode 8 - 'The Value of Life'",
+      "overview": "Subaru was caught and confined by Garfiel, but Otto shows up to rescue him. Garfiel can’t leave the graveyard while Emilia is undergoing the trial, so Otto says this is their chance to get outside the barrier, but Subaru doesn’t agree. However, after he learns that Ram will be helping them—that she has been ordered by Roswaal to help him, in fact—Subaru puts his escape on hold to have a talk with Roswaal.",
+      "imageName": "image-139358f6-3397-4cfe-954a-aa35a0386fad.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 8",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5661",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6043",
       "mediaType": "episode",
-      "timestamp": "1625780760",
+      "timestamp": "1625838955",
+      "origin": {
+        "name": "Re:ZERO -Starting Life in Another World-"
+      },
       "episode": {
-        "name": "The Pretty Boy on D. Hill (Part 1)",
-        "seasonNumber": "1",
-        "episodeNumber": "10"
+        "name": "The Value of Life",
+        "seasonNumber": "2",
+        "episodeNumber": "8"
       },
       "tmdb": {
-        "tmdbID": "113042",
-        "tmdbURL": "https://www.themoviedb.org/tv/113042/season/1/episode/10"
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/8"
       }
     },
     {
-      "id": "6a3ba01f-9986-4110-b332-ea04e4a2fc31",
-      "name": "Kill la Kill",
-      "tagline": "Season 1 Episode 21 - 'Incomplete'",
-      "overview": "Ryuko's rampage continues, and thanks to Ragyo and Nui she has an unexpected new ally. With Satsuki as the target, will the Elite Four and Nudist Beach be able to withstand the onslaught?",
-      "imageName": "image-6a3ba01f-9986-4110-b332-ea04e4a2fc31.png",
-      "latestImage": "Kill la Kill - Season 1 Episode 21",
+      "id": "d59d1a15-bf0c-4040-a209-7f6bbffab34e",
+      "name": "Re:ZERO -Starting Life in Another World-",
+      "tagline": "Season 2 Episode 9 - 'Love Love Love Love Love Love You'",
+      "overview": "After being eaten alive by a herd of unknown creatures resembling rabbits, Subaru awakens in a half-maddened state next to Emilia in the graveyard. As he pounds his head against the rocky ground over and over in anguish, he finds himself invited once again to a witch’s tea party. There, he tells Echidna about his Return by Death ability, something he has never been able to tell anyone before. Echidna then begins to tell Subaru about the witch who gave him this power and set him on this agonizing path.",
+      "imageName": "image-d59d1a15-bf0c-4040-a209-7f6bbffab34e.png",
+      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 9",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F3904",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6044",
       "mediaType": "episode",
-      "timestamp": "1625780808",
+      "timestamp": "1625840719",
+      "origin": {
+        "name": "Re:ZERO -Starting Life in Another World-"
+      },
       "episode": {
-        "name": "Incomplete",
-        "seasonNumber": "1",
-        "episodeNumber": "21"
+        "name": "Love Love Love Love Love Love You",
+        "seasonNumber": "2",
+        "episodeNumber": "9"
       },
       "tmdb": {
-        "tmdbID": "60728",
-        "tmdbURL": "https://www.themoviedb.org/tv/60728/season/1/episode/21"
-      }
-    },
-    {
-      "id": "0cb29af8-c88d-45fa-9f20-a24eb2dc258b",
-      "name": "Girlfriend, Girlfriend",
-      "tagline": "Season 1 Episode 1 - 'Even If That Isn't the Right Way'",
-      "overview": "",
-      "imageName": "image-0cb29af8-c88d-45fa-9f20-a24eb2dc258b.png",
-      "latestImage": "Girlfriend, Girlfriend - Season 1 Episode 1",
-      "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5972",
-      "mediaType": "episode",
-      "timestamp": "1625780844",
-      "episode": {
-        "name": "Even If That Isn't the Right Way",
-        "seasonNumber": "1",
-        "episodeNumber": "1"
-      },
-      "tmdb": {
-        "tmdbID": "113137",
-        "tmdbURL": "https://www.themoviedb.org/tv/113137/season/1/episode/1"
+        "tmdbID": "65942",
+        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/9"
       }
     }
   ]

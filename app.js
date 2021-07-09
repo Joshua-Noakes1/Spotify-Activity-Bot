@@ -32,8 +32,9 @@ const webUI = require('./lib/views/index');
 app.use('/hooks/plex', plexHandle);
 
 // WebUI
-app.use('/static/cache', express.static(path.join(__dirname, 'lib/images/cache')));
 app.use('/static', express.static(path.join(__dirname, 'public/static')));
+app.use('/static/cache', express.static(path.join(__dirname, 'lib/images/cache')));
+app.use('/static/fonts/noto', express.static(path.join(__dirname, 'bin/fonts/NotoSans')));
 app.use('/', webUI);
 
 // Status endpoint
