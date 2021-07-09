@@ -104,5 +104,7 @@ dist
 .tern-port
 
 # extra
+lib/images/cache/*.png
+*.vscode
 *.old
 *.DS_Store
