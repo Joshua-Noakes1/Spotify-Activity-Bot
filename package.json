@@ -1,12 +1,11 @@
 {
   "name": "ressie",
-  "version": "0.0.3",
-  "description": "This project allows you to archive your playback of Spotify and Plex.",
+  "version": "3.0.0",
+  "description": "Plex playback monitoring using tmdb",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js -ignore *.json",
-    "start": "node server.js"
+    "dev": "nodemon -ignore *.json .",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -20,22 +19,11 @@
   "homepage": "https://github.com/Joshua-Noakes1/Ressie#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "canvas": "^2.8.0",
-    "canvas-txt": "^3.0.0",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "fast-average-color-node": "^1.0.3",
-    "imagemin": "^7.0.1",
-    "imagemin-pngquant": "^9.0.2",
-    "jimp": "^0.16.1",
-    "jimp-roundcorners": "^1.1.0",
     "morgan": "^1.10.0",
-    "moviedb-promise": "^3.1.9",
-    "node-fetch": "^2.6.1",
     "path": "^0.12.7",
-    "serve-favicon": "^2.5.0",
-    "spotify-url-info": "^2.2.3",
-    "uuid": "^8.3.2"
+    "serve-favicon": "^2.5.0"
   }
 }

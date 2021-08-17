@@ -24,20 +24,22 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// Modules
-const plexHandle = require('./lib/plex/plexHandle');
+// modules
+// const plexHandle = require('./lib/plex/plexHandle');
 const webUI = require('./lib/views/index');
 
-// Endpoints
-app.use('/hooks/plex', plexHandle);
+// endpoints
+// app.use('/hooks/plex', plexHandle);
 
-// WebUI
+// static endpoints
 app.use('/static', express.static(path.join(__dirname, 'static')));
-app.use('/static/cache', express.static(path.join(__dirname, process.env.cache_dir)));
-app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts')));
+app.use('/static/cache', express.static(path.join(__dirname, process.env.cache_dir))); // cache images
+app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts'))); // fonts
+
+// webui
 app.use('/', webUI);
 
-// Status endpoint
+// status endpoint
 app.get("/status", (req, res) => {
     res.status(200).json({
         "success": true,
@@ -45,9 +47,9 @@ app.get("/status", (req, res) => {
     });
 });
 
-// Express error handling 
+// 500 and 404 error
 app.use((req, res, next) => {
-    const error = new Error("❌ Page Not Found ❌")
+    const error = new Error("Page not found")
     error.status = 404;
     next(error);
 });
@@ -55,10 +57,7 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
     res.status(error.status || 500).json({
         "success": false,
-        "error": {
-            "code": error.status || 500,
-            "message": error.message,
-        }
+        "message": error.message,
     });
 });
 

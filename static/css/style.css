@@ -17,6 +17,14 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    text-decoration: none;
+}
+
+.titleLink {
+    color: #fff;
+}
+
 .notoReg {
     font-family: NotoSansReg, sans-serif;
 }

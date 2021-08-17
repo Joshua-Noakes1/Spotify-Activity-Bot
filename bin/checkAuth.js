@@ -3,6 +3,7 @@ require('dotenv').config();
 /**
  * Check weather the supplied password is the same as the one stored in the .env file
  * ! This could be re-worked to be more secure
+ * TODO: Rewrite this to generate a uuid on first boot then save it so that api access is more secure than 12345678
  * 
  * @param {String} password 
  * @param {Object} next 

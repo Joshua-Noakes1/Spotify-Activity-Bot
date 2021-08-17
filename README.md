@@ -1,8 +1,7 @@
 # Ressie
 
 ## About
-
-Ressie allow you to archive your playback of [Plex](https://plex.tv) (using [Tautulli](https://tautulli.com/)).
+Get personalised media cards from what you're watching on [Plex](https://plex.tv) (With help from [Tautulli](https://tautulli.com/)).    
 
 # Attribution
 

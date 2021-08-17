@@ -13,9 +13,62 @@
 </head>
 
 <body>
+    <div class="app">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a id="title" class="navbar-brand notoReg">Ressie</a>
+                <a href="https://github.com/joshua-noakes1/ressie" target="_blank">
+                    <button id="github-btn" class="btn btn-secondary my-2 my-sm-0">Github</button></a>
+            </div>
+        </nav>
+        <!-- App Content -->
+        <div class="container-fluid py-4 text-center">
+            <% if (images.length > 0) { %>
+                <% images.forEach(image => { %>
+                    <div id="<%= image.id %>" class="card text-white bg-dark h-100 p-5 mb-3 rounded-3 shadow">
+                        <a href="#<%= image.id %>" class="titleLink"><h3 class="card-header rounded notoBold"><%= image.name %></h3></a>
+                        <div class="card-body">
+                            <h5 class="card-title notoReg"><%= image.tagline %></h5>
+                        </div>
+                        <img id="image-image" src="/static/cache/<%= image.imageName %>" class="rounded" width="85%" height="85%"
+                        focusable="false" style="display:block;margin:auto;"></img>
+                        <% if (image.mediaType == 'episode') { %>
+                            <div class="card-body">
+                                <p class="card-text notoReg"><%= image.overview %></p>
+                            </div>
+                        <% } %>
+                        <span>
+                            <% if (image.tmdb.tmdbID != '000000') { %>
+                                <a href="<%= image.tmdb.tmdbURL %>" target="_blank">
+                                    <button id="github-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View on
+                                        TMDB</button></a>
+                            <% } %>
+                            <a href="<%= image.plexURL %>" target="_blank">
+                                <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
+                                    style="color:#333">View
+                                    on Plex</button></a>
+                        </span>
+                    </div>
+                    <br>
+                <% }); %>
+            <% } else { %>
+                <!-- Missing Content Card -->
+                <div class="card text-white bg-dark h-100 p-5 mb-3 rounded-3 shadow">
+                    <h3 class="card-header rounded notoBold">No cards made</h3>
+                    <div class="card-body">
+                        <h5 class="card-title notoReg">No media cards have been created yet.</h5>
+                        <a href="https://app.plex.tv" target="_blank">
+                            <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
+                                style="color:#333">Get Watching!</button></a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
 
     <!-- Check for any server side changes and refresh if they exist-->
-    <script defer>
+    <script>
         // fetch cache.json and save the length of the image arrays to localstorage
         var cache;
         fetch('/static/cache/cache.json')

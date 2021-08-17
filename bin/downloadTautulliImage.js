@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 
 /**
  * Download an Image from the 3rd party image provider in Tautulli
+ * TODO: Console TMDB down and tautulli down to one file (possibly this one)
  * 
  * @param {String} url 
  * @returns {Buffer} Downloaded image buffer
