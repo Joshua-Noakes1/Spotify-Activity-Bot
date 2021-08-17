@@ -43,7 +43,7 @@ app.use('/', webUI);
 app.get("/status", (req, res) => {
     res.status(200).json({
         "success": true,
-        "message": "🚀 The rocket has launched 🚀",
+        "message": "The rocket has launched",
     });
 });
 
