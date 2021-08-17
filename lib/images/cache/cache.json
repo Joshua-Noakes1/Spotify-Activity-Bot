@@ -1,100 +1,268 @@
 {
-  "recentImage": "d59d1a15-bf0c-4040-a209-7f6bbffab34e",
+  "recentImage": "94b9fef8-9dc9-4d42-b266-557210c6e969",
   "images": [
     {
-      "id": "6c9f5c1d-886c-44ae-af6e-f19bb644e60b",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 2 Episode 6 - 'The Maiden’s Gospel'",
-      "overview": "After dying to Elsa’s blade in Roswaal’s mansion, Subaru awakens back in the graveyard, in the moment immediately after he passed the trial that required him to face his past. Just like the first time he returned there, he wakes Emilia and holds her to comfort her, then returns to Ryuzu and the others. He tells them that he passed the trial himself and suggests that he could complete the remaining stages of the trial in Emilia’s place, but Garfiel is opposed.",
-      "imageName": "image-6c9f5c1d-886c-44ae-af6e-f19bb644e60b.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 6",
+      "id": "fb0788bf-810f-433c-9cfd-fa2acb46a502",
+      "name": "Evangelion: 1.0 You Are (Not) Alone",
+      "tagline": "The rebuild of the groundbreaking giant robot anime",
+      "imageName": "image-fb0788bf-810f-433c-9cfd-fa2acb46a502.png",
+      "latestImage": "Evangelion: 1.0 You Are (Not) Alone",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6041",
-      "mediaType": "episode",
-      "timestamp": "1625834411",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F5639",
+      "mediaType": "movie",
+      "timestamp": "1627747087",
       "origin": {
-        "name": "Re:ZERO -Starting Life in Another World-"
-      },
-      "episode": {
-        "name": "The Maiden’s Gospel",
-        "seasonNumber": "2",
-        "episodeNumber": "6"
+        "name": "Evangelion: 1.0 You Are (Not) Alone"
       },
       "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/6"
+        "tmdbID": "15137",
+        "tmdbURL": "https://www.themoviedb.org/movie/15137"
       }
     },
     {
-      "id": "8baded65-4a8f-45fb-a89c-2cd47bcbb068",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 2 Episode 7 - 'Friend'",
-      "overview": "Subaru had reached for the door, determined to save Rem from harm even if his current world would soon end. But instead of Rem, he found himself staring at Beatrice’s library. Beatrice had remained silent throughout Elsa’s attack and saved Subaru’s life just moments before Elsa could claim it. Subaru shouts at Beatrice, demanding to know why she didn’t help before everyone else was killed, and an intense argument ensues. Then Subaru catches sight of a familiar-looking book…",
-      "imageName": "image-8baded65-4a8f-45fb-a89c-2cd47bcbb068.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 7",
+      "id": "c94f3e81-357d-47cc-a208-db6a50ae13fd",
+      "name": "Assassination Classroom",
+      "tagline": "Season 2 Episode 15 - 'Confession Time'",
+      "overview": "Koro Sensei begins to come clean about his background after a tense and terrifying encounter with a student who has her own reasons to kill him.",
+      "imageName": "image-c94f3e81-357d-47cc-a208-db6a50ae13fd.png",
+      "latestImage": "Assassination Classroom - Season 2 Episode 15",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6042",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F7299",
       "mediaType": "episode",
-      "timestamp": "1625835750",
+      "timestamp": "1628960925",
       "origin": {
-        "name": "Re:ZERO -Starting Life in Another World-"
+        "name": "Assassination Classroom"
       },
       "episode": {
-        "name": "Friend",
+        "name": "Confession Time",
         "seasonNumber": "2",
-        "episodeNumber": "7"
+        "episodeNumber": "15"
       },
       "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/7"
+        "tmdbID": "62110",
+        "tmdbURL": "https://www.themoviedb.org/tv/62110/season/2/episode/15"
       }
     },
     {
-      "id": "139358f6-3397-4cfe-954a-aa35a0386fad",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 2 Episode 8 - 'The Value of Life'",
-      "overview": "Subaru was caught and confined by Garfiel, but Otto shows up to rescue him. Garfiel can’t leave the graveyard while Emilia is undergoing the trial, so Otto says this is their chance to get outside the barrier, but Subaru doesn’t agree. However, after he learns that Ram will be helping them—that she has been ordered by Roswaal to help him, in fact—Subaru puts his escape on hold to have a talk with Roswaal.",
-      "imageName": "image-139358f6-3397-4cfe-954a-aa35a0386fad.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 8",
+      "id": "c94f3e81-357d-47cc-a208-db6a50ae13fd",
+      "name": "Assassination Classroom",
+      "tagline": "Season 2 Episode 15 - 'Confession Time'",
+      "overview": "Koro Sensei begins to come clean about his background after a tense and terrifying encounter with a student who has her own reasons to kill him.",
+      "imageName": "image-c94f3e81-357d-47cc-a208-db6a50ae13fd.png",
+      "latestImage": "Assassination Classroom - Season 2 Episode 15",
       "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6043",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F7299",
       "mediaType": "episode",
-      "timestamp": "1625838955",
+      "timestamp": "1628960925",
       "origin": {
-        "name": "Re:ZERO -Starting Life in Another World-"
+        "name": "Assassination Classroom"
       },
       "episode": {
-        "name": "The Value of Life",
+        "name": "Confession Time",
         "seasonNumber": "2",
-        "episodeNumber": "8"
+        "episodeNumber": "15"
       },
       "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/8"
+        "tmdbID": "62110",
+        "tmdbURL": "https://www.themoviedb.org/tv/62110/season/2/episode/15"
       }
     },
     {
-      "id": "d59d1a15-bf0c-4040-a209-7f6bbffab34e",
-      "name": "Re:ZERO -Starting Life in Another World-",
-      "tagline": "Season 2 Episode 9 - 'Love Love Love Love Love Love You'",
-      "overview": "After being eaten alive by a herd of unknown creatures resembling rabbits, Subaru awakens in a half-maddened state next to Emilia in the graveyard. As he pounds his head against the rocky ground over and over in anguish, he finds himself invited once again to a witch’s tea party. There, he tells Echidna about his Return by Death ability, something he has never been able to tell anyone before. Echidna then begins to tell Subaru about the witch who gave him this power and set him on this agonizing path.",
-      "imageName": "image-d59d1a15-bf0c-4040-a209-7f6bbffab34e.png",
-      "latestImage": "Re:ZERO -Starting Life in Another World- - Season 2 Episode 9",
-      "region": "JP",
-      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F6044",
-      "mediaType": "episode",
-      "timestamp": "1625840719",
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981354",
       "origin": {
-        "name": "Re:ZERO -Starting Life in Another World-"
-      },
-      "episode": {
-        "name": "Love Love Love Love Love Love You",
-        "seasonNumber": "2",
-        "episodeNumber": "9"
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
       },
       "tmdb": {
-        "tmdbID": "65942",
-        "tmdbURL": "https://www.themoviedb.org/tv/65942/season/2/episode/9"
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981409",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981696",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981744",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981857",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981879",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628981958",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "deb5dc25-b55a-463e-94c6-bae8d85aff57",
+      "name": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "tagline": "Bye-bye, all of EVANGELION.",
+      "imageName": "image-deb5dc25-b55a-463e-94c6-bae8d85aff57.png",
+      "latestImage": "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F10992",
+      "mediaType": "movie",
+      "timestamp": "1628982014",
+      "origin": {
+        "name": "Evangelion: 3.0+1.0 Thrice Upon a Time"
+      },
+      "tmdb": {
+        "tmdbID": "283566",
+        "tmdbURL": "https://www.themoviedb.org/movie/283566"
+      }
+    },
+    {
+      "id": "fb0788bf-810f-433c-9cfd-fa2acb46a502",
+      "name": "Evangelion: 1.0 You Are (Not) Alone",
+      "tagline": "The rebuild of the groundbreaking giant robot anime (USA / Canada DVD / Blu-Ray Box Cover)",
+      "imageName": "image-fb0788bf-810f-433c-9cfd-fa2acb46a502.png",
+      "latestImage": "Evangelion: 1.0 You Are (Not) Alone",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F9847",
+      "mediaType": "movie",
+      "timestamp": "1628982149",
+      "origin": {
+        "name": "Evangelion: 1.0 You Are (Not) Alone"
+      },
+      "tmdb": {
+        "tmdbID": "15137",
+        "tmdbURL": "https://www.themoviedb.org/movie/15137"
+      }
+    },
+    {
+      "id": "fb0788bf-810f-433c-9cfd-fa2acb46a502",
+      "name": "Evangelion: 1.0 You Are (Not) Alone",
+      "tagline": "The rebuild of the groundbreaking giant robot anime",
+      "imageName": "image-fb0788bf-810f-433c-9cfd-fa2acb46a502.png",
+      "latestImage": "Evangelion: 1.0 You Are (Not) Alone",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F9847",
+      "mediaType": "movie",
+      "timestamp": "1628982192",
+      "origin": {
+        "name": "Evangelion: 1.0 You Are (Not) Alone"
+      },
+      "tmdb": {
+        "tmdbID": "15137",
+        "tmdbURL": "https://www.themoviedb.org/movie/15137"
+      }
+    },
+    {
+      "id": "94b9fef8-9dc9-4d42-b266-557210c6e969",
+      "name": "Evangelion: 3.0 You Can (Not) Redo",
+      "tagline": "What was destroyed can (not) be rebuilt.",
+      "imageName": "image-94b9fef8-9dc9-4d42-b266-557210c6e969.png",
+      "latestImage": "Evangelion: 3.0 You Can (Not) Redo",
+      "region": "EN",
+      "plexURL": "https://app.plex.tv/desktop#!/server/33e0bd1cdbff1466014213b3d4e8bca8acb5a53f/details?key=%2Flibrary%2Fmetadata%2F9813",
+      "mediaType": "movie",
+      "timestamp": "1628982231",
+      "origin": {
+        "name": "Evangelion: 3.0 You Can (Not) Redo"
+      },
+      "tmdb": {
+        "tmdbID": "75629",
+        "tmdbURL": "https://www.themoviedb.org/movie/75629"
       }
     }
   ]

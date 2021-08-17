@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressie</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Check for any server side changes and refresh if they exist-->
+    <script defer>
+        // fetch cache.json and save the length of the image arrays to localstorage
+        var cache;
+        fetch('/static/cache/cache.json')
+            .then(async (response) => {
+                if (response.ok) {
+                    cache = await response.json();
+                    localStorage.setItem('imageLength', cache.images.length);
+                }
+            }).catch((e) => {
+                // Catch Errors
+                console.log(e);
+            });
+
+        // every 60 seconds check if the image length isnt equal to the value in localstorage
+        setInterval(() => {
+            var intervalCache;
+            fetch('/static/cache/cache.json')
+                .then(async (response) => {
+                    if (response.ok) {
+                        intervalCache = await response.json();
+                        if (localStorage.getItem('imageLength') != intervalCache.images.length) {
+                            history.pushState(null, null, location.pathname + location.search);
+                            location.hash = '#' + `${intervalCache.recentImage}`;
+                            location.reload();
+                        }
+                    }
+                }).catch((e) => {
+                    // Catch Errors
+                    console.log(e);
+                });
+        }, 5000);
+    </script>
+</body>
+
+
+
+</html>

@@ -1,4 +1,5 @@
 // App config
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -10,11 +11,10 @@ const favicon = require('serve-favicon')
 app.use(morgan("dev"));
 
 // favicon
-app.use(favicon(path.join(__dirname, 'public', 'static', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 
 // register ejs
 app.set('view engine', 'ejs');
-app.set('views', 'public');
 
 // Express bodyparser
 app.use(
@@ -32,9 +32,9 @@ const webUI = require('./lib/views/index');
 app.use('/hooks/plex', plexHandle);
 
 // WebUI
-app.use('/static', express.static(path.join(__dirname, 'public/static')));
-app.use('/static/cache', express.static(path.join(__dirname, 'lib/images/cache')));
-app.use('/static/fonts/noto', express.static(path.join(__dirname, 'bin/fonts/NotoSans')));
+app.use('/static', express.static(path.join(__dirname, 'static')));
+app.use('/static/cache', express.static(path.join(__dirname, process.env.cache_dir)));
+app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts')));
 app.use('/', webUI);
 
 // Status endpoint
