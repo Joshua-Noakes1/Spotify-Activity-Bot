@@ -1,10 +1,10 @@
 {
   "name": "ressie",
   "version": "3.0.0",
-  "description": "Plex playback monitoring using tmdb",
+  "description": "Get personalised media cards from what you're watching on Plex. (With help from Tautulli)",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon -ignore *.json .",
+    "dev": "nodemon --ignore *.json .",
     "start": "node ."
   },
   "repository": {
@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "uuid": "^8.3.2"
   }
 }

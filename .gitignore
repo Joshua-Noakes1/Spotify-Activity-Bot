@@ -106,3 +106,5 @@ dist
 # extra
 lib/images/cache/*.png
 *.DS_Store
+auth.json
+config.json

@@ -2,8 +2,8 @@
 Get personalised media cards from what you're watching on [Plex](https://plex.tv) (With help from [Tautulli](https://tautulli.com/)).
 
 ### TODO
-- [ ] Rework the Auth module to be more secure
-- [ ] Console the image download functions   
+- [x] Rework the Auth module to be more secure
+- [x] Console the image download functions   
 - [ ] Migrate non-essentials .envs to a "config.json"
 - [ ] Secure pages 
 - [ ] Add random graident backgrounds 

@@ -1,5 +1,4 @@
 // App config
-require('dotenv').config();
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -33,11 +32,13 @@ const webUI = require('./lib/views/index');
 
 // static endpoints
 app.use('/static', express.static(path.join(__dirname, 'static')));
-app.use('/static/cache', express.static(path.join(__dirname, process.env.cache_dir))); // cache images
+app.use('/static/cache', express.static(path.join(__dirname, 'lib/images/cache', '*.png'))); // cache images
+app.use('/static/cache/cache.json', express.static(path.join(__dirname, 'lib/images/cache', 'cache.json'))); // cache json
 app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts'))); // fonts
 
 // webui
 app.use('/', webUI);
+
 
 // status endpoint
 app.get("/status", (req, res) => {

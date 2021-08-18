@@ -8,12 +8,12 @@ const fs = require('fs');
  * @param {Object} JSON data 
  * @returns {null} Saved JSON data
  */
-function saveJSON(filename, jsonData) {
+function saveJSON(filename, jsonData, suppress) {
     try {
-        console.log(`[Success] Saved JSON data "${filename}"`);
+        if (!suppress) console.log(`[Success] Saved JSON data "${filename}"`);
         return fs.writeFileSync(filename, JSON.stringify(jsonData, null, 2));
     } catch (e) {
-        console.log(`[Error] Failed to save JSON data "${filename}"\n`);
+        if (!suppress) console.log(`[Error] Failed to save JSON data "${filename}"\n`);
         if (process.env.dev == 'true') console.log(e);
         return;
     }
@@ -25,20 +25,21 @@ function saveJSON(filename, jsonData) {
  * @param {String} String filename
  * @returns {Object} JSON data
  */
-function readJSON(filename) {
+function readJSON(filename, suppress) {
     if (fs.existsSync(filename)) {
         try {
-            console.log(`[Success] Read JSON data "${filename}"`);
+            if (!suppress) console.log(`[Success] Read JSON data "${filename}"`);
             return JSON.parse(fs.readFileSync(filename).toString());
         } catch (e) {
-            console.log(`[Error] Failed to read JSON data "${filename}"\n`);
+            if (!suppress) console.log(`[Error] Failed to read JSON data "${filename}"\n`);
             if (process.env.dev == 'true') console.log(e);
             return;
         }
     } else {
-        console.log(`[Error]: File Not Found "${filename}"`);
+        if (!suppress) console.log(`[Error]: File Not Found "${filename}"`);
         return {
-            "error": "Data Not Found"
+            "success": false,
+            "message": "Failed to read file",
         };
     }
 }
