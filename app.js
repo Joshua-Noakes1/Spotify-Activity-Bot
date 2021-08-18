@@ -32,8 +32,8 @@ const webUI = require('./lib/views/index');
 
 // static endpoints
 app.use('/static', express.static(path.join(__dirname, 'static')));
-app.use('/static/cache', express.static(path.join(__dirname, 'lib/images/cache', '*.png'))); // cache images
-app.use('/static/cache/cache.json', express.static(path.join(__dirname, 'lib/images/cache', 'cache.json'))); // cache json
+app.use('/static/images', express.static(path.join(__dirname, 'static/cache', '*.png'))); // cache images
+app.use('/static/cache.json', express.static(path.join(__dirname, 'lib/cache', 'cache.json'))); // cache json
 app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts'))); // fonts
 
 // webui

@@ -105,6 +105,7 @@ dist
 
 # extra
 lib/images/cache/*.png
+*.old
 *.DS_Store
 auth.json
 config.json

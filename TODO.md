@@ -4,12 +4,12 @@ Get personalised media cards from what you're watching on [Plex](https://plex.tv
 ### TODO
 - [x] Rework the Auth module to be more secure
 - [x] Console the image download functions   
-- [ ] Migrate non-essentials .envs to a "config.json"
-- [ ] Secure pages 
-- [ ] Add random graident backgrounds 
-- [ ] Rework JIMP image generation and possibly move to Sharp  
+- [x] Migrate non-essentials .envs to a "config.json"
+- [x] Secure pages 
+- [-] Rework JIMP image generation and possibly move to Sharp  
 - [ ] Fix the bad text quality in said image generation  
 - [ ] Re-Write ejs file to fit new image standard
+- [ ] Add random graident backgrounds 
 - [ ] Add Spotify support to media cards 
 - [ ] Re-Add auto twitter posting 
 - [ ] Add Third-Party media card hosting (cloudinary, Imgur) [Optional]  

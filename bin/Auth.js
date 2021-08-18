@@ -1,4 +1,3 @@
-require('dotenv').config();
 const path = require('path');
 const {
     v4: uuidv4
@@ -24,8 +23,12 @@ if (authConfig.success == false) {
     console.log(`APIKey: [${authConfig.APIKey}]`);
 }
 
-
+/**
+ * check if a user is authenctaed
+ */
 function checkAuth(APIKey, next) {
+    // read in, in case its been changed externally 
+    var authConfig = readJSON(path.join(__dirname, '../', 'config', 'auth.json'), true);
     if (APIKey != authConfig.APIKey) {
         const error = new Error("Authentication error");
         error.status = 401;
