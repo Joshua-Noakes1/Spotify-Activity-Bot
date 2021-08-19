@@ -1,0 +1,36 @@
+{
+  "name": "ressie",
+  "version": "3.0.0",
+  "description": "Get personalised media cards from what you're watching on Plex (With help from Tautulli)",
+  "main": "server.js",
+  "bin": {
+    "ressie": "auth.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon --ignore *.json server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joshua-Noakes1/Ressie.git"
+  },
+  "author": "joshua-noakes1",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Joshua-Noakes1/Ressie/issues"
+  },
+  "homepage": "https://github.com/Joshua-Noakes1/Ressie#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cli-color": "^2.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0",
+    "uuid": "^8.3.2"
+  }
+}

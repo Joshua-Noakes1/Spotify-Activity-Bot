@@ -4,40 +4,41 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require('path');
-const favicon = require('serve-favicon')
+const favicon = require('serve-favicon');
 
 // Express dev
 app.use(morgan("dev"));
 
 // favicon
-app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')));
 
 // register ejs
 app.set('view engine', 'ejs');
 
 // Express bodyparser
+app.use(bodyParser.json());
 app.use(
     bodyParser.urlencoded({
         extended: false,
     })
 );
-app.use(bodyParser.json());
+
 
 // modules
 // const plexHandle = require('./lib/plex/plexHandle');
-const webUI = require('./lib/views/index');
+// const webUI = require('./lib/views/index');
 
 // endpoints
 // app.use('/hooks/plex', plexHandle);
 
 // static endpoints
-app.use('/static', express.static(path.join(__dirname, 'static')));
-app.use('/static/images', express.static(path.join(__dirname, 'static/cache', '*.png'))); // cache images
-app.use('/static/cache.json', express.static(path.join(__dirname, 'lib/cache', 'cache.json'))); // cache json
-app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts'))); // fonts
+// app.use('/static', express.static(path.join(__dirname, 'static')));
+// app.use('/static/images', express.static(path.join(__dirname, 'static/cache', '*.png'))); // cache images
+// app.use('/static/cache.json', express.static(path.join(__dirname, 'lib/cache', 'cache.json'))); // cache json
+// app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts'))); // fonts
 
 // webui
-app.use('/', webUI);
+// app.use('/', webUI);
 
 
 // status endpoint
@@ -50,7 +51,7 @@ app.get("/status", (req, res) => {
 
 // 500 and 404 error
 app.use((req, res, next) => {
-    const error = new Error("Page not found")
+    const error = new Error("Page not found");
     error.status = 404;
     next(error);
 });

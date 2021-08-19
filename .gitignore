@@ -104,8 +104,7 @@ dist
 .tern-port
 
 # extra
-lib/images/cache/*.png
 *.old
 *.DS_Store
-auth.json
-config.json
+config/config.json
+config/auth.json
