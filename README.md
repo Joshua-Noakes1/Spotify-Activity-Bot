@@ -1,7 +1,8 @@
 # Ressie
 
 ## About
-Get personalised media cards from what you're watching on [Plex](https://plex.tv) (With help from [Tautulli](https://tautulli.com/)).    
+
+Get personalised media cards from what you're watching on [Plex](https://plex.tv) (With help from [Tautulli](https://tautulli.com/)).
 
 # Attribution
 

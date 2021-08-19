@@ -5,23 +5,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
-## [0.0.1.a] 2021-06-24
-### Added 
-- Cache feature and its 'cacheTable.json'
-- Randon number generator - thanks SO - https://stackoverflow.com/a/21816636
-### Changed
-- How image.js saves and caches images
-
-## [0.0.1] - 2021-06-23
-### Added
-- Caching to Images to save the computer and TMDB API
-- Darkened background when an image is light to help text appear more clear
-
-### Changed
-- Pretty Boy Detective Club project homepage image
-- movie.js TMDB_ID to id
-- default background image
-
-### Removed
-- the .testing folder (Which shouldnt of been commited in the first place but it still happened; i do have to say it was funny doe)
+V3
