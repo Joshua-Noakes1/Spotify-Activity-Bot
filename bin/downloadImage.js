@@ -12,6 +12,7 @@ async function downloadImage(url, imageProvider) {
                 console.log(clc.green('[Success]'), `Grabbed image "${url}" from provider "${imageProvider || 'Unknown'}"`);
             } else {
                 console.log(clc.red('[Fail]'), `Failed to grab image "${url}" from provider "${imageProvider || 'Unknown'}"`);
+                buffer = false;
             }
         })
         .catch((err) => {

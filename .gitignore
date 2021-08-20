@@ -108,3 +108,4 @@ dist
 *.DS_Store
 config/config.json
 config/auth.json
+cache/cache.json
