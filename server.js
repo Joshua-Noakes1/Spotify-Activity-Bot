@@ -1,12 +1,13 @@
 require('dotenv').config();
+const clc = require('cli-color');
 const http = require('http');
 const app = require('./app');
 
 // defaults to port 3000 if no port can be found
-const port = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 // create server
 const server = http.createServer(app);
-server.listen(port);
+server.listen(PORT);
 
-console.log(`Started server on port ${port}`);
+console.log(clc.blue('[Info]'), `Started server on port`, clc.green(`${PORT}`),);

@@ -10,7 +10,7 @@ const favicon = require('serve-favicon');
 app.use(morgan("dev"));
 
 // favicon
-app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'static', 'favicon', 'favicon.ico')));
 
 // register ejs
 app.set('view engine', 'ejs');
@@ -25,17 +25,15 @@ app.use(
 
 
 // modules
-// const plexHandle = require('./lib/plex/plexHandle');
-// const webUI = require('./lib/views/index');
+const plex = require('./lib/routes/plex');
+const static = require('./lib/routes/static');
 
 // endpoints
-// app.use('/hooks/plex', plexHandle);
+app.use('/hooks/plex', plex);
+app.use('/static', static);
 
 // static endpoints
-// app.use('/static', express.static(path.join(__dirname, 'static')));
-// app.use('/static/images', express.static(path.join(__dirname, 'static/cache', '*.png'))); // cache images
-// app.use('/static/cache.json', express.static(path.join(__dirname, 'lib/cache', 'cache.json'))); // cache json
-// app.use('/static/fonts', express.static(path.join(__dirname, 'bin/fonts'))); // fonts
+
 
 // webui
 // app.use('/', webUI);

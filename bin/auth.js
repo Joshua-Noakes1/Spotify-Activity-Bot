@@ -27,7 +27,9 @@ if (auth.success != true) {
 function checkAuth(APIKey, next) {
     // re-load auth incase its been changed
     auth = readJSON(path.join(__dirname, '../', 'config', 'auth.json'), true);
+    
     if (APIKey != auth.APIKey) {
+        console.log(clc.yellow('[Warn]'), `Authentication error`);
         const error = new Error("Authentication error");
         error.status = 401;
         next(error);

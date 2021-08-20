@@ -1,0 +1,17 @@
+{
+  "APIKey": "xxxxx",
+  "user": "Joshua Noakes",
+  "media": {
+    "type": "episode",
+    "playback": {
+      "name": "Assassination Classroom",
+      "title": "Discord Time",
+      "summary": "The E class is divided over whether to kill Koro Sensei or try to save him. Koro Sensei suggests a way of settling the issue between the two sides.",
+      "season": "2",
+      "episode": "17",
+      "plexURL": "xxxxx",
+      "posterURL": "xxxxx"
+    },
+    "tmdbID": "62110"
+  }
+}

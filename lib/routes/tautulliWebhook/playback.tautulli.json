@@ -1,0 +1,22 @@
+{
+    "APIKey": "xxxxx",
+    "user": "{username}",
+    "media": {
+        "type": "{media_type}",
+        "playback": {
+            <movie>
+            "name": "{episode_name}",
+            "tagline": "{tagline}",
+            </movie>
+            <episode>
+            "name": "{show_name}",
+            "episodeName": "{episode_name}",
+            "seasonNumber": "{season_num}",
+            "episodeNumber": "{episode_num}",
+            </episode>
+            "plexURL": "{plex_url}",
+            "posterURL": "{poster_url}"
+        },
+        "tmdbID": "{themoviedb_id}"
+    }
+}
