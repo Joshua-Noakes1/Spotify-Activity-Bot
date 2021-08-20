@@ -18,7 +18,7 @@ function saveJSON(filename, data, suppress) {
         if (!suppress) console.log(clc.green('[Success]'), `Saved JSON data ${filename}`);
         return writeFileSync(filename, JSON.stringify(data, null, 2));
     } catch (err) {
-        if (!suppress) console.log(clc.red('[Error]'), `Failed to save JSON data "${filename}"`);
+        if (!suppress) console.log(clc.red('[Fail]'), `Failed to save JSON data "${filename}"`);
         return console.log(err);
     }
 }
@@ -35,11 +35,11 @@ function readJSON(filename, suppress) {
             if (!suppress) console.log(clc.green('[Success]'), `Read JSON data "${filename}"`);
             return JSON.parse(readFileSync(filename).toString());
         } catch (err) {
-            if (!suppress) console.log(clc.red('[Error]'), `Failed to read JSON data "${filename}"`);
+            if (!suppress) console.log(clc.red('[Fail]'), `Failed to read JSON data "${filename}"`);
             return console.log(err);
         }
     } else {
-        if (!suppress) console.log(clc.red('[Error]'), `: File Not Found "${filename}"`);
+        if (!suppress) console.log(clc.red('[Fail]'), `: File Not Found "${filename}"`);
         return {
             "success": false,
             "message": "Failed to read file",
