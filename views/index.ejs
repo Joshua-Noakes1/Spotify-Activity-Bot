@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressie</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+    <style>
+        /* Register font family notosans */
+        @font-face {
+            font-family: NotoSansReg;
+            src: url('/static/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: NotoSansBold;
+            src: url('/static/fonts/NotoSans/NotoSans-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: bold;
+        }
+
+        /* Start content */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .titleLink {
+            color: #fff;
+        }
+
+        .notoReg {
+            font-family: NotoSansReg, sans-serif;
+        }
+
+        .notoBold {
+            font-family: NotoSansBold, sans-serif;
+        }
+
+        .contentBtn {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a id="title" class="navbar-brand notoReg">Ressie</a>
+                <a href="https://github.com/joshua-noakes1/ressie" target="_blank">
+                    <button id="github-btn" class="btn btn-secondary my-2 my-sm-0">Github</button></a>
+            </div>
+        </nav>
+        <!-- App Content -->
+        <div class="container py-4 text-center">
+            <% if (images.length > 0) { %>
+            <% images.forEach(image => { %>
+            <div id="<%= image.id %>" class="card text-white bg-dark h-100 p-5 mb-3 rounded-3 shadow">
+                <a href="#<%= image.id %>" class="titleLink">
+                    <h3 class="card-header rounded notoBold"><%= image.name %></h3>
+                </a>
+                <% if (image.tagline != "") { %>
+                <div class="card-body">
+                    <h5 class="card-title notoReg"><%= image.tagline %></h5>
+                </div>
+                <% } else { %>
+                <br>
+                <% } %>
+                <img id="image-image" src="/static/images/image-<%= image.id %>.png" class="rounded" width="85%"
+                    height="85%" focusable="false" style="display:block;margin:auto;"></img>
+                <% if (image.type == 'episode') { %>
+                <div class="card-body">
+                    <p class="card-text notoReg"><%= image.summary %></p>
+                </div>
+                <% } else { %>
+                <br>
+                <% } %>
+                <span>
+                    <% if (image.tmdbID != '000000') { %>
+                    <a href="<%= image.URL.tmdb %>" target="_blank">
+                        <button id="github-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View on
+                            TMDB</button></a>
+                    <% } %>
+                    <a href="<%= image.URL.plex %>" target="_blank">
+                        <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
+                            style="color:#333">View
+                            on Plex</button></a>
+                </span>
+            </div>
+            <br>
+            <% }); %>
+            <% } else { %>
+            <!-- Missing Content Card -->
+            <div class="card text-white bg-dark h-100 p-5 mb-3 rounded-3 shadow">
+                <h3 class="card-header rounded notoBold">No cards made</h3>
+                <div class="card-body">
+                    <h5 class="card-title notoReg">No media cards have been created yet.</h5>
+                    <a href="https://app.plex.tv" target="_blank">
+                        <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
+                            style="color:#333">Get Watching!</button></a>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Check for any server side changes and refresh if they exist-->
+    <script>
+        // fetch cache.json and save the length of the image arrays to localstorage
+        var cache;
+        fetch('/static/cache.json')
+            .then(async (response) => {
+                if (response.ok) {
+                    cache = await response.json();
+                    localStorage.setItem('imageLength', cache.images.length);
+                }
+            }).catch((e) => {
+                // Catch Errors
+                console.log(e);
+            });
+
+        // every 60 seconds check if the image length isnt equal to the value in localstorage
+        setInterval(() => {
+            var intervalCache;
+            fetch('/static/cache.json')
+                .then(async (response) => {
+                    if (response.ok) {
+                        intervalCache = await response.json();
+                        if (localStorage.getItem('imageLength') != intervalCache.images.length) {
+                            history.pushState(null, null, location.pathname + location.search);
+                            location.hash = '#' + `${intervalCache.recentImage}`;
+                            location.reload();
+                        }
+                    }
+                }).catch((e) => {
+                    // Catch Errors
+                    console.log(e);
+                });
+        }, (2 * 60) * 1000);
+    </script>
+</body>
+
+
+
+</html>

@@ -25,19 +25,14 @@ app.use(
 
 
 // modules
-const plex = require('./lib/routes/plex');
+const webUI = require('./lib/routes/webui');
 const static = require('./lib/routes/static');
+const plex = require('./lib/routes/plex');
 
 // endpoints
-app.use('/hooks/plex', plex);
+app.use('/', webUI);
 app.use('/static', static);
-
-// static endpoints
-
-
-// webui
-// app.use('/', webUI);
-
+app.use('/hooks/plex', plex);
 
 // status endpoint
 app.get("/status", (req, res) => {
