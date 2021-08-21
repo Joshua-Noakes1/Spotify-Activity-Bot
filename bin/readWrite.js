@@ -32,8 +32,9 @@ function saveJSON(filename, data, suppress) {
 function readJSON(filename, suppress) {
     if (existsSync(filename)) {
         try {
+            var json = JSON.parse(readFileSync(filename).toString());
             if (!suppress) console.log(clc.green('[Success]'), `Read JSON data "${filename}"`);
-            return JSON.parse(readFileSync(filename).toString());
+            return json;
         } catch (err) {
             if (!suppress) console.log(clc.red('[Fail]'), `Failed to read JSON data "${filename}"`);
             return console.log(err);

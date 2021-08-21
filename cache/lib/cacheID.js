@@ -11,7 +11,7 @@ function getID(data) {
     var UUID = '';
 
     // load cache
-    var cache = (readJSON(path.join(__dirname, '../', 'cache.json'), true));
+    var cache = readJSON(path.join(__dirname, '../', 'cache.json'), true);
 
     // makes cache if it doesnt exist
     if (cache.success != true) {
@@ -20,15 +20,15 @@ function getID(data) {
             "recentImage": "0",
             "images": []
         }, true);
-        cache = (readJSON(path.join(__dirname, '../', 'cache.json'), true));
+        cache = readJSON(path.join(__dirname, '../', 'cache.json'), true);
     }
 
     // loop through all images and check if we have a match based on name, episode and season
     cache.images.forEach((images) => {
-        if (images.origin.name == data.name) {
+        if (images.name == data.name) {
             switch (data.type) {
                 case 'episode':
-                    if (images.episode.season == data.season && images.episode.episode == data.episode) UUID = image.id;
+                    if (images.season == data.season && images.episode == data.episode) UUID = images.id;
                     break;
                 case 'movie':
                     UUID = image.id;
