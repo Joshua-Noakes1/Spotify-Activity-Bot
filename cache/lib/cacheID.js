@@ -33,6 +33,8 @@ function getID(data) {
                 case 'movie':
                     UUID = images.id;
                     break;
+                case 'music':
+                    UUID = images.id;
             }
         }
     });

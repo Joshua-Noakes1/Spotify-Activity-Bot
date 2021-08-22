@@ -13,14 +13,14 @@
         /* Register font family notosans */
         @font-face {
             font-family: NotoSansReg;
-            src: url('/static/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype');
+            src: url('/static/fonts/NotoSans/NotoSans-Regular.otf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: NotoSansBold;
-            src: url('/static/fonts/NotoSans/NotoSans-Bold.ttf') format('truetype');
+            src: url('/static/fonts/NotoSans/NotoSans-Bold.otf') format('truetype');
             font-weight: normal;
             font-style: bold;
         }
@@ -88,15 +88,22 @@
                 <br>
                 <% } %>
                 <span>
-                    <% if (image.tmdbID != '000000') { %>
-                    <a href="<%= image.URL.tmdb %>" target="_blank">
-                        <button id="github-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View on
-                            TMDB</button></a>
+                    <% if (image.type != 'music') { %>
+                        <% if (image.tmdbID != '000000') { %>
+                        <a href="<%= image.URL.tmdb %>" target="_blank">
+                            <button id="github-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View on
+                                TMDB</button></a>
+                        <% } %>
+                        <a href="<%= image.URL.plex %>" target="_blank">
+                            <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
+                                style="color:#333">View
+                                on Plex</button></a>
+                    <% } else { %>
+                        <a href="<%= image.URL.spotify %>" target="_blank">
+                            <button id="github-btn" class="btn btn-success contentBtn my-2 my-sm-0 notoReg"
+                                style="color:#333">Listen
+                                on Spotify</button></a>
                     <% } %>
-                    <a href="<%= image.URL.plex %>" target="_blank">
-                        <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
-                            style="color:#333">View
-                            on Plex</button></a>
                 </span>
             </div>
             <br>
