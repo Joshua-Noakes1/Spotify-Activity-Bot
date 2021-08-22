@@ -124,6 +124,7 @@
             .then(async (response) => {
                 if (response.ok) {
                     cache = await response.json();
+                    localStorage.setItem('recentImage', cache.recentImage);
                     localStorage.setItem('imageLength', cache.images.length);
                 }
             }).catch((e) => {
@@ -138,6 +139,15 @@
                 .then(async (response) => {
                     if (response.ok) {
                         intervalCache = await response.json();
+
+                        // reused image
+                        if (localStorage.getItem('recentImage') != intervalCache.recentImage) {
+                            history.pushState(null, null, location.pathname + location.search);
+                            location.hash = '#' + `${intervalCache.recentImage}`;
+                            location.reload();
+                        }
+
+                        // new images
                         if (localStorage.getItem('imageLength') != intervalCache.images.length) {
                             history.pushState(null, null, location.pathname + location.search);
                             location.hash = '#' + `${intervalCache.recentImage}`;

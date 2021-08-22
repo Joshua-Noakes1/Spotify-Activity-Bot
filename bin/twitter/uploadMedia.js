@@ -19,28 +19,24 @@ async function uploadMedia(buffer) {
     var tweetStatus = true;
     var attempt = 0;
 
-    if (config.twitter.useTwitter == true) {
-        do {
-            try {
-                var tweet = await client.post('media/upload', {
-                    "media": buffer
-                });
-                console.log(clc.blue('[Info]'), `Uploaded media to Twitter`);
-                return tweet;
-            } catch (err) {
-                if (attempt > 2) {
-                    console.red(clc.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
-                    attempt++;
-                } else {
-                    console.red(clc.red('[Fail]'), `Failed to upload media to Twitter`);
-                    console.log(err);
-                    return false;
-                }
+    do {
+        try {
+            var tweet = await client.post('media/upload', {
+                "media": buffer
+            });
+            console.log(clc.green('[Success]'), `Uploaded media to Twitter`);
+            return tweet;
+        } catch (err) {
+            if (attempt > 2) {
+                console.red(clc.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
+                attempt++;
+            } else {
+                console.red(clc.red('[Fail]'), `Failed to upload media to Twitter`);
+                console.log(err);
+                return false;
             }
-        } while (tweetStatus == true);
-    } else {
-        console.log(clc.blue('[Info]'), `Twitter disabled`);
-    }
+        }
+    } while (tweetStatus == true);
 }
 
 module.exports = {

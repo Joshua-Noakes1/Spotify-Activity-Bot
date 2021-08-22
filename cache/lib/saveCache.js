@@ -24,6 +24,19 @@ async function saveCache(data, image) {
     console.log(clc.green('[Success]'), `Saved 'image-${data.id}.png' to disk`);
 }
 
+async function updateCache(data) {
+    console.log(clc.blue('[Info]'), `Updating cache (${data.id})`);
+    // load cache
+    var cache = readJSON(path.join(__dirname, '../', 'cache.json'), true);
+
+    // save data to cache.json
+    cache.recentImage = data.id;
+    saveJSON(path.join(__dirname, '../', 'cache.json'), cache, true);
+
+    console.log(clc.green("[Success]"), `Updated cache (${data.id})`);
+}
+
 module.exports = {
-    saveCache
+    saveCache,
+    updateCache
 }

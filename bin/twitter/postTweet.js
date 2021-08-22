@@ -22,31 +22,29 @@ async function postTweet(data) {
     var tweetStatus = true;
     var attempt = 0;
 
-    var twtmedia = await uploadMedia(data.media);
-
-    if (config.twitter.useTwitter == true) {
-        do {
-            try {
-                var tweet = await client.post('statuses/update', {
-                    "status": data.status,
-                    "media_ids": twtmedia.media_id_string != '' ? twtmedia.media_id_string : ""
-                });
-                console.log(clc.blue('[Info]'), `Posted tweet`);
-                return tweet;
-            } catch (err) {
-                if (attempt > 2) {
-                    console.log(clc.red('[Fail]'), `Failed to post tweet, trying again (attempt ${attempt})`);
-                    attempt++;
-                } else {
-                    console.log(clc.red('[Fail]'), `Failed to post tweet`);
-                    console.log(err);
-                    return false;
-                }
-            }
-        } while (tweetStatus == true);
-    } else {
-        console.log(clc.blue('[Info]'), `Twitter disabled`);
+    if (data.media != "") {
+        var twtmedia = await uploadMedia(data.media);
     }
+
+    do {
+        try {
+            var tweet = await client.post('statuses/update', {
+                "status": data.status,
+                "media_ids": twtmedia.media_id_string != '' ? twtmedia.media_id_string : ""
+            });
+            console.log(clc.green('[Success]'), `Posted tweet - https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`);
+            return tweet;
+        } catch (err) {
+            if (attempt > 2) {
+                console.log(clc.red('[Fail]'), `Failed to post tweet, trying again (attempt ${attempt})`);
+                attempt++;
+            } else {
+                console.log(clc.red('[Fail]'), `Failed to post tweet`);
+                console.log(err);
+                return false;
+            }
+        }
+    } while (tweetStatus == true);
 }
 module.exports = {
     postTweet

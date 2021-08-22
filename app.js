@@ -23,16 +23,17 @@ app.use(
     })
 );
 
-
 // modules
 const webUI = require('./lib/routes/webui');
 const static = require('./lib/routes/static');
 const plex = require('./lib/routes/plex');
+const spotify = require('./lib/routes/spotify');
 
 // endpoints
 app.use('/', webUI);
 app.use('/static', static);
 app.use('/hooks/plex', plex);
+app.use('/hooks/spotify', spotify);
 
 // status endpoint
 app.get("/status", (req, res) => {

@@ -31,7 +31,7 @@ function getID(data) {
                     if (images.season == data.season && images.episode == data.episode) UUID = images.id;
                     break;
                 case 'movie':
-                    UUID = image.id;
+                    UUID = images.id;
                     break;
             }
         }
