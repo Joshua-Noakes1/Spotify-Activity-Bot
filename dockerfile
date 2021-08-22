@@ -1,5 +1,5 @@
-# Slim NodeJS image base
-FROM node:16.5.0-slim
+# Node Image
+FROM node:16.7.0
 WORKDIR /usr/src/app
 
 # install nodejs packages
