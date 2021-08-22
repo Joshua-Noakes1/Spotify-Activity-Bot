@@ -1,0 +1,21 @@
+{
+    "movieDB": "xxxx",
+    "tautulliName": "Joshua Noakes",
+    "twitter": {
+        "useTwitter": false,
+        "user": "xxxx",
+        "APIKey": "xxxx",
+        "APISecret": "xxxx",
+        "accessToken": "xxxx",
+        "accessSecret": "xxxx"
+    },
+    "thridparty": {
+        "useThirdparty": false,
+        "cloudinary": {
+            "cloudName": "xxxx",
+            "APIkey": "xxxx",
+            "APISecret": "xxxx"
+        }
+    },
+    "dev": false
+}

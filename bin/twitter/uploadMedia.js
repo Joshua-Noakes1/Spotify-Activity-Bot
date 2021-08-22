@@ -21,12 +21,14 @@ async function uploadMedia(buffer) {
 
     do {
         try {
+            // upload media
             var tweet = await client.post('media/upload', {
                 "media": buffer
             });
             console.log(clc.green('[Success]'), `Uploaded media to Twitter`);
             return tweet;
         } catch (err) {
+            // catch errors
             if (attempt > 2) {
                 console.red(clc.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
                 attempt++;

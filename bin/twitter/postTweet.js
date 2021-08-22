@@ -2,8 +2,7 @@ const path = require('path');
 const clc = require('cli-color');
 const Twitter = require('twitter');
 const {
-    readJSON,
-    saveJSON
+    readJSON
 } = require('../readWrite');
 const {
     uploadMedia
@@ -28,6 +27,7 @@ async function postTweet(data) {
 
     do {
         try {
+            // tweet
             var tweet = await client.post('statuses/update', {
                 "status": data.status,
                 "media_ids": twtmedia.media_id_string != '' ? twtmedia.media_id_string : ""
@@ -35,6 +35,7 @@ async function postTweet(data) {
             console.log(clc.green('[Success]'), `Posted tweet - https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`);
             return tweet;
         } catch (err) {
+            // catch errors
             if (attempt > 2) {
                 console.log(clc.red('[Fail]'), `Failed to post tweet, trying again (attempt ${attempt})`);
                 attempt++;

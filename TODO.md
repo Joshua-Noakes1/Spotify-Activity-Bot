@@ -7,8 +7,8 @@ Get personalised media cards from what you're watching on [Plex](https://plex.tv
 - [x] Migrate non-essentials .envs to a "config.json"
 - [x] Fix the bad text quality in said image generation  
 - [x] Re-Write ejs file to fit new image standard
-- [ ] Add random graident backgrounds 
-- [ ] Add Spotify support to media cards 
-- [ ] Re-Add auto twitter posting 
-- [ ] Add Third-Party media card hosting (cloudinary, Imgur) [Optional]  
+- [x] Add random graident backgrounds 
+- [x] Add Spotify support to media cards 
+- [x] Re-Add auto twitter posting 
+- [x] Add Third-Party media card hosting (cloudinary, Imgur) [Optional]  
 - [ ] Make a github pages example

@@ -10,20 +10,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
     <style>
-        /* Register font family notosans */
-        @font-face {
-            font-family: NotoSansReg;
-            src: url('/static/fonts/NotoSans/NotoSans-Regular.otf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: NotoSansBold;
-            src: url('/static/fonts/NotoSans/NotoSans-Bold.otf') format('truetype');
-            font-weight: normal;
-            font-style: bold;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:wght@400;700&display=swap');
 
         /* Start content */
         html {
@@ -39,11 +26,13 @@
         }
 
         .notoReg {
-            font-family: NotoSansReg, sans-serif;
+            font-family: Noto Sans JP, Noto Sans, sans-serif;
+            font-weight: 400;
         }
 
         .notoBold {
-            font-family: NotoSansBold, sans-serif;
+            font-family: Noto Sans JP, Noto Sans, sans-serif;
+            font-weight: 700;
         }
 
         .contentBtn {
@@ -78,8 +67,9 @@
                 <% } else { %>
                 <br>
                 <% } %>
-                <img id="image-image" src="/static/images/image-<%= image.id %>.png" class="rounded" width="85%"
-                    height="85%" focusable="false" style="display:block;margin:auto;"></img>
+                <img id="image-image" <% if (!image.URL.image) { %> src="/static/images/image-<%= image.id %>.png"
+                    <% } else { %> src="<%= image.URL.image %>" <% } %>class="rounded" width="100%" height="100%"
+                    focusable="false" style="display:block;margin:auto;"></img>
                 <% if (image.type == 'episode') { %>
                 <div class="card-body">
                     <p class="card-text notoReg"><%= image.summary %></p>
@@ -89,20 +79,20 @@
                 <% } %>
                 <span>
                     <% if (image.type != 'music') { %>
-                        <% if (image.tmdbID != '000000') { %>
-                        <a href="<%= image.URL.tmdb %>" target="_blank">
-                            <button id="github-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View on
-                                TMDB</button></a>
-                        <% } %>
-                        <a href="<%= image.URL.plex %>" target="_blank">
-                            <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
-                                style="color:#333">View
-                                on Plex</button></a>
+                    <% if (image.tmdbID != '000000') { %>
+                    <a href="<%= image.URL.tmdb %>" target="_blank">
+                        <button id="github-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View on
+                            TMDB</button></a>
+                    <% } %>
+                    <a href="<%= image.URL.plex %>" target="_blank">
+                        <button id="github-btn" class="btn btn-warning contentBtn my-2 my-sm-0 notoReg"
+                            style="color:#333">View
+                            on Plex</button></a>
                     <% } else { %>
-                        <a href="<%= image.URL.spotify %>" target="_blank">
-                            <button id="github-btn" class="btn btn-success contentBtn my-2 my-sm-0 notoReg"
-                                style="color:#333">Listen
-                                on Spotify</button></a>
+                    <a href="<%= image.URL.spotify %>" target="_blank">
+                        <button id="github-btn" class="btn btn-success contentBtn my-2 my-sm-0 notoReg"
+                            style="color:#333">Listen
+                            on Spotify</button></a>
                     <% } %>
                 </span>
             </div>
