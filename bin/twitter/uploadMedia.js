@@ -30,10 +30,10 @@ async function uploadMedia(buffer) {
         } catch (err) {
             // catch errors
             if (attempt > 2) {
-                console.red(clc.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
+                console.log(clc.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
                 attempt++;
             } else {
-                console.red(clc.red('[Fail]'), `Failed to upload media to Twitter`);
+                console.log(clc.red('[Fail]'), `Failed to upload media to Twitter`);
                 console.log(err);
                 return false;
             }
