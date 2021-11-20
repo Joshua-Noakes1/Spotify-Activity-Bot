@@ -1,5 +1,5 @@
 const path = require('path');
-const clc = require('cli-color');
+const lcl = require('cli-color');
 const Twitter = require('twitter');
 const {
     readJSON,
@@ -25,15 +25,15 @@ async function uploadMedia(buffer) {
             var tweet = await client.post('media/upload', {
                 "media": buffer
             });
-            console.log(clc.green('[Success]'), `Uploaded media to Twitter`);
+            console.log(lcl.green('[Success]'), `Uploaded media to Twitter`);
             return tweet;
         } catch (err) {
             // catch errors
             if (attempt > 2) {
-                console.log(clc.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
+                console.log(lcl.red('[Fail]'), `Failed to upload media to Twitter, trying again (attempt ${attempt})`);
                 attempt++;
             } else {
-                console.log(clc.red('[Fail]'), `Failed to upload media to Twitter`);
+                console.log(lcl.red('[Fail]'), `Failed to upload media to Twitter`);
                 console.log(err);
                 return false;
             }

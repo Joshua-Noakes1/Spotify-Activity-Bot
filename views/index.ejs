@@ -39,7 +39,15 @@
             margin-left: 5px;
             margin-right: 5px;
         }
+
+        #image-image {
+            width: 100%;
+            height: 100%;
+        }
     </style>
+    <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"
+        integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
@@ -53,7 +61,7 @@
             </div>
         </nav>
         <!-- App Content -->
-        <div class="container py-4 text-center">
+        <div id="cards" class="container py-4 text-center">
             <% if (images.length > 0) { %>
             <% images.forEach(image => { %>
             <div id="<%= image.id %>" class="card text-white bg-dark h-100 p-5 mb-3 rounded-3 shadow">
@@ -68,8 +76,8 @@
                 <br>
                 <% } %>
                 <img id="image-image" <% if (!image.URL.image) { %> src="/static/images/image-<%= image.id %>.png"
-                    <% } else { %> src="<%= image.URL.image %>" <% } %>class="rounded" loading="lazy" width="100%" height="100%"
-                    focusable="false" style="display:block;margin:auto;"></img>
+                    <% } else { %> src="<%= image.URL.image %>" <% } %>class="rounded" loading="lazy" focusable="false"
+                    style="display:block;margin:auto;"></img>
                 <% if (image.type == 'episode') { %>
                 <div class="card-body">
                     <p class="card-text notoReg"><%= image.summary %></p>
@@ -113,49 +121,132 @@
         </div>
     </div>
 
-    <!-- Check for any server side changes and refresh if they exist-->
-    <script>
-        // fetch cache.json and save the length of the image arrays to localstorage
-        var cache;
-        fetch('/static/cache.json')
-            .then(async (response) => {
-                if (response.ok) {
-                    cache = await response.json();
-                    localStorage.setItem('recentImage', cache.recentImage);
-                    localStorage.setItem('imageLength', cache.images.length);
-                }
-            }).catch((e) => {
-                // Catch Errors
-                console.log(e);
-            });
+    <!-- Await for changes from Socket.io -->
+    <script defer>
+        // make connection to socket.io
+        var socket = io.connect(`${location.protocol}//${location.hostname}:${location.port}`);
 
-        // every 60 seconds check if the image length isnt equal to the value in localstorage
-        setInterval(() => {
-            var intervalCache;
-            fetch('/static/cache.json')
-                .then(async (response) => {
-                    if (response.ok) {
-                        intervalCache = await response.json();
+        // websocket event listener
+        socket.on('connect', function () {
+            console.log(`[Success] New websocket connection, Auto-Updates Enabled (ID: "${socket.id}")`);
+        });
+        socket.io.on("error", function () {
+            console.log(`[Error] Lost websocket connection, Auto-Updates Disabled`);
+        });
 
-                        // reused image
-                        if (localStorage.getItem('recentImage') != intervalCache.recentImage) {
-                            history.pushState(null, null, location.pathname + location.search);
-                            location.hash = '#' + `${intervalCache.recentImage}`;
-                            location.reload();
-                        }
+        // update new image from server
+        socket.on('fileChanged', function (image) {
+            // base image block
+            var newImage = document.createElement('div');
+            newImage.id = image.id;
+            newImage.classList = "card text-white bg-dark h-100 p-5 mb-3 rounded-3 shadow";
 
-                        // new images
-                        if (localStorage.getItem('imageLength') != intervalCache.images.length) {
-                            history.pushState(null, null, location.pathname + location.search);
-                            location.hash = '#' + `${intervalCache.recentImage}`;
-                            location.reload();
-                        }
+            // title block
+            var newTitleLink = document.createElement('a');
+            newTitleLink.classList = "titleLink";
+            newTitleLink.href = "#" + image.id;
+            var newTitle = document.createElement('h3');
+            newTitle.classList = "card-header rounded notoBold";
+            newTitle.innerHTML = image.name;
+            newTitleLink.appendChild(newTitle);
+            newImage.appendChild(newTitleLink);
+
+            // tagline block
+            if (image.tagline != "") {
+                var newTagline = document.createElement('div');
+                newTagline.classList = "card-body";
+                var newTaglineTitle = document.createElement('h5');
+                newTaglineTitle.classList = "card-title notoReg";
+                newTaglineTitle.innerHTML = image.tagline;
+                newTagline.appendChild(newTaglineTitle);
+                newImage.appendChild(newTagline);
+            }
+
+            // image block
+            var newImageBlock = document.createElement('img');
+            newImageBlock.id = "image-image";
+            if (!image.URL.image) {
+                newImageBlock.src = "/static/images/image-" + image.id + ".png";
+            } else {
+                newImageBlock.src = image.URL.image;
+            }
+            newImageBlock.classList = "rounded";
+            newImageBlock.loading = "lazy";
+            newImageBlock.focusable = "false";
+            newImageBlock.style = "display:block;margin:auto;";
+            newImage.appendChild(newImageBlock);
+
+            // summary block
+            if (image.summary) {
+                var newSummary = document.createElement('div');
+                newSummary.classList = "card-body";
+                var newSummaryText = document.createElement('p');
+                newSummaryText.classList = "card-text notoReg";
+                newSummaryText.innerHTML = image.summary;
+                newSummary.appendChild(newSummaryText);
+                newImage.appendChild(newSummary);
+            }
+
+            // image break block
+            var newImageBreak = document.createElement('br');
+            newImage.appendChild(newImageBreak);
+
+            // buttons block
+            switch (image.type) {
+                case 'episode':
+                case 'movie':
+                    var newButtons = document.createElement('span');
+                    if (image.tmdbID != '000000') {
+                        var newTmdbButton = document.createElement('a');
+                        newTmdbButton.href = image.URL.tmdb;
+                        newTmdbButton.target = "_blank";
+                        var newTmdbButtonText = document.createElement('button');
+                        newTmdbButtonText.id = "github-btn";
+                        newTmdbButtonText.classList = "btn btn-primary contentBtn my-2 my-sm-0 notoReg";
+                        newTmdbButtonText.innerHTML = "View on TMDB";
+                        newTmdbButton.appendChild(newTmdbButtonText);
+                        newButtons.appendChild(newTmdbButton);
                     }
-                }).catch((e) => {
-                    // Catch Errors
-                    console.log(e);
-                });
-        }, (2 * 60) * 1000);
+                    var newPlexButton = document.createElement('a');
+                    newPlexButton.href = image.URL.plex;
+                    newPlexButton.target = "_blank";
+                    var newPlexButtonText = document.createElement('button');
+                    newPlexButtonText.id = "github-btn";
+                    newPlexButtonText.classList = "btn btn-warning contentBtn my-2 my-sm-0 notoReg";
+                    newPlexButtonText.innerHTML = "Watch on Plex";
+                    newPlexButton.appendChild(newPlexButtonText);
+                    newButtons.appendChild(newPlexButton);
+                    newImage.appendChild(newButtons);
+                    break;
+                case 'music':
+                    var newButtons = document.createElement('span');
+                    var newSpotifyButton = document.createElement('a');
+                    newSpotifyButton.href = image.URL.spotify;
+                    newSpotifyButton.target = "_blank";
+                    var newSpotifyButtonText = document.createElement('button');
+                    newSpotifyButtonText.id = "github-btn";
+                    newSpotifyButtonText.classList = "btn btn-success contentBtn my-2 my-sm-0 notoReg";
+                    newSpotifyButtonText.innerHTML = "Listen on Spotify";
+                    newSpotifyButton.appendChild(newSpotifyButtonText);
+                    newButtons.appendChild(newSpotifyButton);
+                    newImage.appendChild(newButtons);
+                    break;
+            }
+
+            // create new image break
+            var newImageBreak = document.createElement('br');
+            document.getElementById('cards').prepend(newImageBreak);
+
+            // prepend to the image container
+            document.getElementById('cards').prepend(newImage);
+
+            // reload the page to the new image
+            history.pushState(null, null, location.pathname + location.search);
+            location.hash = '#' + `${image.id}`;
+
+            // log the update
+            console.log(`[Update] New Image: ${image.name} (${image.type} - ${image.id})`);
+        });
     </script>
 </body>
 

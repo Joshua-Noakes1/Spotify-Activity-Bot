@@ -9,7 +9,7 @@
         "accessToken": "xxxx",
         "accessSecret": "xxxx"
     },
-    "thridparty": {
+    "thirdparty": {
         "useThirdparty": false,
         "cloudinary": {
             "cloudName": "xxxx",

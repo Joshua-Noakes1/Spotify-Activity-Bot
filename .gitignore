@@ -110,3 +110,6 @@ config/config.json
 config/auth.json
 cache/cache.json
 static/images/*
+docker-images/
+*.crt
+*.key

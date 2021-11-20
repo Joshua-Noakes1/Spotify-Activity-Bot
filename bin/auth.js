@@ -1,5 +1,5 @@
 const path = require('path');
-const clc = require('cli-color');
+const lcl = require('cli-color');
 const {
     v4: uuidv4
 } = require('uuid');
@@ -11,7 +11,7 @@ const {
 // on load check for auth
 var auth = readJSON(path.join(__dirname, '../', 'config', 'auth.json'), true);
 if (auth.success != true) {
-    console.log(clc.blue('[Info]'), `Generating API Key`);
+    console.log(lcl.blue('[Info]'), `Generating API Key`);
     // use uuid to create unique API key for this install
     var APIKey = uuidv4();
     // save new API key to auth.json
@@ -19,9 +19,9 @@ if (auth.success != true) {
         "success": true,
         APIKey
     }, true);
-    console.log(clc.green('[Success]'), `APIKey: [${APIKey}]`);
+    console.log(lcl.green('[Success]'), `APIKey: [${APIKey}]`);
 } else {
-    console.log(clc.blue('[Info]'), `APIKey: [${auth.APIKey}]`);
+    console.log(lcl.blue('[Info]'), `APIKey: [${auth.APIKey}]`);
 }
 
 function checkAuth(APIKey, next) {
@@ -29,7 +29,7 @@ function checkAuth(APIKey, next) {
     auth = readJSON(path.join(__dirname, '../', 'config', 'auth.json'), true);
     
     if (APIKey != auth.APIKey) {
-        console.log(clc.yellow('[Warn]'), `Authentication error`);
+        console.log(lcl.yellow('[Warn]'), `Authentication error`);
         const error = new Error("Authentication error");
         error.status = 401;
         next(error);

@@ -1,5 +1,5 @@
 const path = require('path');
-const clc = require('cli-color');
+const lcl = require('cli-color');
 const Twitter = require('twitter');
 const {
     readJSON
@@ -32,15 +32,15 @@ async function postTweet(data) {
                 "status": data.status,
                 "media_ids": twtmedia.media_id_string != '' ? twtmedia.media_id_string : ""
             });
-            console.log(clc.green('[Success]'), `Posted tweet - https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`);
+            console.log(lcl.green('[Success]'), `Posted tweet - https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`);
             return tweet;
         } catch (err) {
             // catch errors
             if (attempt > 2) {
-                console.log(clc.red('[Fail]'), `Failed to post tweet, trying again (attempt ${attempt})`);
+                console.log(lcl.red('[Fail]'), `Failed to post tweet, trying again (attempt ${attempt})`);
                 attempt++;
             } else {
-                console.log(clc.red('[Fail]'), `Failed to post tweet`);
+                console.log(lcl.red('[Fail]'), `Failed to post tweet`);
                 console.log(err);
                 return false;
             }

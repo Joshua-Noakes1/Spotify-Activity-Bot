@@ -6,9 +6,9 @@ const {
 const config = readJSON(path.join(__dirname, '../', '../', 'config', 'config.json'), true);
 
 cloudinary.config({
-    cloud_name: config.thridparty.cloudinary.cloudName,
-    api_key: config.thridparty.cloudinary.APIkey,
-    api_secret: config.thridparty.cloudinary.APISecret
+    cloud_name: config.thirdparty.cloudinary.cloudName,
+    api_key: config.thirdparty.cloudinary.APIkey,
+    api_secret: config.thirdparty.cloudinary.APISecret
 });
 
 async function uploadCloudinary(imagePath, id) {
