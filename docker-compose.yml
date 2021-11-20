@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   ressie:
-    image: ressie
+    image: ghcr.io/joshua-noakes1/ressie
     environment:
       - TZ=Europe/London
       - port=3000
