@@ -1,7 +1,11 @@
-version: '3.2'
+version: '3'
 services:
   ressie:
-    image: ghcr.io/joshua-noakes1/ressie
+    image: ressie
+    container_name: ressie
+    restart: unless-stopped
+    ports:
+      - 3000:3000
     environment:
       - TZ=Europe/London
       - port=3000
@@ -17,8 +21,6 @@ services:
       - cloudinaryCloudName=default
       - cloudinaryAPIKey=0
       - cloudinaryAPISecret=0
-    ports:
-      - "3000:3000"
     volumes:
       - ./config:/usr/src/app/config
       - ./cache:/usr/src/app/cache
