@@ -188,8 +188,10 @@
             }
 
             // image break block
-            var newImageBreak = document.createElement('br');
-            newImage.appendChild(newImageBreak);
+            if (!image.summary) {
+                var newImageBreak = document.createElement('br');
+                newImage.appendChild(newImageBreak);
+            }
 
             // buttons block
             switch (image.type) {
