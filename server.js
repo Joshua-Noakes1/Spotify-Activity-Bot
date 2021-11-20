@@ -4,14 +4,21 @@ const app = require("./app");
 var http = require("http").Server(app);
 const { setupConfig } = require("./lib/config");
 const { socketio } = require("./lib/sockets");
-socketio(http);
-setupConfig();
 
-// defaults to port 3000 if no port can be found
-const port = process.env.port || 3000;
+(async () => {
+  await socketio(http);
+  await setupConfig();
 
-// create server
-http.listen(port);
+  // defaults to port 3000 if no port can be found
+  const port = process.env.port || 3000;
 
-// log server start
-console.log(lcl.blue("[Info]"), `Started server on port`, lcl.green(`${port}`));
+  // create server
+  http.listen(port);
+
+  // log server start
+  console.log(
+    lcl.blue("[Info]"),
+    `Started server on port`,
+    lcl.green(`${port}`)
+  );
+})();

@@ -7,7 +7,7 @@ RUN apt update && apt upgrade -y && apt install build-essential libcairo2-dev li
 
 # Copy files over and make directories
 COPY . .
-RUN mkdir -p /usr/src/app/static/images && mkdir -p /usr/src/app/cache
+RUN mkdir -p /usr/src/app/static/images && mkdir -p /usr/src/app/cache && mkdir -p /usr/src/app/config
 
 # install nodejs packages
 COPY package*.json ./
