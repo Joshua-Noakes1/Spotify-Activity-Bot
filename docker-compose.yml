@@ -1,7 +1,7 @@
 version: '3'
 services:
   ressie:
-    image: ressie
+    image: ghcr.io/joshua-noakes1/ressie
     container_name: ressie
     restart: unless-stopped
     ports:
@@ -11,7 +11,7 @@ services:
       - port=3000
       - movieDB=0
       - tautulliName=user
-      - useTwitter=false,
+      - useTwitter=false
       - twitterUser=user
       - twitterAPIKey=0
       - twitterAPISecret=0
