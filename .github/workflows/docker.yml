@@ -1,9 +1,11 @@
 # Build docker buildx for Amd64, Arm64 and ArmV7
 name: Docker-BuildX-CI-MultiArch
 
-# Only build on pushes to master and to ghcr:master
+# Only build on pushes
 on:
   push:
+      branches:
+      - "trunk"
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
