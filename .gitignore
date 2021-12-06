@@ -104,12 +104,7 @@ dist
 .tern-port
 
 # extra
-*.old
-*.DS_Store
-config/config.json
-config/auth.json
-cache/cache.json
-static/images/*
-docker-images/
-*.crt
-*.key
+*.old*
+*.DS_Store*
+*.mongo*
+*apiKey.json*
