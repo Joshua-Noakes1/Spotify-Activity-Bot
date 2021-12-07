@@ -25,6 +25,6 @@ app.use('/api', require('./api/router'));
 // Start the server
 const port = process.env.port || 3000;
 app.listen(port, async function () {
-    console.log(lcl.blue("[Info]"), `APIKey: ${await require('./api/middleware/auth/createAuth.js')().apiKey}`);
+    await require('./api/middleware/auth/createAuth.js')(true);
     console.log(lcl.blue("[Info]"), "Server started on port", lcl.yellow(port));
 });

@@ -8,7 +8,7 @@ const router = express.Router();
 
 // look to see if img exists; then send to client
 router.post('/', verifyAuth, async function (req, res) {
-    switch (req.body.type) {
+    switch (req.body.service) {
         case 'plex':
             return await require('./plex/plexRouter')(req, res);
         case 'spotify':
