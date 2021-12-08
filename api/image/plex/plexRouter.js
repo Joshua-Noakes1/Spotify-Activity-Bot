@@ -32,8 +32,8 @@ async function plexImageRouter(req, res) {
                     // get episode data
                     var tmdbformatData = {
                         success: true,
-                        title: tmdbData.data["season/" + tautulli.media.season_number + "/episode/" + tautulli.media.episode_number].name != '' ? tmdbData.data["season/" + tautulli.media.season_number + "/episode/" + tautulli.media.episode_number].name : tautulli.media.episode_name,
-                        summary: tmdbData.data["season/" + tautulli.media.season_number + "/episode/" + tautulli.media.episode_number].overview,
+                        title: tmdbData.data.name != '' ? tmdbData.data.name : tautulli.media.episode_name,
+                        tagline: tmdbData.data["season/" + tautulli.media.season_number + "/episode/" + tautulli.media.episode_number].name !== '' ? `Season ${tautulli.media.season_number} Episode ${tautulli.media.episode_number} - ${tmdbData.data["season/" + tautulli.media.season_number + "/episode/" + tautulli.media.episode_number].name}` : `Season ${tautulli.media.season_number} Episode ${tautulli.media.episode_number} - ${tautulli.media.episode_name}`,
                         images: {
                             poster: `https://image.tmdb.org/t/p/original${tmdbData.data.poster_path}`,
                             backdrop: `https://image.tmdb.org/t/p/original${tmdbData.data["season/" + tautulli.media.season_number + "/episode/" + tautulli.media.episode_number].still_path}`,
@@ -43,6 +43,7 @@ async function plexImageRouter(req, res) {
                 default:
                     return console.log(lcl.red("[Error]"), `9/10 times this will never happen...`);
             }
+            console.log({before:tmdbformatData});
         }
 
         // create image card data
@@ -54,7 +55,7 @@ async function plexImageRouter(req, res) {
                 backdrop: ''
             },
             positions: {
-                poster: [530, 945]
+                poster: [550, 975, 500, 750]
             }
         }
 
@@ -64,11 +65,12 @@ async function plexImageRouter(req, res) {
             imgData.tagline = tmdbformatData.tagline;
             imgData.images = tmdbformatData.images;
         }
-        if (tautulli.media.type === 'episode') imgData.tagline = `Season ${tautulli.media.season_number} Episode ${tautulli.media.episode_number}`;
 
         // downloading images
         imgData.images.poster = await downloadImages(imgData.images.poster);
         if (imgData.images.backdrop != '') imgData.images.backdrop = await downloadImages(imgData.images.backdrop);
+
+        console.log(imgData);
 
         // build image card
         var imageCard = await require('../imgCanvas/createImage')(imgData);
