@@ -41,7 +41,7 @@ async function plexImageRouter(req, res) {
                     }
                     break;
                 default:
-                    return console.log(lcl.red("[Error]"), `9/10 times this will never happen...`);
+                    return console.log(lcl.red("[Error]"), `9/10 times this will never happen...`); //** TODO: This should cause a res.status(500)? */
             }
             console.log({before:tmdbformatData});
         }
