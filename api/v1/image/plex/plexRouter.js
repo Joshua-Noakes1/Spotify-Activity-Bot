@@ -12,7 +12,7 @@ async function plexImageRouter(req, res) {
         console.log(lcl.blue("[Info]"), `New image card for "${tautulli.media.name}"`);
 
         // try tmdb lookup
-        const tmdbData = await require('./middleware/tmdb/tmdbLookup')(tautulli, tautulli.tmdbID);
+        const tmdbData = await require('./tmdb/tmdbLookup')(tautulli, tautulli.tmdbID);
         if (tmdbData.success) {
             // if tmdb lookup successful, extract data
             switch (tautulli.media.type) {
