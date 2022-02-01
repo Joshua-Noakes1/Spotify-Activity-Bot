@@ -101,6 +101,8 @@ async function createImageCard(imgData) {
 
     var imgBuffer = await canvas.toBuffer('image/png');
 
+    console.log(lcl.green("[Image - Success]"), "Image card created");
+
     return {
         success: true,
         buffer: imgBuffer
