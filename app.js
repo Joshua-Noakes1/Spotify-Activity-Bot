@@ -16,11 +16,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-app.use('/public', express.static(__dirname + '/public'));
 
-// routers
-app.use('/api', require('./api/router'));
-
+// routes
+app.use('/public', express.static(__dirname + '/public')); // /public
+app.use('/api', require('./api/router')); // /api
 
 // Start the server
 const port = process.env.port || 3000;

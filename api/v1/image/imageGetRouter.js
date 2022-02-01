@@ -1,6 +1,6 @@
 const fs = require('fs'),
     path = require('path'),
-    verifyAuth = require('../middleware/auth/checkAuth'),
+    verifyAuth = require('../../middleware/auth/checkAuth'),
     express = require('express');
 
 // global express router
