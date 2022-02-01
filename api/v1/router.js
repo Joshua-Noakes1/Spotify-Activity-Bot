@@ -14,11 +14,24 @@ router.get('/', async function (req, res) {
 router.post('/image/create', verifyAuth, async function (req, res) { // /api/v1/image/create
     switch (req.body.service) {
         case 'plex':
-            return await require('./plex/plexRouter')(req, res);
+            const plexImage = await require('./image/plex/plexRouter')(req.body);
+            if (!plexImage.success) {
+                return res.status(plexImage.code || 500).json({
+                    success: false,
+                    message: plexImage.message
+                });
+            }
+            return res.status(200).json(plexImage);
         case 'spotify':
-            return res.status(404).send('Not Implemented');
+            return res.status(404).send({
+                success: false,
+                message: 'Not Implemented'
+            });
         default:
-            return res.status(400).send('Bad Request - Method not supported');
+            return res.status(400).json({
+                success: false,
+                message: 'Bad Request - Method not supported'
+            });
     }
 });
 
@@ -30,7 +43,10 @@ router.get('/image/get', verifyAuth, async function (req, res) { // /api/v1/imag
         res.setHeader('Content-Type', 'image/png');
         return res.sendFile(path.join(__dirname, '../', '../', 'public', 'images', `${imgID}.png`));
     }
-    return res.status(404).send('Image not found');
+    return res.status(404).json({
+        status: false,
+        message: 'Image not found'
+    });
 });
 
 module.exports = router;
