@@ -1,8 +1,11 @@
 require('dotenv').config();
 const lcl = require('cli-color'),
+    {
+        v4: uuidv4
+    } = require('uuid'),
     downloadImages = require('../imgCanvas/middleware/downloadImages');
 
-// get all media from tautulli and pass to imgCanvas
+// get all media from tautulli and pass to imgCanvas //TODO Add image lookup in json file
 async function plexImageRouter(tautulli) {
     if (process.env.TAUTULLI_NAME === tautulli.user) {
         console.log(tautulli);
@@ -11,7 +14,7 @@ async function plexImageRouter(tautulli) {
         console.log(lcl.blue("[Info]"), `New image card for "${tautulli.media.name}"`);
 
         // try tmdb lookup
-        const tmdbData = await require('./tmdb/tmdbLookup')(tautulli, tautulli.tmdbID);
+        const tmdbData = await require('./middleware/tmdb/tmdbLookup')(tautulli);
         if (tmdbData.success) {
             // if tmdb lookup successful, extract data
             switch (tautulli.media.type) {
@@ -41,10 +44,6 @@ async function plexImageRouter(tautulli) {
                     break;
                 default:
                     console.log(lcl.yellow("[Plex Image - Warn]"), "Unknown media type");
-                    return res.status(400).json({
-                        status: false,
-                        message: "Media Type Not Supported"
-                    });
             }
         }
 
@@ -74,6 +73,8 @@ async function plexImageRouter(tautulli) {
 
         // build image card
         var imageCard = await require('../imgCanvas/createImage')(imgData);
+
+
 
         return {
             success: true,

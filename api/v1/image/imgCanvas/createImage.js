@@ -100,7 +100,6 @@ async function createImageCard(imgData) {
     canvasTxt.drawText(ctx, imgData.tagline, 58, 260, 1160, 120);
 
     var imgBuffer = await canvas.toBuffer('image/png');
-    fs.writeFileSync('./testImage.png', imgBuffer);
 
     return {
         success: true,
