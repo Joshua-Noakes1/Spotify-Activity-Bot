@@ -47,6 +47,8 @@ async function plexImageRouter(tautulli) {
             await fs.writeFileSync(path.join(__dirname, '../', '../', '../', '../', 'public', 'images', `${uuidv4()}.png`), imageCard.buffer);
         }
 
+        // save image and data of image
+
         return {
             success: true,
             "message": "Image Card Created"
