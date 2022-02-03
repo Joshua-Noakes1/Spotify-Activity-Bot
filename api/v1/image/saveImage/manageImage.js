@@ -62,4 +62,4 @@ async function getImage(imageName) {
     return imageCard;
 }
 
-module.exports = saveImage;
+module.exports = {getImage, saveImage};
