@@ -2,10 +2,10 @@ const lcl = require('cli-color'),
     compression = require('compression'),
     cors = require('cors'),
     morgan = require('morgan'),
-    bodyParser = require("body-parser")
-express = require('express');
+    bodyParser = require("body-parser"),
+    express = require('express');
 
-// const global app object
+// global express
 const app = express();
 
 // express middlewares
@@ -14,16 +14,29 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 
-// routes
-app.use('/public', express.static(__dirname + '/public')); // /public
-app.use('/api', require('./api/router')); // /api
+// express routes
+app.use('/api', require('./api/router'));
 
-// Start the server
-const port = process.env.port || 3000;
+// express error handler
+app.use((req, res, next) => {
+    const error = new Error("Page not found");
+    error.status = 404;
+    next(error);
+});
+
+app.use((error, req, res, next) => {
+    res.status(error.status || 500).json({
+        "success": false,
+        "message": error.message,
+    });
+});
+
+
+// start express server
+const port = process.env.PORT || 3000;
 app.listen(port, async function () {
-    await require('./api/middleware/auth/createAuth.js')(true);
-    console.log(lcl.blue("[Info]"), "Server started on port", lcl.yellow(port));
+    console.log(lcl.blue("[Express - Info]"), "Started on port", lcl.yellow(port));
 });
