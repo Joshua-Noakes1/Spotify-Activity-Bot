@@ -1,9 +1,9 @@
-const lcl = require('cli-color'),
-    compression = require('compression'),
-    cors = require('cors'),
-    morgan = require('morgan'),
+const lcl = require("cli-color"),
+    compression = require("compression"),
+    cors = require("cors"),
+    morgan = require("morgan"),
     bodyParser = require("body-parser"),
-    express = require('express');
+    express = require("express");
 
 // global express
 const app = express();
@@ -11,14 +11,14 @@ const app = express();
 // express middlewares
 app.use(compression());
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
 // express routes
-app.use('/api', require('./api/router'));
+app.use("/api", require("./api/router"));
 
 // express error handler
 app.use((req, res, next) => {
