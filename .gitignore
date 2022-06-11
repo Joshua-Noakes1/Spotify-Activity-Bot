@@ -106,3 +106,5 @@ dist
 # extra
 *.old*
 *.png
+!test-light.png
+!test-dark.png
