@@ -2,5 +2,6 @@
 
 Personlised media cards
 
-# Attrributes
- - [The Spotify Developer API](https://developer.spotify.com/)
+## Attrributes
+
+- [The Spotify Developer API](https://developer.spotify.com/)
