@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Api routes
 router.get('/', function (req, res) {
-    res.redirect(307, '/api/v1/');
+    res.redirect(307, '/api/v3/');
 });
 
 // v3
