@@ -4,10 +4,9 @@ const router = express.Router();
 
 // Api routes
 router.get('/', function (req, res) {
-    res.redirect(307, '/api/v1/');
+    res.redirect(307, 'https://github.com/joshua-noakes1/IRyS');
 });
 
-// v3
-router.use('/v3', require('./v3/router'));
+router.use('/spotify/playback', require('./spotify/playback'));
 
 module.exports = router;
