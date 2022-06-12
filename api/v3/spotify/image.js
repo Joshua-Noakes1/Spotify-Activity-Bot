@@ -17,7 +17,7 @@ router.get('/:id', async function (req, res) {
         res.contentType('image/png');
         return res.send(localImage);
     } else {
-        res.status(404).json({success: false, message: "Image not found."});
+        return res.status(404).json({success: false, message: "Image not found."});
     }
 });
 

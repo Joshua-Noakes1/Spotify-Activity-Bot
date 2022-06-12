@@ -66,7 +66,10 @@ router.post('/', async function (req, res) {
 
     // save song info to file
     var songJson = await readJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'));
-    if (!songJson.success) var songJson = {success: true, data: []};
+    if (!songJson.success) var songJson = {
+        success: true,
+        data: []
+    };
     songJson.data.push({
         id: req.body.trackId,
         title: song.title,
@@ -78,12 +81,6 @@ router.post('/', async function (req, res) {
         success: true,
         url: '/api/v3/spotify/image/' + req.body.trackId
     });
-
-    // return res.status(200).json({
-    //     success: true,
-    //     message: "Image created!",
-    //     url: "https://example.com"
-    // });
 });
 
 module.exports = router;
