@@ -4,6 +4,10 @@ const lcl = require('cli-color'),
     createImage = require('../../../lib/canvas/createImage'),
     express = require('express'),
     {
+        readJSON,
+        writeJSON
+    } = require('../../../lib/readWrite'),
+    {
         writeFileSync,
         existsSync
     } = require('fs'),
@@ -25,7 +29,10 @@ router.post('/', async function (req, res) {
     // send already made images
     if (existsSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`))) {
         console.log(lcl.blue('[Image - Info]'), "Image already exists, sending...");
-        return res.status(200).json({success: true, url: '/api/v3/spotify/image/' + req.body.trackId});
+        return res.status(200).json({
+            success: true,
+            url: '/api/v3/spotify/image/' + req.body.trackId
+        });
     }
 
     // get song from spotify api
@@ -54,10 +61,23 @@ router.post('/', async function (req, res) {
     // create image
     const image = await createImage(song);
 
-     // write image to file
-     writeFileSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`), image.image);
+    // write image to file
+    writeFileSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`), image.image);
 
-     return res.status(200).json({success: true, url: '/api/v3/spotify/image/' + req.body.trackId});
+    // save song info to file
+    var songJson = await readJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'));
+    if (!songJson.success) var songJson = {success: true, data: []};
+    songJson.data.push({
+        id: req.body.trackId,
+        title: song.title,
+        artist: song.artist
+    });
+    await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson);
+
+    return res.status(200).json({
+        success: true,
+        url: '/api/v3/spotify/image/' + req.body.trackId
+    });
 
     // return res.status(200).json({
     //     success: true,

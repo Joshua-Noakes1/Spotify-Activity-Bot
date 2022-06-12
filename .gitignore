@@ -178,5 +178,5 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/node,macos
 *.old*
 *.png
-!test-light.png
-!test-dark.png
+*.json
+!nodemon.json
