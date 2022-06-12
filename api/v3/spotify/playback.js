@@ -4,7 +4,6 @@ const lcl = require('cli-color'),
     createImage = require('../../../lib/canvas/createImage'),
     express = require('express'),
     {
-        readFileSync,
         writeFileSync,
         existsSync
     } = require('fs'),
@@ -17,17 +16,16 @@ const router = express.Router();
 
 // Api routes
 router.get('/', function (req, res) {
-    res.status(400).json({
+    res.status(405).json({
         success: false,
         message: 'This endpoint only supports POST requests.'
     });
 });
 router.post('/', async function (req, res) {
+    // send already made images
     if (existsSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`))) {
         console.log(lcl.blue('[Image - Info]'), "Image already exists, sending...");
-        var localImage = await readFileSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`));
-        res.contentType('image/png');
-        return res.send(localImage);
+        return res.status(200).json({success: true, url: '/api/v3/spotify/image/' + req.body.trackId});
     }
 
     // get song from spotify api
@@ -59,8 +57,7 @@ router.post('/', async function (req, res) {
      // write image to file
      writeFileSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`), image.image);
 
-    res.contentType('image/png');
-    res.send(image.image);
+     return res.status(200).json({success: true, url: '/api/v3/spotify/image/' + req.body.trackId});
 
     // return res.status(200).json({
     //     success: true,
