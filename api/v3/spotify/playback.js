@@ -65,7 +65,7 @@ router.post('/', async function (req, res) {
     writeFileSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`), image.image);
 
     // save song info to file
-    var songJson = await readJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'));
+    var songJson = await readJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), true);
     if (!songJson.success) var songJson = {
         success: true,
         data: []
@@ -75,7 +75,7 @@ router.post('/', async function (req, res) {
         title: song.title,
         artist: song.artist
     });
-    await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson);
+    await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson, true);
 
     return res.status(200).json({
         success: true,
