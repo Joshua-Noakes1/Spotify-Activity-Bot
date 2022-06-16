@@ -70,13 +70,16 @@ router.post('/', async function (req, res) {
         success: true,
         data: []
     };
-    songJson.data.push({
-        id: req.body.trackId,
-        title: song.title,
-        artist: song.artist
-    });
+    if (!songJson.data.find(song => song.id === req.body.trackId)) {
+        songJson.data.push({
+            id: req.body.trackId,
+            title: song.title,
+            artist: song.artist
+        });
+    }
     await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson, true);
-
+    
+    // return image url
     return res.status(200).json({
         success: true,
         url: '/api/v3/spotify/image/' + req.body.trackId
