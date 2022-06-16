@@ -12,13 +12,13 @@ const lcl = require('cli-color'),
 async function auth(req, res, next) {
     const apiKey = req.headers['apiKey'] || req.body['apiKey'] || req.query['apiKey'];
     if (!apiKey) {
-        return res.status(401).send('No API key provided');
-    }
-    if (apiKey !== await getAuth()) {
-        return res.status(401).send('Invalid API key');
+        return res.status(401).json({success: false, message: 'No API key provided'});
     }
     if (!validateUUID(apiKey)) {
-        return res.status(401).send('Invalid API key');
+        return res.status(401).json({success: false, message: 'Invalid API key'});
+    }
+    if (apiKey !== await getAuth()) {
+        return res.status(401).json({success: false, message: 'Invalid API key'});
     }
     next();
 }
