@@ -3,6 +3,9 @@ const lcl = require("cli-color"),
     cors = require("cors"),
     morgan = require("morgan"),
     bodyParser = require("body-parser"),
+    {
+        getAuth
+    } = require('./api/middleware/auth/apiKey'),
     express = require("express");
 
 // global express
@@ -38,5 +41,6 @@ app.use((error, req, res, next) => {
 // start express server
 const port = process.env.PORT || 3000;
 app.listen(port, async function () {
+    await getAuth(true);
     console.log(lcl.blue("[Express - Info]"), "Started on port", lcl.yellow(port));
 });

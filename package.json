@@ -32,7 +32,8 @@
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.7",
     "path": "^0.12.7",
-    "spotify-url-info": "^3.1.2"
+    "spotify-url-info": "^3.1.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

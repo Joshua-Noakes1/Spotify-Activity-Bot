@@ -4,6 +4,9 @@ const lcl = require('cli-color'),
     createImage = require('../../../lib/canvas/createImage'),
     express = require('express'),
     {
+        auth
+    } = require('../../middleware/auth/apiKey'),
+    {
         readJSON,
         writeJSON
     } = require('../../../lib/readWrite'),
@@ -25,7 +28,7 @@ router.get('/', function (req, res) {
         message: 'This endpoint only supports POST requests.'
     });
 });
-router.post('/', async function (req, res) {
+router.post('/', auth, async function (req, res) {
     // send already made images
     if (existsSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`))) {
         console.log(lcl.blue('[Image - Info]'), "Image already exists, sending...");
@@ -78,7 +81,7 @@ router.post('/', async function (req, res) {
         });
     }
     await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson, true);
-    
+
     // return image url
     return res.status(200).json({
         success: true,
