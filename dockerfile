@@ -1,22 +1,18 @@
-# https://stackoverflow.com/a/71073989
-FROM python:alpine3.15
-WORKDIR /app
+# Node Image
+FROM node
+WORKDIR /usr/src/app
 
-# Install NodeJS v16.x
-RUN \
-    apk update && \
-    apk add nodejs npm && \
-    apk add imagemagick && \
-    rm -rf /var/cache/apk/*
+# Install deps
+RUN apt update && apt upgrade -y && apt install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y
 
-# Copy Files
+# Copy files over and make directories
 COPY . .
 
-# Install dependencies
+# install nodejs packages
+COPY package*.json ./
 RUN npm install
 
-# Expose Web
+# Expose ports 3000
 EXPOSE 3000
 
-# Start app
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
