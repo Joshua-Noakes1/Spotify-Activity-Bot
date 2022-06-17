@@ -4,6 +4,9 @@ const lcl = require('cli-color'),
     createImage = require('../../../lib/canvas/createImage'),
     express = require('express'),
     {
+        handle
+    } = require('../../../lib/twitter/tweetHandler'),
+    {
         auth
     } = require('../../middleware/auth/apiKey'),
     {
@@ -29,15 +32,6 @@ router.get('/', function (req, res) {
     });
 });
 router.post('/', auth, async function (req, res) {
-    // send already made images
-    if (existsSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`))) {
-        console.log(lcl.blue('[Image - Info]'), "Image already exists, sending...");
-        return res.status(200).json({
-            success: true,
-            url: '/api/v3/spotify/image/' + req.body.trackId
-        });
-    }
-
     // get song from spotify api
     var song;
     try {
@@ -58,6 +52,23 @@ router.post('/', auth, async function (req, res) {
             message: "Error getting song preview."
         });
     }
+
+    // send already made images
+    if (existsSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`))) {
+        console.log(lcl.yellow('[Image - Info]'), "Image already exists, sending...");
+        var tweet = await handle({
+            content: `${process.env.name} played "${song.title}" by ${song.artist} on ${req.body.playTime}`,
+            image: path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`)
+        });
+        if (tweet.success) {
+            console.log(lcl.green('[Twitter - Info]'), "Tweet sent!");
+        }
+        return res.status(200).json({
+            success: true,
+            url: '/api/v3/spotify/image/' + req.body.trackId
+        });
+    }
+
 
     console.log(lcl.blue("[Spotify - Info]"), `Creating image for "${song.title}" by ${song.artist}`);
 
@@ -81,6 +92,15 @@ router.post('/', auth, async function (req, res) {
         });
     }
     await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson, true);
+
+    // try and tweet
+    var tweet = await handle({
+        content: `${process.env.name} played "${song.title}" by ${song.artist} on ${req.body.playTime}`,
+        image: path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`)
+    });
+    if (tweet.success) {
+        console.log(lcl.green('[Twitter - Info]'), "Tweet sent!");
+    }
 
     // return image url
     return res.status(200).json({
