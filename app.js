@@ -2,6 +2,7 @@ const lcl = require("cli-color"),
     compression = require("compression"),
     cors = require("cors"),
     morgan = require("morgan"),
+    path = require('path'),
     bodyParser = require("body-parser"),
     {
         getAuth
@@ -16,12 +17,15 @@ app.use(compression());
 app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
 // express routes
+app.use("/", require("./views/router"));
 app.use("/api", require("./api/router"));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // express error handler
 app.use((req, res, next) => {
