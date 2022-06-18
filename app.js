@@ -3,7 +3,9 @@ const lcl = require("cli-color"),
     cors = require("cors"),
     morgan = require("morgan"),
     path = require('path'),
+    favicon = require('serve-favicon'),
     bodyParser = require("body-parser"),
+    header = require("./api/middleware/headers/xpoweredby"),
     {
         getAuth
     } = require('./api/middleware/auth/apiKey'),
@@ -18,6 +20,9 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')));
+app.disable('x-powered-by');
+app.use(header);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
