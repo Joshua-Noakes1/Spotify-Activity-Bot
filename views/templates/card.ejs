@@ -1,0 +1,10 @@
+<div id="<%= id %>" class="col-lg-4">
+    <h3 class="card-header rounded notoBold"><%= title %></h3>
+    <div class="card-body">
+        <h5 class="card-title notoReg"><%= artist %></h5>
+    </div>
+    <span>
+        <a href="/song/<%= id %>"><button id="vm-btn" class="btn btn-primary contentBtn my-2 my-sm-0 notoReg">View More</button></a>
+        <a href="https://open.spotify.com/track/<%= id %>" target="_blank"><button id="spotify-btn" class="btn btn-success contentBtn my-2 my-sm-0 notoReg" style="color:#333">View on Spotify</button></a>
+    </span>
+</div>

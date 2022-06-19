@@ -1,5 +1,8 @@
 const path = require('path'),
-    express = require('express');
+    express = require('express'),
+    {
+        readJSON
+    } = require('../lib/readWrite');
 
 // global express router
 const router = express.Router();
@@ -12,8 +15,10 @@ router.get('/', function (req, res) {
     });
 });
 
-router.get('/test', function (req, res) {
-    return res.status(200).render('home/index.ejs');
+router.get('/test', async function (req, res) {
+    var data = await readJSON(path.join(__dirname, '../data/songs.json'), true);
+    data.data = data.data.reverse();
+    return res.status(200).render('home/index.ejs', data);
 });
 
 // Favicon 
