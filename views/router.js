@@ -1,6 +1,9 @@
 const path = require('path'),
     express = require('express'),
     {
+        existsSync
+    } = require('fs'),
+    {
         readJSON
     } = require('../lib/readWrite');
 
@@ -13,6 +16,19 @@ router.get('/', function (req, res) {
         status: true,
         message: "Okay but imagine that was a real UI here like close your eyes and just imagaine"
     });
+});
+
+router.get('/song/:id', async function (req, res) {
+    var song = await existsSync(path.join(__dirname, '../', 'data', 'images', `${req.params.id}.png`));
+    if (song) {
+        return res.render('card/card.ejs', {songID: req.params.id});
+        // return res.sendFile(path.join(__dirname, '../', 'data', 'images', `${req.params.id}.png`));
+    } else {
+        return res.status(404).json({
+            status: false,
+            message: "Song not found."
+        });
+    }
 });
 
 router.get('/test', async function (req, res) {

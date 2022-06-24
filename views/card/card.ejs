@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../templates/head', {title: "IRyS"}); %>
+    </head>
+    <body>
+        <%- include('../templates/navbar', {title: "IRyS", button: {text: "Settings", url: "/settings"}}); %>
+        <!-- Begin Content -->
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <div>
+                    <!-- <div style="margin: 15px 0 10px 0;"></div> -->
+                    <img src="/api/v3/spotify/image/<%= songID %>" alt="Song" width="75%" height="75%"/>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
