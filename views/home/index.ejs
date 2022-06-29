@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('../templates/head', {title: "IRyS"}); %>
+    <%- include("../templates/head", {title: "IRyS"}); %>
   </head>
   <body>
-    <%- include('../templates/navbar', {title: "IRyS", button: {text: "Settings", url: "/settings"}}); %>
+    <%- include("../templates/navbar", {title: "IRyS", button: {text: "Settings", url: "/settings"}}); %>
     <!-- Begin Content -->
     <div style="margin: 10px 0 10px 0;"></div>
     <div class="container-fluid col-container">
       <div class="row g-4 col-container">      
         <% for(const song in data) { %>
-          <%- include('../templates/card', {title: data[song].title, artist: data[song].artist, id: data[song].id}); %>
+          <%- include("../templates/card", {title: data[song].title, artist: data[song].artist, id: data[song].id}); %>
         <% } %>
       </div>
     </div>

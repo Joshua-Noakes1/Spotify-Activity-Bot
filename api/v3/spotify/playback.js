@@ -1,37 +1,37 @@
-const lcl = require('cli-color'),
-    fetch = require('node-fetch'),
-    path = require('path'),
-    createImage = require('../../../lib/canvas/createImage'),
-    express = require('express'),
+const lcl = require("cli-color"),
+    fetch = require("node-fetch"),
+    path = require("path"),
+    createImage = require("../../../lib/canvas/createImage"),
+    express = require("express"),
     {
         handle
-    } = require('../../../lib/twitter/tweetHandler'),
+    } = require("../../../lib/twitter/tweetHandler"),
     {
         auth
-    } = require('../../middleware/auth/apiKey'),
+    } = require("../../middleware/auth/apiKey"),
     {
         readJSON,
         writeJSON
-    } = require('../../../lib/readWrite'),
+    } = require("../../../lib/readWrite"),
     {
         writeFileSync,
         existsSync
-    } = require('fs'),
+    } = require("fs"),
     {
         getPreview
-    } = require('spotify-url-info')(fetch);
+    } = require("spotify-url-info")(fetch);
 
 // global express router
 const router = express.Router();
 
 // Api routes
-router.get('/', function (req, res) {
+router.get("/", function (req, res) {
     res.status(405).json({
         success: false,
-        message: 'This endpoint only supports POST requests.'
+        message: "This endpoint only supports POST requests."
     });
 });
-router.post('/', auth, async function (req, res) {
+router.post("/", auth, async function (req, res) {
     // get song from spotify api
     var song;
     try {
@@ -46,7 +46,7 @@ router.post('/', auth, async function (req, res) {
             }
         });
     } catch (err) {
-        console.log(lcl.red('[Spotify - Playback]'), "Error getting song preview:", err);
+        console.log(lcl.red("[Spotify - Playback]"), "Error getting song preview:", err);
         return res.status(500).json({
             success: false,
             message: "Error getting song preview."
@@ -54,18 +54,18 @@ router.post('/', auth, async function (req, res) {
     }
 
     // send already made images
-    if (existsSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`))) {
-        console.log(lcl.yellow('[Image - Info]'), "Image already exists, sending...");
+    if (existsSync(path.join(__dirname, "../", "../", "../", "data", "images", `${req.body.trackId}.png`))) {
+        console.log(lcl.yellow("[Image - Info]"), "Image already exists, sending...");
         var tweet = await handle({
             content: `${process.env.name} played "${song.title}" by ${song.artist} on ${req.body.playTime}`,
-            image: path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`)
+            image: path.join(__dirname, "../", "../", "../", "data", "images", `${req.body.trackId}.png`)
         });
         if (tweet.success) {
-            console.log(lcl.green('[Twitter - Info]'), "Tweet sent!");
+            console.log(lcl.green("[Twitter - Info]"), "Tweet sent!");
         }
         return res.status(200).json({
             success: true,
-            url: '/api/v3/spotify/image/' + req.body.trackId
+            url: "/api/v3/spotify/image/" + req.body.trackId + ".png"
         });
     }
 
@@ -76,10 +76,10 @@ router.post('/', auth, async function (req, res) {
     const image = await createImage(song);
 
     // write image to file
-    writeFileSync(path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`), image.image);
+    writeFileSync(path.join(__dirname, "../", "../", "../", "data", "images", `${req.body.trackId}.png`), image.image);
 
     // save song info to file
-    var songJson = await readJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), true);
+    var songJson = await readJSON(path.join(__dirname, "../", "../", "../", "data", "songs.json"), true);
     if (!songJson.success) var songJson = {
         success: true,
         data: []
@@ -91,22 +91,26 @@ router.post('/', auth, async function (req, res) {
             artist: song.artist
         });
     }
-    await writeJSON(path.join(__dirname, '../', '../', '../', 'data', 'songs.json'), songJson, true);
+    await writeJSON(path.join(__dirname, "../", "../", "../", "data", "songs.json"), songJson, true);
 
     // try and tweet
+    var returnImageData = {
+        success: true,
+        twitterSuccess: false,
+        url: "/api/v3/spotify/image/" + req.body.trackId + ".png"
+    }
+
     var tweet = await handle({
         content: `${process.env.name} played "${song.title}" by ${song.artist} on ${req.body.playTime}`,
-        image: path.join(__dirname, '../', '../', '../', 'data', 'images', `${req.body.trackId}.png`)
+        image: path.join(__dirname, "../", "../", "../", "data", "images", `${req.body.trackId}.png`)
     });
     if (tweet.success) {
-        console.log(lcl.green('[Twitter - Info]'), "Tweet sent!");
+        console.log(lcl.green("[Twitter - Info]"), "Tweet sent!");
+        returnImageData.twitterSuccess = true;
     }
 
     // return image url
-    return res.status(200).json({
-        success: true,
-        url: '/api/v3/spotify/image/' + req.body.trackId
-    });
+    return res.status(200).json(returnImageData);
 });
 
 module.exports = router;
