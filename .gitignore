@@ -181,3 +181,4 @@ dist
 *.json
 !nodemon.json
 !static/*.png
+!favicon.ico
