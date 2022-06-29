@@ -180,3 +180,4 @@ dist
 *.png
 *.json
 !nodemon.json
+!static/*.png
