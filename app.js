@@ -5,7 +5,6 @@ const lcl = require("cli-color"),
     path = require("path"),
     favicon = require("serve-favicon"),
     bodyParser = require("body-parser"),
-    workerCon = require("./lib/pool/controller"),
     {
         getAuth
     } = require("./api/middleware/auth/apiKey"),
@@ -50,6 +49,5 @@ app.use((error, req, res, next) => {
 const port = process.env.PORT || 3000;
 app.listen(port, async function () {
     await getAuth(true);
-    await workerCon.init({ minWorkers: 'max' });
     console.log(lcl.blue("[Express - Info]"), "Started on port", lcl.yellow(port));
 });
