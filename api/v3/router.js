@@ -9,5 +9,6 @@ router.get("/", function (req, res) {
 
 router.use("/spotify/playback", require("./spotify/playback"));
 router.use("/spotify/image", require("./spotify/image"));
+router.use("/spotify/wImage", require("./spotify/workerImage"));
 
 module.exports = router;
