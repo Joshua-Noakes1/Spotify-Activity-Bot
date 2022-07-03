@@ -19,13 +19,6 @@ COPY . .
 COPY package*.json ./
 RUN npm install --omit=dev --no-progress
 RUN npm prune --production
-RUN apk del --purge --no-cache \
-    build-base \
-    g++ \ 
-    cairo-dev \
-    jpeg-dev \
-    pango-dev \
-    giflib-dev
 
 # Expose ports 3000
 EXPOSE 3000
