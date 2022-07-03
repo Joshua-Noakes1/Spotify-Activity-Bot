@@ -3,7 +3,6 @@ FROM node:alpine
 WORKDIR /usr/src/app
 
 # Install deps
-# RUN apt update && apt upgrade -y && apt install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y
 RUN apk add --no-cache \
     curl \
     build-base \
@@ -12,9 +11,6 @@ RUN apk add --no-cache \
     jpeg-dev \
     pango-dev \
     giflib-dev
-RUN curl -sf https://gobinaries.com/tj/node-prune | sh
-# RUN apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/testing libmount ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family fontconfig
-
 
 # Copy files over and make directories
 COPY . .
