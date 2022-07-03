@@ -4,3 +4,8 @@ version.json
 **/.git
 .env
 *-exec*
+data/**
+.DS_Store
+.env.local
+**/.old
+**/.github

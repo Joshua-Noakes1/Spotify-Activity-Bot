@@ -31,6 +31,11 @@ app.use("/api", require("./api/router"));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
 // express error handler
+
+app.get('/ping', (req, res) => {
+    res.status(200).json({"success": true, "message": "Henlo!"});
+});
+
 app.use((req, res, next) => {
     const error = new Error("Page not found");
     error.status = 404;
