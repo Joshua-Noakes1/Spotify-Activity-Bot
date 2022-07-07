@@ -11,11 +11,10 @@ const path = require("path"),
 const router = express.Router();
 
 // Api routes
-router.get("/", function (req, res) {
-    return res.status(200).json({
-        status: true,
-        message: "Okay but imagine that was a real UI here like close your eyes and just imagaine"
-    });
+router.get("/", async function (req, res) {
+    var data = await readJSON(path.join(__dirname, "../data/songs.json"), true);
+    data.data = data.data.reverse();
+    return res.status(200).render("home/index.ejs", data);
 });
 
 router.get("/song/:id", async function (req, res) {
@@ -31,10 +30,8 @@ router.get("/song/:id", async function (req, res) {
     }
 });
 
-router.get("/test", async function (req, res) {
-    var data = await readJSON(path.join(__dirname, "../data/songs.json"), true);
-    data.data = data.data.reverse();
-    return res.status(200).render("home/index.ejs", data);
+router.get("/settings", function (req, res) {
+    return res.status(200).render("settings/settings.ejs");
 });
 
 // Favicon 
@@ -59,5 +56,7 @@ router.get("/android-chrome-512x512.png", function (req, res) {
 router.get("/site.webmanifest", function (req, res) {
     return res.status(200).sendFile(path.join(__dirname, "../", "static", "site.webmanifest"));
 });
-
+router.get("/static/bootswatch.css", function (req, res) {
+    return res.status(200).sendFile(path.join(__dirname, "../", "static", "css", "bootstrap.min.css"));
+});
 module.exports = router;
