@@ -5,6 +5,36 @@
     </head>
     <body>
         <%- include("../templates/navbar", {title: "IRyS", button: {text: "Home", url: "/"}}); %>
-
+        <!-- Begin Settings Content -->
+        <div style="margin: 10px 0 10px 0"></div>
+            <div class="container-fluid col-container">
+                <div class="row g-4 col-container">
+                    <!-- Begin Card-->
+                        <div id="enable-twitter;x-1" class="col-lg-4">
+                            <h3 class="card-header rounded notoBold">Enable Twitter</h3>
+                            <div class="card-body">
+                                <h5 class="card-title notoReg">Enable or disable IRyS tweeting when a new song request come in.</h5>
+                            </div>
+                            <span>
+                                <a href="/song/x"><button id="vm-btn" class="btn btn-success contentBtn my-2 my-sm-0 notoReg" style="color:#333;">Enable</button></a>
+                                <a href="https://open.spotify.com/track/x" target="_blank"><button id="spotify-btn" class="btn btn-danger contentBtn my-2 my-sm-0 notoReg" style="color:#333">Danger</button></a>
+                            </span>
+                        </div>
+                    <!-- End Card -->
+                    <!-- Begin Card-->
+                        <div id="enable-twitter;x-1" class="col-lg-4">
+                            <h3 class="card-header rounded notoBold">Enable Images</h3>
+                            <div class="card-body">
+                                <h5 class="card-title notoReg">Enable or disable IRyS creating images when a new song request come in.</h5>
+                            </div>
+                            <span>
+                                <a href="/song/x"><button id="vm-btn" class="btn btn-success contentBtn my-2 my-sm-0 notoReg" style="color:#333;">Enable</button></a>
+                                <a href="https://open.spotify.com/track/x" target="_blank"><button id="spotify-btn" class="btn btn-danger contentBtn my-2 my-sm-0 notoReg" style="color:#333">Danger</button></a>
+                            </span>
+                        </div>
+                    <!-- End Card -->
+                </div>
+            </div>
+        </div>
     </body>
 </html>
