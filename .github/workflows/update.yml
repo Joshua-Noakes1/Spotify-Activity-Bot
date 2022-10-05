@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "0 0 * * *" # Every day at midnight
 
+  push:
+    branches:
+      - "trunk"
+
 jobs:
   buildx:
     runs-on: ubuntu-latest
