@@ -1,6 +1,6 @@
 # IRyS
 
-Personlised media cards
+Personlised media cards.
 
 ## Attrributes
 
