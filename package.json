@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Joshua-Noakes1/IRyS#readme",
   "dependencies": {
-    "body-parser": "^1.20.0",
+    "body-parser": "^1.20.1",
     "canvas": "^2.10.1",
     "canvas-txt": "^3.0.0",
     "cli-color": "^2.0.3",
