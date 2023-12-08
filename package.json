@@ -27,7 +27,7 @@
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "fast-average-color-node": "^2.6.0",
+    "fast-average-color-node": "^2.7.0",
     "jimp": "^0.22.10",
     "jimp-roundcorners": "^1.1.0",
     "morgan": "^1.10.0",
