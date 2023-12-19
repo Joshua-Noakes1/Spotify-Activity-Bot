@@ -37,6 +37,6 @@
     "spotify-url-info": "^3.2.10",
     "twitter": "^1.7.1",
     "uuid": "^9.0.1",
-    "workerpool": "^8.0.0"
+    "workerpool": "^9.0.1"
   }
 }
