@@ -28,7 +28,7 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "fast-average-color-node": "^3.0.0",
-    "jimp": "^0.22.12",
+    "jimp": "^1.0.2",
     "jimp-roundcorners": "^1.1.0",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.7",
