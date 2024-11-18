@@ -34,7 +34,7 @@
     "node-fetch": "^2.6.7",
     "path": "^0.12.7",
     "serve-favicon": "^2.5.0",
-    "spotify-url-info": "^3.2.17",
+    "spotify-url-info": "^3.2.18",
     "twitter": "^1.7.1",
     "uuid": "^11.0.3",
     "workerpool": "^9.2.0"
