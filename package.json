@@ -36,7 +36,7 @@
     "serve-favicon": "^2.5.0",
     "spotify-url-info": "^3.2.18",
     "twitter": "^1.7.1",
-    "uuid": "^11.0.3",
+    "uuid": "^11.0.4",
     "workerpool": "^9.2.0"
   }
 }
